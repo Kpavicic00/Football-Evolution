@@ -6,6 +6,6 @@ file_txt = "file.txt"
 
 
 # varijable nizovi numpay
-# printFile(file_txt)
+printFile(file_txt)
 print("\n\t Index")
 print("\n\t Index")
