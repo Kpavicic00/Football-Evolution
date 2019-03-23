@@ -60,7 +60,7 @@ def Koef_suma_umozak(files,un):
     i = unos()
     un = input("\n\t Unesite sumu novca : ")
     un = float(un)
-    np_specificna_koef = np_koef[np_godine == i]
+    np_specificna_koef = np_koef[np_years == i]
     suma =  np_specificna_koef*un
     print("\n\tIznos novca : ",suma )
     return suma
