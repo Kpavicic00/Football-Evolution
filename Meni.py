@@ -3,10 +3,13 @@ from functions import *
 
 
 # txt FILES
-koef = "file.txt"
+koef = "/home/kristijan/github/FootballEvolcion/file.txt"
+data = "/home/kristijan/github/FootballEvolcion/datas.txt"
 
-
-# varijable nizovi numpay
+print("\n\t Ispis koeficeijanata : ")
 printFile(koef)
-print("\n\t Index")
-print("\n\t Index")
+
+print("\n\t Ispis podataka : ")
+printFile(data)
+
+print("\n\t Duljina redaka u Koef : ",file_lengthy(koef),"\n\t Duljina redaka u podacima : ",file_lengthy(data))
