@@ -12,4 +12,11 @@ printFile(koef)
 print("\n\t Ispis podataka : ")
 printFile(data)
 
-print("\n\t Duljina redaka u Koef : ",file_lengthy(koef),"\n\t Duljina redaka u podacima : ",file_lengthy(data))
+#print("\n\t Duljina redaka u Koef : "file_lengthy(koef),"\n\t Duljina redaka u podacima : "file_lengthy(data))
+
+un = 0
+print("\n\t Uneis   :   ")
+un = input("Uneis nes:")
+print(un)
+
+#rez = Koef_suma_umozak(koef,un)

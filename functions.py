@@ -1,9 +1,25 @@
-
+import numpy as np
 # funkcije
 
 
 
 
+
+#unosi dio za godine try catch
+def unos():
+    while True:
+        print("\n\t Unesite godinu transakcije da bi dobili \n podatke transakcije prema trenutnom tecaju inflacije : ")
+        value = input("Value between 2000 and 2018:")
+        try:
+           value = int(value)
+        except ValueError:
+           print("Valid number, please")
+           continue
+        if 2000 <= value <= 2018:
+           return value
+           break
+        else:
+           print(" Valid range, please: 0-100")
 
 # citanje datoteka
 def printFile(data):
@@ -18,7 +34,7 @@ def file_lengthy(fname):
         return i +1
 
 # uzamnje i baratanje sa podacima u smislu koeficjenta
-def printFROMfileKOEFicijent(files,np_year,np_COEF):
+def Koef_suma_umozak(files,un):
     lenght = file_lengthy(files)
 
     with open(files, "r") as f:
@@ -41,6 +57,10 @@ def printFROMfileKOEFicijent(files,np_year,np_COEF):
     np_koef = np.asarray(k, dtype='float64')
 
     # unosni dio  staviti try catch izmedu intervala 2000 i 2009 te da ih mnozi sa indeksom 2019
-    i = input("\n\t Unesite godinu transakcije da bi dobili \n podatke transakcije prema trenutnom tecaju inflacije : ")
-    i = int(i)
+    i = unos()
+    un = input("\n\t Unesite sumu novca : ")
+    un = float(un)
     np_specificna_koef = np_koef[np_godine == i]
+    suma =  np_specificna_koef*un
+    print("\n\tIznos novca : ",suma )
+    return suma
