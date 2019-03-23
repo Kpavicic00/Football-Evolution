@@ -14,9 +14,9 @@ printFile(data)
 
 #print("\n\t Duljina redaka u Koef : "file_lengthy(koef),"\n\t Duljina redaka u podacima : "file_lengthy(data))
 
-un = 0
+un = "0e"
 print("\n\t Uneis   :   ")
-un = input("Uneis nes:")
+un = raw_input("Uneis nes:")
 print(un)
 
 #rez = Koef_suma_umozak(koef,un)
