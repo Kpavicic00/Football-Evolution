@@ -1,11 +1,12 @@
 import numpy as np
 from functions import *
 
+
 # txt FILES
-file_txt = "file.txt"
+koef = "file.txt"
 
 
 # varijable nizovi numpay
-printFile(file_txt)
+printFile(koef)
 print("\n\t Index")
 print("\n\t Index")
