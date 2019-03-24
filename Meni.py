@@ -21,7 +21,7 @@ string = "0.0"
 
 # pozivi funkcija
 
-un = koeficijenat(koef)
+un = Coefficients(koef)
 string = str(un)
 
 

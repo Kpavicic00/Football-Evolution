@@ -1,8 +1,24 @@
 import numpy as np
 # functions
 
+# functions_fore choose of season
+def Input_season():
+    while True:
+        print("\n\t Enter a year of season   : ")
+        value = input("\n\tValue between 2000 and 2018 :")
+        try:
+           value = int(value)
+        except ValueError:
+           print("\n\tValid number, please !!")
+           continue
+        if 2000 <= value <= 2018:
+           return value
+           break
+        else:
+           print("\n\tValue between 2000 and 2018 !!!")
+
 # function for input years interval 2000 to 2018
-def unos():
+def Input_year():
     while True:
         print("\n\t Enter a year of transaction to get \ n transaction data according to the current inflation rate : ")
         value = input("\n\tValue between 2000 and 2018 :")
@@ -31,7 +47,7 @@ def file_lengthy(fname):
         return i +1
 
 # uzmanje i baratanje sa podacima u smislu koeficjenta
-def koeficijenat(files):
+def Coefficients(files):
     lenght = file_lengthy(files) # count the length of lines for the required size allocation of the string
 
     with open(files, "r") as f: # open the file
@@ -55,7 +71,7 @@ def koeficijenat(files):
     np_koef = np.asarray(k, dtype='float64')
 
     # the intake part put a try catch between the 2000 and 2009 intervals and to index them with the 2019 index
-    i = unos()
+    i = Input_year()
     np_specific_coefficient = np_koef[np_years == i]
     print("\n\t You have chosen a year :  ",i)
     return np_specific_coefficient
@@ -107,8 +123,8 @@ def GetData(file):
 
 
 
-        # unosni dio  staviti try catch izmedu intervala 2000 i 2009 te da ih mnozi sa indeksom 2019
-        i = unos()
-        np_specificna_koef = np_koef[np_years == i]
-        print("\n\t Izabrali ste godinu :  ",i)
+
+        # the intake part put a try catch between the 2000 and 2009 intervals and to index them with the 2019 indexi = Input_season()
+        # np_specificna_koef = np_koef[np_years == i]
+
         return np_specificna_koef
