@@ -14,9 +14,17 @@ print("\n\t Ispis podataka : ")
 printFile(data)
 
 
-#print("\n\t Duljina redaka u Koef : "file_lengthy(koef),"\n\t Duljina redaka u podacima : "file_lengthy(data))
+# deklaracija varijabli i incijalizacija
 
 un = 0.0
+string = "0.0"
+
+# pozivi funkcija
 
 un = koeficijenat(koef)
+string = str(un)
+
+
 print("\n\t Koeficijent inflacije za tu godinu prema  doansnjoj vrijednosti : ",un)
+
+#print("\n\t Duljina redaka u Koef : "file_lengthy(koef),"\n\t Duljina redaka u podacima : "file_lengthy(data))
