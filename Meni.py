@@ -16,6 +16,7 @@ printFile(data)
 
 #print("\n\t Duljina redaka u Koef : "file_lengthy(koef),"\n\t Duljina redaka u podacima : "file_lengthy(data))
 
-un = 0
+un = 0.0
 
-rez = Koef_suma_umozak(koef,un)
+un = koeficijenat(koef)
+print("\n\t Koeficijent inflacije za tu godinu prema  doansnjoj vrijednosti : ",un)
