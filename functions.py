@@ -18,20 +18,20 @@ def Input_season():
            print("\n\tValue between 2000 and 2018 !!!")
 
 # function for input years interval 2000 to 2018
-def Input_year():
-    while True:
-        print("\n\t Enter a year of transaction to get \ n transaction data according to the current inflation rate : ")
-        value = input("\n\tValue between 2000 and 2018 :")
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n\tValid number, please !!")
-           continue
-        if 2000 <= value <= 2018:
-           return value
-           break
-        else:
-           print("\n\tValue between 2000 and 2018 !!!")
+# def Input_year():
+#     while True:
+#         print("\n\t Enter a year of transaction to get \ n transaction data according to the current inflation rate : ")
+#         value = input("\n\tValue between 2000 and 2018 :")
+#         try:
+#            value = int(value)
+#         except ValueError:
+#            print("\n\tValid number, please !!")
+#            continue
+#         if 2000 <= value <= 2018:
+#            return value
+#            break
+#         else:
+#            print("\n\tValue between 2000 and 2018 !!!")
 
 # print the txt file
 def printFile(data):
@@ -77,9 +77,11 @@ def Coefficients(files):
     #print("\n\t You have chosen a year :  ",i)
     return np_specific_coefficient
 
+
 # takes charge of the chosen league and the selected season and the data to be chosen
 
 # def GetData(files):
+#
 #         #lenght = file_lengthy(files) # count the length of lines for the required size allocation of the string
 #
 #         # read from file
