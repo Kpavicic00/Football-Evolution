@@ -16,6 +16,7 @@ filePath ='/home/kristijan/github/FootballEvolcion/TEST_CSV.csv'
 koef = "/home/kristijan/github/FootballEvolcion/file.txt"
 data = "/home/kristijan/github/FootballEvolcion/datas.txt"
 podaci = "/home/kristijan/github/FootballEvolcion/podaci.txt"
+save_csv = '/home/kristijan/github/FootballEvolcion/Save_csv_Parsing.csv'
 
 # print(df1.index.tolist()) #print index
 
@@ -25,10 +26,25 @@ podaci = "/home/kristijan/github/FootballEvolcion/podaci.txt"
 #t = Coefficients(koef)
 
 DFrame = DataFrameFunc(filePath)
-DFrame1 = DataFrameFunc(filePath)
-DFrame2 = DataFrameFunc(filePath)
+DF = DataFrameFunc(filePath)
+DFr = DataFrameFunc(filePath)
 print(DFrame)
+print("\n")
+print("ukupna ligaska potrošnja po igracu : ")
+print(GetAVGExpendFORpayer(DFrame))
+print("\n")
+print("ukupna ligaska Bruto zarada po igracu :: ")
+print(GetAVGIncomeFORpayer(DFr))
+print("\n")
+print("ukupna ligaska NETTO zarada po igracu :: ")
+print(GetAVGIncomeFORpayer(DF))
 
-print("ukupna ligaska potrošnja po igracu : ",GetAVGExpendFORpayer(DFrame))
-# print("ukupna ligaska Bruto zarada po igracu :: ",GetAVGIncomeFORpayer(DFrame1))
-# print("ukupna ligaska NETTO zarada po igracu :: ",GetAVGBalanceFORpayer(DFrame2))
+# a = GetAVGExpendFORpayer(DFrame)
+# b = GetAVGIncomeFORpayer(DFr)
+# c = GetAVGIncomeFORpayer(DF)
+
+#np.savetxt(save_csv, a, delimiter=",")
+#a.tofile(save_csv,sep=',',format='%10.5f')
+#np.savetxt(save_csv, a, fmt='%.18e,%.18e,%.18e ')
+# numpy.savetxt(save_csv, b, delimiter=",")
+# numpy.savetxt(save_csv, c, delimiter=",")

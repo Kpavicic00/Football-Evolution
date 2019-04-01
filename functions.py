@@ -157,23 +157,22 @@ def GetAVGExpendFORpayer(DFrame):
     npLeauge = np.asarray(leauge, dtype='str')
     np_CUT = np.asarray(CUT, dtype='float64')
 
-    if DFrame["Season"][1] == 2000:
-        print(DFrame["Season"][1])
-        print(type(DFrame["Season"][1]))
+    # if DFrame["Season"][1] == 2000:
+    #     print(DFrame["Season"][1])
+    #     print(type(DFrame["Season"][1]))
 
     k = DFrame["Season"][1]
     mult = GETCoefficients(koef,k)
-    print("mult : ",mult)
-    np_CUT = np_Expend/np_Arrival
 
+    np_CUT = np_Expend/np_Arrival
     np_CUT_inflation = np_CUT*mult
 
     return np.stack((npLeauge,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
 
 #get average League brutto earnings for each player
-def GetAVGIncomeFORpayer(Dframe):
+def GetAVGIncomeFORpayer(DaFrame):
     #count number of rows in date frame
-    count = NumberOfRows(DFrame)
+    count = NumberOfRows(DaFrame)
 
     #reserving the number of elements in a row
     Expend = [0] * count
@@ -182,16 +181,17 @@ def GetAVGIncomeFORpayer(Dframe):
     CUT =  [0] * count
 
     # cast DataFrame rows to folat and int
-    DFrame["Income"].astype(np.float64)
-    DFrame["Arrivals"].astype(np.int64)
-    DFrame["Competition"].astype(np.str)
+    DaFrame["Income"].astype(np.float64)
+    DaFrame["Departures"].astype(np.int64)
+    DaFrame["Competition"].astype(np.str)
+    DaFrame["Season"].astype(np.int64)
 
     #save values from the dateframe to a string
     i = 0
     for i in range(0,count):
-        Expend[i] = DFrame["Income"][i]
-        Arrival[i] = DFrame["Arrivals"][i]
-        leauge[i] = DFrame["Competition"][i]
+        Expend[i] = DaFrame["Income"][i]
+        Arrival[i] = DaFrame["Departures"][i]
+        leauge[i] = DaFrame["Competition"][i]
 
     # conversion to numpy
     np_Expend = np.asarray(Expend, dtype='float64')
@@ -199,24 +199,22 @@ def GetAVGIncomeFORpayer(Dframe):
     npLeauge = np.asarray(leauge, dtype='str')
     np_CUT = np.asarray(CUT, dtype='float64')
 
-    if DFrame["Season"][1] == 2000:
-        print(DFrame["Season"][1])
-        print(type(DFrame["Season"][1]))
+    # if DaFrame["Season"][1] == 2000:
+    #     print(DaFrame["Season"][1])
+    #     print(type(DaFrame["Season"][1]))
 
-    k = DFrame["Season"][1]
+    k = DaFrame["Season"][1]
     mult = GETCoefficients(koef,k)
-    print("mult : ",mult)
-    np_CUT = np_Expend/np_Arrival
 
+    np_CUT = np_Expend/np_Arrival
     np_CUT_inflation = np_CUT*mult
 
     return np.stack((npLeauge,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
-
 
 #get average League netto earnings for each player
 def GetAVGBalanceFORpayer(Dframe):
     #count number of rows in date frame
-    count = NumberOfRows(DFrame)
+    count = NumberOfRows(DaFrame)
 
     #reserving the number of elements in a row
     Expend = [0] * count
@@ -225,16 +223,17 @@ def GetAVGBalanceFORpayer(Dframe):
     CUT =  [0] * count
 
     # cast DataFrame rows to folat and int
-    DFrame["Balance"].astype(np.float64)
-    DFrame["Departures"].astype(np.int64)
-    DFrame["Competition"].astype(np.str)
+    DaFrame["Balance"].astype(np.float64)
+    DaFrame["Departures"].astype(np.int64)
+    DaFrame["Competition"].astype(np.str)
+    DaFrame["Season"].astype(np.int64)
 
     #save values from the dateframe to a string
     i = 0
     for i in range(0,count):
-        Expend[i] = DFrame["Balance"][i]
-        Arrival[i] = DFrame["Arrivals"][i]
-        leauge[i] = DFrame["Competition"][i]
+        Expend[i] = DaFrame["Balance"][i]
+        Arrival[i] = DaFrame["Departures"][i]
+        leauge[i] = DaFrame["Competition"][i]
 
     # conversion to numpy
     np_Expend = np.asarray(Expend, dtype='float64')
@@ -242,18 +241,14 @@ def GetAVGBalanceFORpayer(Dframe):
     npLeauge = np.asarray(leauge, dtype='str')
     np_CUT = np.asarray(CUT, dtype='float64')
 
-    if DFrame["Season"][1] == 2000:
-        print(DFrame["Season"][1])
-        print(type(DFrame["Season"][1]))
+    # if DaFrame["Season"][1] == 2000:
+    #     print(DaFrame["Season"][1])
+    #     print(type(DaFrame["Season"][1]))
 
-    k = DFrame["Season"][1]
+    k = DaFrame["Season"][1]
     mult = GETCoefficients(koef,k)
-    print("mult : ",mult)
-    np_CUT = np_Expend/np_Arrival
 
+    np_CUT = np_Expend/np_Arrival
     np_CUT_inflation = np_CUT*mult
 
     return np.stack((npLeauge,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
-
-
-    return
