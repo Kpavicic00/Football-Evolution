@@ -12,7 +12,7 @@ import sys
 
 
 # txt FILES
-podaci = "/home/kristijan/github/FootballEvolcion/TEST_CSV.csv"
+filePath ='/home/kristijan/github/FootballEvolcion/TEST_CSV.csv'
 koef = "/home/kristijan/github/FootballEvolcion/file.txt"
 data = "/home/kristijan/github/FootballEvolcion/datas.txt"
 podaci = "/home/kristijan/github/FootballEvolcion/podaci.txt"
@@ -20,5 +20,15 @@ podaci = "/home/kristijan/github/FootballEvolcion/podaci.txt"
 # print(df1.index.tolist()) #print index
 
 
-dat = pd.read_csv(podaci)
-print(dat)
+
+
+t = Coefficients(koef)
+dat = DataFrameFunc(filePath)
+a = dat["Expenditures"][1]
+print("Ispis ",a,t)
+
+
+p = a*t# TEMP:
+rez = float(p)
+
+print(" Izracun :::  : ",rez)

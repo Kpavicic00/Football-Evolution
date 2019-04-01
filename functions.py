@@ -1,4 +1,7 @@
 import numpy as np
+import pandas as pd
+import csv
+import sys
 # functions
 
 # functions_fore choose of season
@@ -18,20 +21,20 @@ def Input_season():
            print("\n\tValue between 2000 and 2018 !!!")
 
 # function for input years interval 2000 to 2018
-# def Input_year():
-#     while True:
-#         print("\n\t Enter a year of transaction to get \ n transaction data according to the current inflation rate : ")
-#         value = input("\n\tValue between 2000 and 2018 :")
-#         try:
-#            value = int(value)
-#         except ValueError:
-#            print("\n\tValid number, please !!")
-#            continue
-#         if 2000 <= value <= 2018:
-#            return value
-#            break
-#         else:
-#            print("\n\tValue between 2000 and 2018 !!!")
+def Input_year():
+    while True:
+        print("\n\t Enter a year of transaction to get \ n transaction data according to the current inflation rate : ")
+        value = input("\n\tValue between 2000 and 2018 :")
+        try:
+           value = int(value)
+        except ValueError:
+           print("\n\tValid number, please !!")
+           continue
+        if 2000 <= value <= 2018:
+           return value
+           break
+        else:
+           print("\n\tValue between 2000 and 2018 !!!")
 
 # print the txt file
 def printFile(data):
@@ -78,63 +81,8 @@ def Coefficients(files):
     return np_specific_coefficient
 
 
-# takes charge of the chosen league and the selected season and the data to be chosen
-
-# def GetData(files):
-#
-#         #lenght = file_lengthy(files) # count the length of lines for the required size allocation of the string
-#
-#         # read from file
-#         infile=open(files,'r')
-#         with open (infile, mode='r', buffering=-1) as f:
-#             data = f.readlines()
-#
-#         count = 0 # counter for arrays
-#
-#         #reserving the number of elements in a row
-#         season_int = [0] * 18
-#         order_of_league_int = [0] * 18
-#         # name_of_league_str = [0] * 18
-#         # spent_by_the_league_int = [0] * 18
-#         # players_come_int = [0] * 18
-#         # league_s_earnings_int = [0] * 18
-#         # the_player_gets_out_int = [0] * 18
-#         # total_profit_int = [0] * 18
-#
-#         for line in data: # passing through all 8 rows
-#             words = line.split() # a temporary variable that saves the data from the rows and parses them separately in the sequences
-#
-#             #the data from each line is entered into a separate string
-#             season_int[count] = words[0]
-#             order_of_league_int[count] = words[1]
-#             # name_of_league_str[count] = words[2]
-#             # spent_by_the_league_int[count] = words[3]
-#             # players_come_int[count] = words[4]
-#             # league_s_earnings_int[count] = words[5]
-#             # the_player_gets_out_int[count] = words[6]
-#             # total_profit_int[count] = words[7]
-#             count += 1
-#
-#         # conversion to numpy
-#         np_season_int = np.asarray(season_int, dtype = 'int64')
-#         np_order_of_league_int = np.asarray(order_of_league_int, dtype = 'int64')
-#         # np_name_of_leauge_str = np.asarray(name_of_league_str, dtype = 'str')
-#         # np_spent_by_the_league_int = np.asarray(spent_by_the_league_int, dtype = 'int64')
-#         # np_players_come_int = np.asarray(players_come_int, dtype = 'int64')
-#         # np_league_s_earnings_int = np.asarray(league_s_earnings_int, dtype = 'int64')
-#         # np_the_player_gets_out_int = np.asarray(the_player_gets_out_int, dtype = 'int64')
-#         # np_total_profit_int = np.asarray(total_profit_int, dtype = 'int64')
-#
-#
-#
-#
-#         # the intake part put a try catch between the 2000 and 2009 intervals and to index them with the 2019 indexi = Input_season()
-#         # np_specificna_koef = np_koef[np_years == i]
-#         print("\n\t Sacesfuly!!")
-#         selection = Input_season()
-#         np_data = buffer(np_order_of_league_int[np_season_int == selection])
-#         # np_data = np_name_of_leauge_str[np_season_int == selection]
-#         # np_data = np_spent_by_the_league_int[np_season_int == selection]
-#         # np_data = np_spent_by_the_league_int[np_season_int == selection]
-#
-#         return np_data
+# takes data with pandas function DataFrame
+def DataFrameFunc(filePath):
+    colls = ["0","Competition","Expenditures","Arrivals","Income","Departures","Balance"]
+    dat = pd.read_csv(filePath,header = None , names = colls)
+    return dat
