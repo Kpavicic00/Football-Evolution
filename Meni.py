@@ -22,13 +22,13 @@ podaci = "/home/kristijan/github/FootballEvolcion/podaci.txt"
 
 
 
-t = Coefficients(koef)
-dat = DataFrameFunc(filePath)
-a = dat["Expenditures"][1]
-print("Ispis ",a,t)
+#t = Coefficients(koef)
 
+DFrame = DataFrameFunc(filePath)
+DFrame1 = DataFrameFunc(filePath)
+DFrame2 = DataFrameFunc(filePath)
+print(DFrame)
 
-p = a*t# TEMP:
-rez = float(p)
-
-print(" Izracun :::  : ",rez)
+print("ukupna ligaska potrošnja po igracu : ",GetAVGExpendFORpayer(DFrame))
+# print("ukupna ligaska Bruto zarada po igracu :: ",GetAVGIncomeFORpayer(DFrame1))
+# print("ukupna ligaska NETTO zarada po igracu :: ",GetAVGBalanceFORpayer(DFrame2))
