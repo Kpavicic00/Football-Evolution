@@ -47,7 +47,7 @@ c = GetAVGBalanceFORpayerDepartures(DFrame)
 
 
 # Write to file
-head = 'Name_of_leauge Nationality Season AvgExpend +INFLACION'
+head = 'Name_of_leauge Season Nationality AvgExpend +INFLACION'
 WriteTOcsvFILE(save_csv_a,a,head)
 WriteTOcsvFILE(save_csv_b,b,head)
 WriteTOcsvFILE(save_csv_c,c,head)

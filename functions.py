@@ -159,6 +159,7 @@ def GetAVGExpendFORpayerArrivals(DFrame):
         Arrival[i] = DFrame["Arrivals"][i]
         leauge[i] = DFrame["Competition"][i]
         Season[i] = DFrame["Season"][i]
+        Nationality[i] = DFrame["Nationality"][i]
 
     for i in range(0,count):
         temp = Season[i]
@@ -212,6 +213,7 @@ def GetAVGIncomeFORpayerDepartures(DFrame):
         Departures[i] = DFrame["Departures"][i]
         leauge[i] = DFrame["Competition"][i]
         Season[i] = DFrame["Season"][i]
+        Nationality[i] = DFrame["Nationality"][i]
 
     for i in range(0,count):
         temp = Season[i]
@@ -265,6 +267,7 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
             Departures[i] = DFrame["Departures"][i]
             leauge[i] = DFrame["Competition"][i]
             Season[i] = DFrame["Season"][i]
+            Nationality[i] = DFrame["Nationality"][i]
 
         for i in range(0,count):
             temp = Season[i]
