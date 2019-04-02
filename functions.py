@@ -6,6 +6,10 @@ import sys
 coef = "/home/kristijan/github/FootballEvolcion/file.txt"
 # functions
 
+# write to file
+def WriteTOcsvFILE(csv_file,dat,head):
+    np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=head, footer='     => End of file <=')
+
 #function count number of rows for specific DateFrame
 def NumberOfRows(datFrame):
     total_rows = len(datFrame)

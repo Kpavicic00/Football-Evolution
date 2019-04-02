@@ -16,7 +16,9 @@ filePath ='/home/kristijan/github/FootballEvolcion/TEST_CSV.csv'
 koef = "/home/kristijan/github/FootballEvolcion/file.txt"
 data = "/home/kristijan/github/FootballEvolcion/datas.txt"
 podaci = "/home/kristijan/github/FootballEvolcion/podaci.txt"
-save_csv = '/home/kristijan/github/FootballEvolcion/Save_csv_Parsing.csv'
+save_csv_a = '/home/kristijan/github/FootballEvolcion/Save_csv_Parsing_a.csv'
+save_csv_b = '/home/kristijan/github/FootballEvolcion/Save_csv_Parsing_b.csv'
+save_csv_c = '/home/kristijan/github/FootballEvolcion/Save_csv_Parsing_c.csv'
 
 
 
@@ -38,13 +40,14 @@ print("\n")
 print("ukupna ligaska NETTO zarada po igracu :: :")
 print(GetAVGBalanceFORpayerDepartures(DFrame))
 
-a = GetAVGBalanceFORpayerDepartures(DFrame)
-b = GetAVGBalanceFORpayerDepartures(DFrame)
+a = GetAVGExpendFORpayerArrivals(DFrame)
+b = GetAVGIncomeFORpayerDepartures(DFrame)
 c = GetAVGBalanceFORpayerDepartures(DFrame)
 
 
 
-
-
-# jedna od metoda
-np.savetxt(save_csv, a, fmt='%s', delimiter=' ', newline='\n', header='', footer='')
+# Write to file
+head = 'Name_of_leauge Season AvgExpend +INFLACION'
+WriteTOcsvFILE(save_csv_a,a,head)
+WriteTOcsvFILE(save_csv_b,b,head)
+WriteTOcsvFILE(save_csv_c,c,head)
