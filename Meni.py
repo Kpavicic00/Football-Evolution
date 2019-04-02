@@ -21,8 +21,8 @@ save_csv = '/home/kristijan/github/FootballEvolcion/Save_csv_Parsing.csv'
 
 
 DFrame = DataFrameFunc(filePath)
-DF = DataFrameFunc(filePath)
-DFr = DataFrameFunc(filePath)
+
+## print datas and functions colls
 print("Podaci:  : ")
 print(DFrame)
 print("\n")
@@ -37,3 +37,14 @@ print(GetAVGIncomeFORpayerDepartures(DFrame))
 print("\n")
 print("ukupna ligaska NETTO zarada po igracu :: :")
 print(GetAVGBalanceFORpayerDepartures(DFrame))
+
+a = GetAVGBalanceFORpayerDepartures(DFrame)
+b = GetAVGBalanceFORpayerDepartures(DFrame)
+c = GetAVGBalanceFORpayerDepartures(DFrame)
+
+
+
+
+
+# jedna od metoda
+np.savetxt(save_csv, a, fmt='%s', delimiter=' ', newline='\n', header='', footer='')
