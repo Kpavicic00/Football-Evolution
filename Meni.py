@@ -12,13 +12,13 @@ import sys
 
 
 # txt FILES
-filePath ='/home/kristijan/github/FootballEvolcion/TEST_CSV.csv'
-koef = "/home/kristijan/github/FootballEvolcion/file.txt"
-data = "/home/kristijan/github/FootballEvolcion/datas.txt"
-podaci = "/home/kristijan/github/FootballEvolcion/podaci.txt"
-save_csv_a = '/home/kristijan/github/FootballEvolcion/Save_csv_Parsing_a.csv'
-save_csv_b = '/home/kristijan/github/FootballEvolcion/Save_csv_Parsing_b.csv'
-save_csv_c = '/home/kristijan/github/FootballEvolcion/Save_csv_Parsing_c.csv'
+filePath ='/home/kristijan/github/FootballEvolcion/Datas/TEST_CSV.csv'
+koef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
+data = "/home/kristijan/github/FootballEvolcion/Datas/datas.txt"
+podaci = "/home/kristijan/github/FootballEvolcion/Datas/podaci.txt"
+save_csv_a = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_a.csv'
+save_csv_b = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_b.csv'
+save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.csv'
 
 
 
@@ -47,7 +47,7 @@ c = GetAVGBalanceFORpayerDepartures(DFrame)
 
 
 # Write to file
-head = 'Name_of_leauge Season AvgExpend +INFLACION'
+head = 'Name_of_leauge Nationality Season AvgExpend +INFLACION'
 WriteTOcsvFILE(save_csv_a,a,head)
 WriteTOcsvFILE(save_csv_b,b,head)
 WriteTOcsvFILE(save_csv_c,c,head)

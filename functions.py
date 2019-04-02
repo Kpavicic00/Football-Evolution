@@ -3,7 +3,7 @@ import pandas as pd
 import csv
 import sys
 
-coef = "/home/kristijan/github/FootballEvolcion/file.txt"
+coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 # functions
 
 # write to file
@@ -125,7 +125,7 @@ def Coefficients(files):
 
 # takes data with pandas function DataFrame
 def DataFrameFunc(filePath):
-    colls = ["0","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
+    colls = ["0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat
 
@@ -136,6 +136,7 @@ def GetAVGExpendFORpayerArrivals(DFrame):
     count = NumberOfRows(DFrame)
 
     #reserving the number of elements in a row
+    Nationality = [0] * count
     Expend = [0] * count
     Arrival = [0] * count
     leauge = [0] * count
@@ -148,6 +149,7 @@ def GetAVGExpendFORpayerArrivals(DFrame):
     DFrame["Expenditures"].astype(np.float64)
     DFrame["Arrivals"].astype(np.int64)
     DFrame["Competition"].astype(np.str)
+    DFrame["Nationality"].astype(np.str)
     DFrame["Season"].astype(np.int64)
 
     #save values from the dateframe to a string
@@ -170,6 +172,7 @@ def GetAVGExpendFORpayerArrivals(DFrame):
     np_Expend = np.asarray(Expend, dtype='float64')
     np_Arrival = np.asarray(Arrival, dtype='int64')
     np_Season = np.asarray(Season, dtype='int64')
+    npNationality = np.asarray(Nationality, dtype='str')
     npLeauge = np.asarray(leauge, dtype='str')
     np_CUT = np.asarray(CUT, dtype='float64')
     np_Interception = np.asarray(interception, dtype='float64')
@@ -177,7 +180,7 @@ def GetAVGExpendFORpayerArrivals(DFrame):
     np_CUT = np_Expend/np_Arrival
     np_CUT_inflation = np_Interception/np_Arrival
 
-    return np.stack((npLeauge,np_Season,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
+    return np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
 
 #get average League brutto earnings for each player
 def GetAVGIncomeFORpayerDepartures(DFrame):
@@ -186,6 +189,7 @@ def GetAVGIncomeFORpayerDepartures(DFrame):
     count = NumberOfRows(DFrame)
 
     #reserving the number of elements in a row
+    Nationality = [0] * count
     Income = [0] * count
     Departures = [0] * count
     leauge = [0] * count
@@ -197,6 +201,7 @@ def GetAVGIncomeFORpayerDepartures(DFrame):
     # cast DataFrame rows to folat and int
     DFrame["Income"].astype(np.float64)
     DFrame["Departures"].astype(np.int64)
+    DFrame["Nationality"].astype(np.str)
     DFrame["Competition"].astype(np.str)
     DFrame["Season"].astype(np.int64)
 
@@ -219,6 +224,7 @@ def GetAVGIncomeFORpayerDepartures(DFrame):
     # conversion to numpy
     np_Income = np.asarray(Income, dtype='float64')
     np_Departures = np.asarray(Departures, dtype='int64')
+    npNationality = np.asarray(Nationality, dtype='str')
     np_Season = np.asarray(Season, dtype='int64')
     npLeauge = np.asarray(leauge, dtype='str')
     np_CUT = np.asarray(CUT, dtype='float64')
@@ -227,7 +233,7 @@ def GetAVGIncomeFORpayerDepartures(DFrame):
     np_CUT = np_Income/np_Departures
     np_CUT_inflation = np_Interception/np_Departures
 
-    return np.stack((npLeauge,np_Season,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
+    return np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
 
 #get average League netto earnings for each player
 def GetAVGBalanceFORpayerDepartures(DFrame):
@@ -236,6 +242,7 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         count = NumberOfRows(DFrame)
 
         #reserving the number of elements in a row
+        Nationality = [0] * count
         Balance = [0] * count
         Departures = [0] * count
         leauge = [0] * count
@@ -248,6 +255,7 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         DFrame["Balance"].astype(np.float64)
         DFrame["Departures"].astype(np.int64)
         DFrame["Competition"].astype(np.str)
+        DFrame["Nationality"].astype(np.str)
         DFrame["Season"].astype(np.int64)
 
         #save values from the dateframe to a string
@@ -269,6 +277,7 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         # conversion to numpy
         np_Balance = np.asarray(Balance, dtype='float64')
         np_Departures = np.asarray(Departures, dtype='int64')
+        npNationality = np.asarray(Nationality, dtype='str')
         np_Season = np.asarray(Season, dtype='int64')
         npLeauge = np.asarray(leauge, dtype='str')
         np_CUT = np.asarray(CUT, dtype='float64')
@@ -277,4 +286,4 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         np_CUT = np_Balance/np_Departures
         np_CUT_inflation = np_Interception/np_Departures
 
-        return np.stack((npLeauge,np_Season,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
+        return np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
