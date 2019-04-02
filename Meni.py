@@ -12,6 +12,7 @@ import sys
 
 
 # txt FILES
+fp = '/home/kristijan/github/FootballEvolcion/Datas/testni_podaci.csv'
 filePath ='/home/kristijan/github/FootballEvolcion/Datas/TEST_CSV.csv'
 koef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 data = "/home/kristijan/github/FootballEvolcion/Datas/datas.txt"
@@ -22,7 +23,7 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 
 
 
-DFrame = DataFrameFunc(filePath)
+DFrame = DataFrameFunc(fp)
 
 ## print datas and functions colls
 print("Podaci:  : ")
