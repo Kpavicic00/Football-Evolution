@@ -34,18 +34,22 @@ print("\n")
 print("ukupna ligaska potrošnja po igracu : ")
 print(GetAVGExpendFORpayer(DFrame))
 print("\n")
-print("ukupna ligaska Bruto zarada po igracu :: ")
-print(GetAVGIncomeFORpayer(DFr))
-print("\n")
-print("ukupna ligaska NETTO zarada po igracu :: :")
-print(GetAVGIncomeFORpayer(DF))
+# print("ukupna ligaska Bruto zarada po igracu :: ")
+# print(GetAVGIncomeFORpayer(DFr))
+# print("\n")
+# print("ukupna ligaska NETTO zarada po igracu :: :")
+# print(GetAVGIncomeFORpayer(DF))
 
-# a = GetAVGExpendFORpayer(DFrame)
+#a = GetAVGExpendFORpayer(DFrame)
 # b = GetAVGIncomeFORpayer(DFr)
 # c = GetAVGIncomeFORpayer(DF)
+#np_array = np.stack((a,b,c),axis = -1)
 
-#np.savetxt(save_csv, a, delimiter=",")
-#a.tofile(save_csv,sep=',',format='%10.5f')
-#np.savetxt(save_csv, a, fmt='%.18e,%.18e,%.18e ')
-# numpy.savetxt(save_csv, b, delimiter=",")
-# numpy.savetxt(save_csv, c, delimiter=",")
+#list_of_labels = ['Liga','Vrijednost bez inflacije ','vriejdnost sa inflacijom']
+
+
+
+
+# jedna od metoda
+#np.savetxt(save_csv, a, fmt='%s', delimiter=' ', newline='\n', header='Liga','Vrijednost bez inflacije ','vriejdnost sa inflacijom', footer='')
+#np.loadtxt(save_csv,b,fmt='%s', delimiter=' ',newline =' ')
