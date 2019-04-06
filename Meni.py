@@ -26,29 +26,36 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 DFrame = DataFrameFunc(fp)
 
 ## print datas and functions colls
-print("Podaci:  : ")
-print(DFrame)
-print("\n")
-print("koeficijenti : ")
-printFile(koef)
-print("\n")
-print("ukupna ligaska potrošnja po igracu : ")
-print(GetAVGExpendFORpayerArrivals(DFrame))
-print("\n")
-print("ukupna ligaska Bruto zarada po igracu :: ")
-print(GetAVGIncomeFORpayerDepartures(DFrame))
-print("\n")
-print("ukupna ligaska NETTO zarada po igracu :: :")
-print(GetAVGBalanceFORpayerDepartures(DFrame))
+# print("Podaci:  : ")
+# print(DFrame)
+# print("\n")
+# print("koeficijenti : ")
+# printFile(koef)
+# print("\n")
 
-a = GetAVGExpendFORpayerArrivals(DFrame)
-b = GetAVGIncomeFORpayerDepartures(DFrame)
-c = GetAVGBalanceFORpayerDepartures(DFrame)
+# test
+GetDataForLeauge_AVG_Seasons(DFrame)
+#test
+#print(GetDataForLeauge_AVG_Seasons(DFrame))
 
 
-
-# Write to file
-head = 'Name_of_leauge Season Nationality AvgExpend +INFLACION'
-WriteTOcsvFILE(save_csv_a,a,head)
-WriteTOcsvFILE(save_csv_b,b,head)
-WriteTOcsvFILE(save_csv_c,c,head)
+#print("ukupna ligaska potrošnja po igracu : ")
+#print(GetAVGExpendFORpayerArrivals(DFrame))
+# print("\n")
+# print("ukupna ligaska Bruto zarada po igracu :: ")
+# print(GetAVGIncomeFORpayerDepartures(DFrame))
+# print("\n")
+# print("ukupna ligaska NETTO zarada po igracu :: :")
+# print(GetAVGBalanceFORpayerDepartures(DFrame))
+#
+# a = GetAVGExpendFORpayerArrivals(DFrame)
+# b = GetAVGIncomeFORpayerDepartures(DFrame)
+# c = GetAVGBalanceFORpayerDepartures(DFrame)
+#
+#
+#
+# # Write to file
+# head = 'Name_of_leauge Season Nationality AvgExpend +INFLACION'
+# WriteTOcsvFILE(save_csv_a,a,head)
+# WriteTOcsvFILE(save_csv_b,b,head)
+# WriteTOcsvFILE(save_csv_c,c,head)
