@@ -34,7 +34,8 @@ DFrame = DataFrameFunc(fp)
 # print("\n")
 
 # test
-GetDataForLeauge_AVG_Seasons(DFrame)
+print("test")
+print(GetDataForLeauge_AVG_Seasons(DFrame))
 #test
 #print(GetDataForLeauge_AVG_Seasons(DFrame))
 
