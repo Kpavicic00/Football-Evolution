@@ -384,7 +384,7 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
                 sum_Expenditures += float(a[j][2])
                 sum_Income += float(a[j][3])
                 sum_Balance += float(a[j][4])
-                sum_Departures = int(a[j][5])
+                sum_Departures += int(a[j][5])
                 visited[j] = True
                 count += 1
 
@@ -444,10 +444,16 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
             new_niz[i][11] = niz[i][11] # avg Income number the seasons
             new_niz[i][12] = niz[i][12] # avg Balance number the seasons
 
-
     #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[]))
     a = sorted(new_niz, key=itemgetter(0), reverse=False) # sortiranje po elemnetima i po stupcima
-    return a
+
+    data = np.array(a)
+    df = pd.DataFrame(data)
+    df.columns = ['    Name of leauge |  ', '    Expend |  ','    Income |  ', '    Balance |  ','    number of Season |  ',
+     '    sum of Arrivlas |  ','    sum of Depatrues |  ', '    avg Expend of Arrivlas |  ','    avg Income of Depatrues |  ',
+     '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
+
+    return df
 
 # get avg Year Season of first 25 leuge money transaction
 def GetBYyear(DFrame):
@@ -542,7 +548,7 @@ def GetBYyear(DFrame):
                 sum_Expenditures += float(a[j][2])
                 sum_Income += float(a[j][3])
                 sum_Balance += float(a[j][4])
-                sum_Departures = int(a[j][5])
+                sum_Departures += int(a[j][5])
                 visited[j] = True
                 count += 1
 
@@ -597,15 +603,20 @@ def GetBYyear(DFrame):
             new_niz[i][5] = niz[i][0] # sum of Arrivlas of all seasons
             new_niz[i][6] = niz[i][5] # sum of Depatrues of all seasons
             new_niz[i][7] = niz[i][7] # avg Expend of Arrivlas
-            new_niz[i][8] = niz[i][8] # avg Income of Arrivlas
-            new_niz[i][9] = niz[i][9] # avg Balance of Arrivlas
+            new_niz[i][8] = niz[i][8] # avg Income of Depatrues
+            new_niz[i][9] = niz[i][9] # avg Balance of Depatrues
             new_niz[i][10] = niz[i][10] # avg Expend number the seasons
             new_niz[i][11] = niz[i][11] # avg Income number the seasons
             new_niz[i][12] = niz[i][12] # avg Balance number the seasons
 
 
-
-
     #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[]))
     a = sorted(new_niz, key=itemgetter(0), reverse=False) # sortiranje po elemnetima i po stupcima
-    return a
+
+    data = np.array(a)
+    df = pd.DataFrame(data)
+    df.columns = ['    Year |  ', '    Expend |  ','    Income |  ', '    Balance |  ','    number of Season |  ',
+     '    sum of Arrivlas |  ','    sum of Depatrues |  ', '    avg Expend of Arrivlas |  ','    avg Income of Depatrues |  ',
+     '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
+
+    return df
