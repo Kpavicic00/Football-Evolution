@@ -448,3 +448,164 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
     #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[]))
     a = sorted(new_niz, key=itemgetter(0), reverse=False) # sortiranje po elemnetima i po stupcima
     return a
+
+# get avg Year Season of first 25 leuge money transaction
+def GetBYyear(DFrame):
+
+    #count number of rows in date frame
+    count = NumberOfRows(DFrame)
+
+    #reserving the number of elements in a row
+    Nationality = [0] * count
+    Arrivals = [0] * count
+    koef = [0] * count
+    Season = [0] * count
+    leauge = [0] * count
+    niz1 = [0] *count
+    Expenditures = [0] *count
+    Income = [0] *count
+    Balance = [0] *count
+    Departures = [0] *count
+    inter_Balance = [0] *count
+    inter_Expenditures = [0] *count
+    inter_Income = [0] *count
+
+    # cast DataFrame rows to folat and int and str
+    DFrame["Expenditures"].astype(np.int64)
+    DFrame["Income"].astype(np.int64)
+    DFrame["Balance"].astype(np.int64)
+    DFrame["Departures"].astype(np.int64)
+    DFrame["Arrivals"].astype(np.int64)
+    DFrame["Competition"].astype(np.str)
+    DFrame["Season"].astype(np.int64)
+
+    i = 0
+    for i in range(0,count):
+        Arrivals[i] = DFrame["Arrivals"][i]
+        leauge[i] = DFrame["Competition"][i]
+        Season[i] =  DFrame["Season"][i]
+        Expenditures[i] =  DFrame["Expenditures"][i]
+        Income[i] =  DFrame["Income"][i]
+        Balance[i] =  DFrame["Balance"][i]
+        Departures[i] =  DFrame["Departures"][i]
+
+    for i in range(0,count):
+            temp = Season[i]
+            a = GETCoefficients(coef,temp)
+            koef[i] = a
+
+    for i in range(0,count):
+            inter_Balance[i] = round((Balance[i]*koef[i]),2)
+            inter_Expenditures[i] = round((Expenditures[i]*koef[i]),2)
+            inter_Income[i] = round((Income[i]*koef[i]),2)
+
+
+    npLeauge = np.asarray(leauge, dtype = 'str')
+    np_Arrival = np.asarray(Arrivals, dtype ='int64')
+    np_Season = np.asarray(Season, dtype = 'int64' )
+    np_Expenditures = np.asarray(inter_Expenditures, dtype = 'float64' )
+    np_Income = np.asarray(inter_Income, dtype = 'float64' )
+    np_Balance = np.asarray(inter_Balance, dtype = 'float64' )
+    np_Departures = np.asarray(Departures, dtype = 'int64' )
+
+
+    np_niz1 = np.asarray(niz1, dtype = 'str')
+    np_niz2 = np.asarray(niz1, dtype = 'int64')
+    np_niz3 = np.asarray(niz1, dtype = 'int64')
+    np_niz4 = np.asarray(niz1, dtype = 'int64')
+
+
+    niz = np.stack((np_niz1,np_niz2,np_niz3,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4), axis = -1)
+    a = np.stack((np_Arrival,npLeauge,np_Expenditures,np_Income,np_Balance,np_Departures,np_Season), axis = -1)
+
+    # Function
+    n = count
+    t = 0
+
+    visited = [False for i in range(n)]
+    # Traverse through array elements
+    # and count frequencies
+    for i in range(n):
+        # Skip this element if already
+        # processed
+        if (visited[i] == True):
+            continue
+        count = 1
+        suma_Arrival = int(a[i][0])
+        sum_Expenditures = float(a[i][2])
+        sum_Income = float(a[i][3])
+        sum_Balance = float(a[i][4])
+        sum_Departures = int(a[i][5])
+        for j in range(i + 1, n, 1):
+            if (a[i][6] == a[j][6]):
+                suma_Arrival += int(a[j][0])
+                sum_Expenditures += float(a[j][2])
+                sum_Income += float(a[j][3])
+                sum_Balance += float(a[j][4])
+                sum_Departures = int(a[j][5])
+                visited[j] = True
+                count += 1
+
+        if a[i][1] != 0 :
+            niz[t][1] = a[i][1]
+            niz[t][0] = suma_Arrival
+            niz[t][2] = count
+            niz[t][3] = sum_Expenditures
+            niz[t][4] = sum_Income
+            niz[t][5] = sum_Departures
+            niz[t][6] = sum_Balance
+            niz[t][7] = round(sum_Expenditures/float(suma_Arrival),2)
+            niz[t][8] = round(sum_Income/float(sum_Departures),2)
+            niz[t][9] = round(sum_Balance/float(sum_Departures),2)
+            niz[t][10] = round(sum_Expenditures/float(count),2)
+            niz[t][11] = round(sum_Income/float(count),2)
+            niz[t][12] = round(sum_Balance/float(count),2)
+            niz[t][13] = a[i][6]
+
+            t +=1
+            suma = 0
+
+    N =0
+    for i in range(0,len(niz)):
+        if int(niz[i][0]) != 0:
+            N +=1
+
+
+    #inicijalizacija novog niza ::
+    niz_1 = [0] * N
+
+
+    np_niz_1 = np.asarray(niz_1,dtype='str')
+    np_niz_2 = np.asarray(niz_1, dtype='int64')
+    np_niz_3 = np.asarray(niz_1, dtype='int64')
+    np_niz_4 = np.asarray(niz_1, dtype='float64')
+
+
+    new_niz = np.stack((np_niz_1,np_niz_2,np_niz_3,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4), axis = -1)
+
+    for i in range(0,N):
+        #print("int(niz[i][0])",int(niz[i][0]))
+        if int(niz[i][0]) != 0:
+            #print(" drugi ispis int(niz[i][0])",int(niz[i][0]))
+            int(niz[i][0]) != 0
+            #new_niz[i][0] = niz[i][1] # leauge
+            new_niz[i][0] = niz[i][13] # year
+            new_niz[i][1] = niz[i][3] # Expend
+            new_niz[i][2] = niz[i][4] # Income
+            new_niz[i][3] = niz[i][6] # Balance
+            new_niz[i][4] = niz[i][2] # number of seasons
+            new_niz[i][5] = niz[i][0] # sum of Arrivlas of all seasons
+            new_niz[i][6] = niz[i][5] # sum of Depatrues of all seasons
+            new_niz[i][7] = niz[i][7] # avg Expend of Arrivlas
+            new_niz[i][8] = niz[i][8] # avg Income of Arrivlas
+            new_niz[i][9] = niz[i][9] # avg Balance of Arrivlas
+            new_niz[i][10] = niz[i][10] # avg Expend number the seasons
+            new_niz[i][11] = niz[i][11] # avg Income number the seasons
+            new_niz[i][12] = niz[i][12] # avg Balance number the seasons
+
+
+
+
+    #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[]))
+    a = sorted(new_niz, key=itemgetter(0), reverse=False) # sortiranje po elemnetima i po stupcima
+    return a
