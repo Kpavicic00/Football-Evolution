@@ -526,7 +526,7 @@ def GetBYyear(DFrame):
     np_niz3 = np.asarray(niz1, dtype = 'int64')
     np_niz4 = np.asarray(niz1, dtype = 'int64')
 
-
+    #set arr to stack for operations with data lik sort and convert
     niz = np.stack((np_niz1,np_niz2,np_niz3,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4), axis = -1)
     a = np.stack((np_Arrival,npLeauge,np_Expenditures,np_Income,np_Balance,np_Departures,np_Season), axis = -1)
 
@@ -626,3 +626,61 @@ def GetBYyear(DFrame):
      '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
 
     return df
+
+def GetInflationBYclubs(DFrame):
+
+    #count number of rows in date frame
+    count = NumberOfRows(DFrame)
+
+    #reserving the number of elements in a row
+    Year_Sason = [0] * count
+    Clubs = [0] * count
+    Arrivals = [0] * count
+    Income = [0] * count
+    Departures = [0] * count
+    Expenditures = [0] * count
+    Balance = [0] * count
+    inter_Balance = [0] *count
+    inter_Expenditures = [0] *count
+    inter_Income = [0] *count
+
+    # cast DataFrame rows to folat and int and str
+    DFrame["Year_Sason"].astype(np.int64)
+    DFrame["Clubs"].astype(np.str)
+    DFrame["Arrivals"].astype(np.int64)
+    DFrame["Income"].astype(np.int64)
+    DFrame["Departures"].astype(np.int64)
+    DFrame["Expenditures"].astype(np.int64)
+    DFrame["Balance"].astype(np.int64)
+
+    i = 0
+    for i in range(0,count):
+        Year_Sason[i] = DFrame["Year_Sason"][i]
+        Clubs[i] = DFrame["Clubs"][i]
+        Arrivals[i] = DFrame["Arrivals"][i]
+        Income[i] = DFrame["Income"][i]
+        Departures[i] = DFrame["Departures"][i]
+        Expenditures[i] = DFrame["Expenditures"][i]
+        Balance[i] = DFrame["Balance"][i]
+
+    for i in range(0,count):
+            temp = Year_Sason[i]
+            a = GETCoefficients(coef,temp)
+            koef[i] = a
+
+    for i in range(0,count):
+            inter_Balance[i] = round((Balance[i]*koef[i]),2)
+            inter_Expenditures[i] = round((Expenditures[i]*koef[i]),2)
+            inter_Income[i] = round((Income[i]*koef[i]),2)
+
+    np_Season = np.asarray(Year_Sason, dtype = 'int64' )
+    np_Clubs = np.asarray(Clubs, dtype = 'str')
+    np_Arrival = np.asarray(Arrivals, dtype ='int64')
+    np_Expenditures = np.asarray(inter_Expenditures, dtype = 'float64' )
+    np_Income = np.asarray(inter_Income, dtype = 'float64' )
+    np_Balance = np.asarray(inter_Balance, dtype = 'float64' )
+    np_Departures = np.asarray(Departures, dtype = 'int64' )
+
+    np_niz1 = np.asarray(niz1, dtype = 'str')
+    np_niz2 = np.asarray(niz1, dtype = 'int64')
+    np_niz3 = np.asarray(niz1, dtype = 'float64')
