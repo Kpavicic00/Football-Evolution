@@ -12,6 +12,7 @@ import sys
 
 
 # txt FILES
+fp_clubs = '/home/kristijan/github/FootballEvolcion/Datas/Club_statstic.csv'
 fp = '/home/kristijan/github/FootballEvolcion/Datas/testni_podaci.csv'
 filePath ='/home/kristijan/github/FootballEvolcion/Datas/TEST_CSV.csv'
 koef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
@@ -24,7 +25,7 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 
 
 DFrame = DataFrameFunc(fp)
-
+DataF = DataFrameFuncClubs(fp_clubs)
 ## print datas and functions colls
 # print("Podaci:  : ")
 # print(DFrame)
@@ -32,8 +33,9 @@ DFrame = DataFrameFunc(fp)
 # print("koeficijenti : ")
 # printFile(koef)
 # print("\n")
+print("DataF CLubs")
+print(DataF)
 
-# test
 print("test 1: ")
 print(GetDataForLeauge_AVG_Seasons(DFrame))
 print("test 2: ")

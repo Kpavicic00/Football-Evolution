@@ -131,8 +131,9 @@ def DataFrameFunc(filePath):
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat
 
+# takes data with pandas function DataFrame for Clubs datas
 def DataFrameFuncClubs(filePath):
-    colls = ["0","Year_Sason","Club","Arrivals","Income","Departures","Expenditures","Balance"]
+    colls = ["Year_Sason","Clubs","Arrivals","Income","Departures","Expenditures","Balance"]
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat
 
