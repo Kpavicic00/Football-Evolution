@@ -131,6 +131,11 @@ def DataFrameFunc(filePath):
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat
 
+def DataFrameFuncClubs(filePath):
+    colls = ["0","Year_Sason","Club","Arrivals","Income","Departures","Expenditures","Balance"]
+    dat = pd.read_csv(filePath,header = None , names = colls)
+    return dat
+
 #get average League spending for each player
 def GetAVGExpendFORpayerArrivals(DFrame):
 
