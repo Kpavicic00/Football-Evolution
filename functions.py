@@ -325,7 +325,7 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         # set to DataFrame
         df = pd.DataFrame(data)
         # name of labels for head or names of collums
-        df.columns = ['    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Balance by player|  ', '  Income + Inflation by player|  ']
+        df.columns = ['    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Balance by player|  ', '  Balance + Inflation by player|  ']
 
         # return DataFrame with head an names of collums
         return df # function ~ 12.
