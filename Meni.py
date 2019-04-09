@@ -25,8 +25,7 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 
 
 
-DFrame = DataFrameFunc(fp)
-DFrame_Clubs = DataFrameFuncClubs(fp_clubs)
+
 #DataF = DataFrameFuncClubs(fp_clubs)
 ## print datas and functions colls
 # print("Podaci:  : ")
@@ -92,9 +91,12 @@ DFrame_Clubs = DataFrameFuncClubs(fp_clubs)
 # WriteTOcsvFILE(save_csv_b,b,head)
 # WriteTOcsvFILE(save_csv_c,c,head)
 
-print("###################################################")
+DFrame = DataFrameFunc(fp)
 DFrame_Clubs = DataFrameFuncClubs(fp_clubs)
-a = SortDataforCLUBS_by_Name_of_leuge(DFrame_Clubs)
-print(a)
+print("###################################################")
+# DFrame_Clubs = DataFrameFuncClubs(fp_clubs)
+# a = SortDataforCLUBS_by_Name_of_leuge(DFrame_Clubs)
+# print(a)
+print(GetBYyear(DFrame))
 
 print("###################################################")

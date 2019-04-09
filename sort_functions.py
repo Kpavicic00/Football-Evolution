@@ -62,3 +62,51 @@ def SortDataforCLUBS_year_of_Season (DFrame):
     test = GETDataClubs(DFrame)
     return test.sort_values(by=['    year of Season |  '])
     print("Sort by year of Season!!")# # function sort ~ 7.
+
+# sort YEARS data for all leauges by Expend
+def SortDataforYEAR_by_EXPEND (DFrame):
+    print("Sort YEARS data for all leauges by Expend !!")
+    d = DFrame
+    test = GETDataClubs(DFrame)
+    return test.sort_values(by=['    Expend |  '])
+    print("Sort YEARS data for all leauges by Expend!!")# # function sort ~ 8.
+
+# sort YEARS data for all leauges by Income
+def SortDataforYEAR_by_INCOME (DFrame):
+    print("Sort YEARS data for all leauges by Income !!")
+    d = DFrame
+    test = GETDataClubs(DFrame)
+    return test.sort_values(by=['    Income |  '])
+    print("Sort YEARS data for all leauges by Income!!")# # function sort ~ 9.
+
+# sort YEARS data for all leauges by number  of Arrivlas
+def SortDataforYEAR_by_Arrivlas (DFrame):
+    print("Sort YEARS data for all leauges by Arrivlas !!")
+    d = DFrame
+    test = GETDataClubs(DFrame)
+    return test.sort_values(by=['    sum of Arrivlas |  '])
+    print("Sort YEARS data for all leauges by Arrivlas!!")# # function sort ~ 10.
+
+# sort YEARS data for all leauges by number  of Depatrues
+def SortDataforYEAR_by_Depatrues (DFrame):
+    print("Sort YEARS data for all leauges by Depatrues !!")
+    d = DFrame
+    test = GETDataClubs(DFrame)
+    return test.sort_values(by=['    sum of Depatrues |  ',])
+    print("Sort YEARS data for all leauges by Depatrues!!")# # function sort ~ 10.
+
+# sort YEARS data for all leauges by number  of avg Expend/Season
+def SortDataforYEAR_by_avg_Expend_Season (DFrame):
+    print("Sort YEARS data for all leauges avg Expend/Season !!")
+    d = DFrame
+    test = GETDataClubs(DFrame)
+    return test.sort_values(by=['    avg Expend/Season |  '])
+    print("Sort YEARS data for all leauges avg Expend/Season!!")# # function sort ~ 12.
+
+# sort YEARS data for all leauges by number  by  avg Income/Season
+def SortDataforYEAR_by_avg_Income_Season (DFrame):
+    print("Sort YEARS data for all leauges by  avg Income/Seasons !!")
+    d = DFrame
+    test = GETDataClubs(DFrame)
+    return test.sort_values(by=['    avg Income/Season |  '])
+    print("Sort YEARS data for all leauges by  avg Income/Season!!")# # function sort ~ 13.

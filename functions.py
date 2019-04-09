@@ -492,7 +492,7 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
 
     return df # function ~ 13.
 
-# get avg Year Season of first 25 leuge money transaction
+# get avg Year Season of first 25 leuge money transaction for all Leuges ,regardless of the league, therefore, only years of all seasons together
 def GetBYyear(DFrame):
 
     #count number of rows in date frame
