@@ -35,6 +35,8 @@ DFrame = DataFrameFunc(fp)
 # print("\n")
 #print("DataF CLubs")
 #print(DataF)
+print("GetAVGExpendFORpayerArrivals(DFrame)")
+print(GetAVGExpendFORpayerArrivals(DFrame))
 a = DataFrameFuncClubs(fp_clubs)
 
 print(a)

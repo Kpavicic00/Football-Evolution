@@ -10,13 +10,13 @@ coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 
 # write to file
 def WriteTOcsvFILE(csv_file,dat,head):
-    np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=head, footer='     => End of file <=')
+    np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=head, footer='     => End of file <=') # function ~ 1.
 
 #function count number of rows for specific DateFrame
 def NumberOfRows(datFrame):
     total_rows = len(datFrame)
     #print("Total rows : ", total_rows )
-    return  total_rows
+    return  total_rows # function ~ 2.
 
 # functions_fore choose of season
 def Input_season():
@@ -32,7 +32,7 @@ def Input_season():
            return value
            break
         else:
-           print("\n\tValue between 2000 and 2018 !!!")
+           print("\n\tValue between 2000 and 2018 !!!") # function ~ 3.
 
 # function for input years interval 2000 to 2018
 def Input_year():
@@ -48,21 +48,21 @@ def Input_year():
            return value
            break
         else:
-           print("\n\tValue between 2000 and 2018 !!!")
+           print("\n\tValue between 2000 and 2018 !!!") # function ~ 4.
 
 # print the txt file
 def printFile(data):
     #read the file
     f = open(data, "r")
     print(f.read())
-    f.close()
+    f.close() # function ~ 5.
 
 # function  count the length of lines for the required size allocation of the string
 def file_lengthy(fname):
     with open(fname) as f:
         for i ,j in enumerate (f):
             pass
-        return i +1
+        return i +1 # function ~ 6.
 
 #function get Coefients for specific year
 def GETCoefficients(files,year):
@@ -93,7 +93,7 @@ def GETCoefficients(files,year):
     np_specific_coefficient = np_koef[np_years == year]
     #print("\n\t You have chosen a year :  ",i)
 
-    return np_specific_coefficient
+    return np_specific_coefficient # function ~ 7.
 
 # picking up and dealing with the data in terms of coefficients
 def Coefficients(files):
@@ -123,19 +123,19 @@ def Coefficients(files):
     i = Input_year()
     np_specific_coefficient = np_koef[np_years == i]
     #print("\n\t You have chosen a year :  ",i)
-    return np_specific_coefficient
+    return np_specific_coefficient # function ~ 8.
 
 # takes data with pandas function DataFrame
 def DataFrameFunc(filePath):
     colls = ["0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
     dat = pd.read_csv(filePath,header = None , names = colls)
-    return dat
+    return dat # function ~ 9.
 
 # takes data with pandas function DataFrame for Clubs datas
 def DataFrameFuncClubs(filePath):
     colls = ["Season","Club","Arrivals","Income","Departures","Expenditures","Balance","Competition"]
     dat = pd.read_csv(filePath,header = None , names = colls)
-    return dat
+    return dat # function ~ 10.
 
 #get average League spending for each player
 def GetAVGExpendFORpayerArrivals(DFrame):
@@ -189,7 +189,17 @@ def GetAVGExpendFORpayerArrivals(DFrame):
     np_CUT = np_Expend/np_Arrival
     np_CUT_inflation = np_Interception/np_Arrival
 
-    return np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
+    niz = np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
+
+    # convert from stack with values to data for dataFrame
+    data = np.array(niz)
+    # set to DataFrame
+    df = pd.DataFrame(data)
+    # name of labels for head or names of collums
+    df.columns = ['    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Expend by player|  ', '  Expend + Inflation by player|  ']
+
+    # return DataFrame with head an names of collums
+    return df # function ~ 11.
 
 #get average League brutto earnings for each player
 def GetAVGIncomeFORpayerDepartures(DFrame):
@@ -243,7 +253,17 @@ def GetAVGIncomeFORpayerDepartures(DFrame):
     np_CUT = np_Income/np_Departures
     np_CUT_inflation = np_Interception/np_Departures
 
-    return np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
+    niz = np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
+
+    # convert from stack with values to data for dataFrame
+    data = np.array(niz)
+    # set to DataFrame
+    df = pd.DataFrame(data)
+    # name of labels for head or names of collums
+    df.columns = ['    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Income by player|  ', '  Income + Inflation by player|  ']
+
+    # return DataFrame with head an names of collums
+    return df # function ~ 11.
 
 #get average League netto earnings for each player
 def GetAVGBalanceFORpayerDepartures(DFrame):
@@ -297,7 +317,17 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         np_CUT = np_Balance/np_Departures
         np_CUT_inflation = np_Interception/np_Departures
 
-        return np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
+        niz = np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
+
+        # convert from stack with values to data for dataFrame
+        data = np.array(niz)
+        # set to DataFrame
+        df = pd.DataFrame(data)
+        # name of labels for head or names of collums
+        df.columns = ['    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Balance by player|  ', '  Income + Inflation by player|  ']
+
+        # return DataFrame with head an names of collums
+        return df # function ~ 12.
 
 # get sorted data by the leauge
 def GetDataForLeauge_AVG_Seasons(DFrame):
@@ -459,7 +489,7 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
      '    sum of Arrivlas |  ','    sum of Depatrues |  ', '    avg Expend of Arrivlas |  ','    avg Income of Depatrues |  ',
      '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
 
-    return df
+    return df # function ~ 13.
 
 # get avg Year Season of first 25 leuge money transaction
 def GetBYyear(DFrame):
@@ -632,8 +662,9 @@ def GetBYyear(DFrame):
      '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
 
     # return DataFrame with head an names of collums
-    return df
+    return df # function ~ 14.
 
+# get data for clubs calculate inflacion for profit ,Income and Expend
 def GETDataClubs(DFrame):
 
     #count number of rows in date frame
@@ -727,4 +758,4 @@ def GETDataClubs(DFrame):
      '    Depatrues |  ',' Name of  League |  ']
 
     # return DataFrame with head an names of collums
-    return df
+    return df # # function ~ 15.
