@@ -25,7 +25,7 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 
 
 DFrame = DataFrameFunc(fp)
-DataF = DataFrameFuncClubs(fp_clubs)
+#DataF = DataFrameFuncClubs(fp_clubs)
 ## print datas and functions colls
 # print("Podaci:  : ")
 # print(DFrame)
@@ -33,13 +33,18 @@ DataF = DataFrameFuncClubs(fp_clubs)
 # print("koeficijenti : ")
 # printFile(koef)
 # print("\n")
-print("DataF CLubs")
-print(DataF)
+#print("DataF CLubs")
+#print(DataF)
+a = DataFrameFuncClubs(fp_clubs)
 
+print(a)
 print("test 1: ")
-print(GetDataForLeauge_AVG_Seasons(DFrame))
-print("test 2: ")
-print(GetBYyear(DFrame))
+print(GETDataClubs(a))
+# print(GetAVGIncinterception[i] = (Expenditures[i]*koef[i])omeFORpayerDepartures(DFrame))
+# print(GetDataForLeauge_AVG_Seasons(DFrame))
+# print("test 2: ")
+#print(GetBYyear(DFrame))
+#print(GetInflationBYclubs(DataF))
 #test
 #print(GetDataForLeauge_AVG_Seasons(DFrame))
 
