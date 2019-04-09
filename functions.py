@@ -491,6 +491,7 @@ def GetBYyear(DFrame):
     DFrame["Competition"].astype(np.str)
     DFrame["Season"].astype(np.int64)
 
+    #save values from the dateframe to a string
     i = 0
     for i in range(0,count):
         Arrivals[i] = DFrame["Arrivals"][i]
@@ -501,11 +502,13 @@ def GetBYyear(DFrame):
         Balance[i] =  DFrame["Balance"][i]
         Departures[i] =  DFrame["Departures"][i]
 
+    # calculation of coeficent of inflacion
     for i in range(0,count):
             temp = Season[i]
             a = GETCoefficients(coef,temp)
             koef[i] = a
 
+    # calculation  Inflation for Potential, Earned and Profit
     for i in range(0,count):
             inter_Balance[i] = round((Balance[i]*koef[i]),2)
             inter_Expenditures[i] = round((Expenditures[i]*koef[i]),2)
@@ -530,7 +533,7 @@ def GetBYyear(DFrame):
     niz = np.stack((np_niz1,np_niz2,np_niz3,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4,np_niz4), axis = -1)
     a = np.stack((np_Arrival,npLeauge,np_Expenditures,np_Income,np_Balance,np_Departures,np_Season), axis = -1)
 
-    # Function
+    # Function for sorting
     n = count
     t = 0
 
@@ -577,13 +580,14 @@ def GetBYyear(DFrame):
             t +=1
             suma = 0
 
+    # count array size with N
     N =0
     for i in range(0,len(niz)):
         if int(niz[i][0]) != 0:
             N +=1
 
 
-    #inicijalizacija novog niza ::
+    #Initialize a new array
     niz_1 = [0] * N
 
 
@@ -595,12 +599,10 @@ def GetBYyear(DFrame):
 
     new_niz = np.stack((np_niz_1,np_niz_2,np_niz_3,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4,np_niz_4), axis = -1)
 
+    # avg Balance number the seasons
     for i in range(0,N):
-        #print("int(niz[i][0])",int(niz[i][0]))
         if int(niz[i][0]) != 0:
-            #print(" drugi ispis int(niz[i][0])",int(niz[i][0]))
-            int(niz[i][0]) != 0
-            #new_niz[i][0] = niz[i][1] # leauge
+            # int(niz[i][0]) != 0
             new_niz[i][0] = niz[i][13] # year
             new_niz[i][1] = niz[i][3] # Expend
             new_niz[i][2] = niz[i][4] # Income
@@ -616,15 +618,20 @@ def GetBYyear(DFrame):
             new_niz[i][12] = niz[i][12] # avg Balance number the seasons
 
 
-    #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[]))
-    a = sorted(new_niz, key=itemgetter(0), reverse=False) # sortiranje po elemnetima i po stupcima
+    #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[])) one of examples
+    # sort by appropriate elements and by columns
+    a = sorted(new_niz, key=itemgetter(0), reverse=False)
 
+    # convert from stack with values to data for dataFrame
     data = np.array(a)
+    # set to DataFrame
     df = pd.DataFrame(data)
+    # name of labels for head or names of collums
     df.columns = ['    Year |  ', '    Expend |  ','    Income |  ', '    Balance |  ','    number of Season |  ',
      '    sum of Arrivlas |  ','    sum of Depatrues |  ', '    avg Expend of Arrivlas |  ','    avg Income of Depatrues |  ',
      '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
 
+    # return DataFrame with head an names of collums
     return df
 
 def GETDataClubs(DFrame):
@@ -645,9 +652,9 @@ def GETDataClubs(DFrame):
     interception_Expenditures = [0] * count
     interception_Income =  [0] * count
     interception_Balance = [0] * count
+    int_koef = [0]* count
 
     # cast DataFrame rows to folat and int
-    # "Season","of Club","Arrivals","Income","Departures","Expenditures","Balance","Competition"
     DFrame["Season"].astype(np.float64)
     DFrame["Club"].astype(np.str)
     DFrame["Arrivals"].astype(np.int64)
@@ -658,7 +665,7 @@ def GETDataClubs(DFrame):
     DFrame["Competition"].astype(np.str)
 
 
-    #save values from the dateframe to a string
+    #save values from the dateframe to a arrays
     i = 0
     for i in range(0,count):
         Season[i] = DFrame["Season"][i]
@@ -670,21 +677,19 @@ def GETDataClubs(DFrame):
         Balance[i] = DFrame["Balance"][i]
         Competition[i] = DFrame["Competition"][i]
 
+
+    # calcualtion of coeficent for clubs seasons
     for i in range(0,count):
         temp = Season[i]
         a = GETCoefficients(coef,temp)
         koef[i] = a
-        #print("Season[i]","i: ",i+1,Season[i],"koef[i] : ",koef[i])
 
-    int_koef = [0]* count
-
-
+    # calculation of coeficent of inflacion
     for i in range (0,len(int_koef)):
         temp = float(koef[i])
         int_koef[i] = temp
 
-
-
+    # calculation  Inflation for Potential, Earned and Profit
     for i in range(0,count):
         a = float(Income[i])*int_koef[i]
         b = float(Balance[i])*int_koef[i]
@@ -695,11 +700,8 @@ def GETDataClubs(DFrame):
         interception_Expenditures[i] = round(c,2)
 
 
-
-
-    #test = np.stack((np_Seasons,np_inf_Income),axis = -1)
-
     # conversion to numpy
+    np_Competition = np.asarray(Competition,dtype='str')
     np_Depart = np.asarray(Departures,dtype='int64')
     np_Arrival = np.asarray(Arrivals,dtype='int64')
     np_Name_of_club = np.asarray(Name_of_club,dtype='str')
@@ -711,6 +713,18 @@ def GETDataClubs(DFrame):
     np_in_Income = np.asarray(interception_Income,dtype='float64')
     np_Seasons =  np.asarray(Season,dtype='str')
 
-    niz = np.stack((np_Seasons,np_in_Expenditure,np_in_Income,np_in_Balance,np_Name_of_club,np_Balance,
-    np_Expenditures,np_Income,np_Arrival,np_Depart),axis= -1)
-    print("niz ::",niz)
+    # set the numpy arrays values into stack
+    niz = np.stack((np_Name_of_club,np_Expenditures,np_Income,np_Balance,np_Seasons,np_in_Expenditure,np_in_Income,
+    np_in_Balance,np_Arrival,np_Depart,np_Competition),axis= -1)
+
+    # convert from stack with values to data for dataFrame
+    data = np.array(niz)
+    # set to DataFrame
+    df = pd.DataFrame(data)
+    # name of labels for head or names of collums
+    df.columns = ['    Club |  ', '    Expend |  ','    Income |  ', '    Balance |  ','    year of Season |  ',
+     '    Expend + Inflation |  ','    Income + Inflation |  ', '    Balance + Inflation |  ','    Arrivals|  ',
+     '    Depatrues |  ',' Name of  League |  ']
+
+    # return DataFrame with head an names of collums
+    return df
