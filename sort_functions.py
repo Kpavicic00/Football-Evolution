@@ -142,4 +142,4 @@ def SortDataforLEAUGES_BalanceFORpayerDepartures (DFrame):
     d = DFrame
     test = GetAVGBalanceFORpayerDepartures(DFrame)
     return test.sort_values(by=['  Balance + Inflation by player|  ']])
-    print("Sort YEARS data for all leauges by  Balance + Inflation by player !!")# # function sort ~ 15.
+    print("Sort YEARS data for all leauges by  Balance + Inflation by player !!")# # function sort ~ 16.
