@@ -10,7 +10,8 @@ coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 
 # write to file
 def WriteTOcsvFILE(csv_file,dat,head):
-    np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=head, footer='     => End of file <=') # function ~ 1.
+    np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=head, footer='     => End of file <=')
+    print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
 
 #function count number of rows for specific DateFrame
 def NumberOfRows(datFrame):

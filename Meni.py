@@ -6,6 +6,7 @@ import sys
 from pandas import ExcelWriter
 from pandas import ExcelFile
 from functions import *
+from sort_functions import*
 import sys
 
 
@@ -25,6 +26,7 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 
 
 DFrame = DataFrameFunc(fp)
+DFrame_Clubs = DataFrameFuncClubs(fp_clubs)
 #DataF = DataFrameFuncClubs(fp_clubs)
 ## print datas and functions colls
 # print("Podaci:  : ")
@@ -35,39 +37,64 @@ DFrame = DataFrameFunc(fp)
 # print("\n")
 #print("DataF CLubs")
 #print(DataF)
-print("GetAVGExpendFORpayerArrivals(DFrame)")
-print(GetAVGExpendFORpayerArrivals(DFrame))
-a = DataFrameFuncClubs(fp_clubs)
-
-print(a)
-print("test 1: ")
-print(GETDataClubs(a))
-# print(GetAVGIncinterception[i] = (Expenditures[i]*koef[i])omeFORpayerDepartures(DFrame))
-# print(GetDataForLeauge_AVG_Seasons(DFrame))
-# print("test 2: ")
-#print(GetBYyear(DFrame))
-#print(GetInflationBYclubs(DataF))
-#test
-#print(GetDataForLeauge_AVG_Seasons(DFrame))
-
-
-#print("ukupna ligaska potrošnja po igracu : ")
-#print(GetAVGExpendFORpayerArrivals(DFrame))
-# print("\n")
-# print("ukupna ligaska Bruto zarada po igracu :: ")
+# print("test 1 ")
+# print("GetAVGExpendFORpayerArrivals(DFrame)")
+# print(GetAVGExpendFORpayerArrivals(DFrame))
+# print("test 1  radiiiiiii")
+# print("###########################################")
+# print("test 2 ")
+# print("GetAVGIncomeFORpayerDepartures(DFrame)")
 # print(GetAVGIncomeFORpayerDepartures(DFrame))
-# print("\n")
-# print("ukupna ligaska NETTO zarada po igracu :: :")
+# print("test 2  radiiiiiii")
+# print("###########################################")
+# print("test 3 ")
+# print("GetAVGBalanceFORpayerDepartures(DFrame)")
 # print(GetAVGBalanceFORpayerDepartures(DFrame))
+# print("test 3  radiiiiiii")
+# print("###########################################")
+# print("test 4 ")
+# print("GetDataForLeauge_AVG_Seasons(DFrame)")
+# print(GetDataForLeauge_AVG_Seasons(DFrame))
+# print("test 4  radiiiiiii")
+# #a = DataFrameFuncClubs(fp_clubs)
 #
+# # print(a)
+# # print("test 1: ")
+# # print(GETDataClubs(a))
+# # print(GetAVGIncinterception[i] = (Expenditures[i]*koef[i])omeFORpayerDepartures(DFrame))
+# # print(GetDataForLeauge_AVG_Seasons(DFrame))
+# # print("test 2: ")
+# #print(GetBYyear(DFrame))
+# #print(GetInflationBYclubs(DataF))
+# #test
+# #print(GetDataForLeauge_AVG_Seasons(DFrame))
+#
+#
+# #print("ukupna ligaska potrošnja po igracu : ")
+# #print(GetAVGExpendFORpayerArrivals(DFrame))
+# # print("\n")
+# # print("ukupna ligaska Bruto zarada po igracu :: ")
+# # print(GetAVGIncomeFORpayerDepartures(DFrame))
+# # print("\n")
+# # print("ukupna ligaska NETTO zarada po igracu :: :")
+# # print(GetAVGBalanceFORpayerDepartures(DFrame))
+# #
 # a = GetAVGExpendFORpayerArrivals(DFrame)
 # b = GetAVGIncomeFORpayerDepartures(DFrame)
 # c = GetAVGBalanceFORpayerDepartures(DFrame)
-#
-#
-#
-# # Write to file
+# #
+# #
+# #
+# # # Write to file
 # head = 'Name_of_leauge Season Nationality AvgExpend +INFLACION'
 # WriteTOcsvFILE(save_csv_a,a,head)
+# print("Write into   file !!!")
 # WriteTOcsvFILE(save_csv_b,b,head)
 # WriteTOcsvFILE(save_csv_c,c,head)
+
+print("###################################################")
+DFrame_Clubs = DataFrameFuncClubs(fp_clubs)
+a = SortDataforCLUBS_by_Name_of_leuge(DFrame_Clubs)
+print(a)
+
+print("###################################################")
