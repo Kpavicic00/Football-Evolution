@@ -636,6 +636,7 @@ def GETDataClubs(DFrame):
     Season = [0] * count
     Name_of_club = [0] * count
     Arrivals = [0] * count
+    Departures = [0] * count
     Income = [0] * count
     Expenditures = [0] * count
     Balance =  [0] * count
@@ -650,6 +651,7 @@ def GETDataClubs(DFrame):
     DFrame["Season"].astype(np.float64)
     DFrame["Club"].astype(np.str)
     DFrame["Arrivals"].astype(np.int64)
+    DFrame["Departures"].astype(np.int64)
     DFrame["Income"].astype(np.float64)
     DFrame["Expenditures"].astype(np.float64)
     DFrame["Balance"].astype(np.str)
@@ -662,6 +664,7 @@ def GETDataClubs(DFrame):
         Season[i] = DFrame["Season"][i]
         Name_of_club[i] = DFrame["Club"][i]
         Arrivals[i] = DFrame["Arrivals"][i]
+        Departures[i] = DFrame["Departures"][i]
         Income[i] = DFrame["Income"][i]
         Expenditures[i] = DFrame["Expenditures"][i]
         Balance[i] = DFrame["Balance"][i]
@@ -697,15 +700,17 @@ def GETDataClubs(DFrame):
     #test = np.stack((np_Seasons,np_inf_Income),axis = -1)
 
     # conversion to numpy
-
-    np_Name_of_club =np.asarray(Name_of_club,dtype='str')
-    np_Balance =np.asarray(Balance,dtype='int64')
-    np_Expenditure =np.asarray(Expenditures,dtype='int64')
-    np_Income =np.asarray(Income,dtype='int64')
+    np_Depart = np.asarray(Departures,dtype='int64')
+    np_Arrival = np.asarray(Arrivals,dtype='int64')
+    np_Name_of_club = np.asarray(Name_of_club,dtype='str')
+    np_Balance = np.asarray(Balance,dtype='int64')
+    np_Expenditures = np.asarray(Expenditures,dtype='int64')
+    np_Income = np.asarray(Income,dtype='int64')
     np_in_Balance = np.asarray(interception_Balance,dtype='float64')
     np_in_Expenditure = np.asarray(interception_Expenditures,dtype='float64')
     np_in_Income = np.asarray(interception_Income,dtype='float64')
     np_Seasons =  np.asarray(Season,dtype='str')
 
-    niz = np.stack((np_Seasons,np_in_Expenditure,np_in_Income,np_in_Balance,np_Name_of_club),axis= -1)
+    niz = np.stack((np_Seasons,np_in_Expenditure,np_in_Income,np_in_Balance,np_Name_of_club,np_Balance,
+    np_Expenditures,np_Income,np_Arrival,np_Depart),axis= -1)
     print("niz ::",niz)
