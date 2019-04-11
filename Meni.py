@@ -30,25 +30,27 @@ print("Test podaci liga za sezone 2018 i 2011 : ")
 datFrame = DataFrameFunc(fp)
 dt_clubs = DataFrameFuncClubs(fp_clubs)
 #print(fp)
-print("GetAVGExpendFORpayerArrivals ")
-GetAVGExpendFORpayerArrivals(datFrame)
-
-print("GetAVGIncomeFORpayerDepartures ")
-GetAVGIncomeFORpayerDepartures(datFrame)
-
-print("GetAVGBalanceFORpayerDepartures ")
-GetAVGBalanceFORpayerDepartures(datFrame)
-
-print("\n\n")
-print("GetBYyear : ")
-GetBYyear(datFrame)
-
-print("SortDataforYEAR_by_avg_Income_Season : ")
-SortDataforYEAR_by_avg_Income_Season(datFrame)
+# print("GetAVGExpendFORpayerArrivals ")
+# GetAVGExpendFORpayerArrivals(datFrame)
+#
+# print("GetAVGIncomeFORpayerDepartures ")
+# GetAVGIncomeFORpayerDepartures(datFrame)
+#
+# print("GetAVGBalanceFORpayerDepartures ")
+# GetAVGBalanceFORpayerDepartures(datFrame)
+#
+# print("\n\n")
+# print("GetBYyear : ")
+# GetBYyear(datFrame)
+#
+# print("SortDataforYEAR_by_avg_Income_Season : ")
+# SortDataforYEAR_by_avg_Income_Season(datFrame)
 
 print("GETDataClubs : ")
 GETDataClubs(dt_clubs)
-
+GetDate_for_Clubs_throught_all_seasons
+print("GetDate_for_Clubs_throught_all_seasons : ")
+GetDate_for_Clubs_throught_all_seasons(dt_clubs)
 
 
 #DataF = DataFrameFuncClubs(fp_clubs)
