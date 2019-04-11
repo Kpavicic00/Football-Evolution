@@ -26,6 +26,31 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 
 
 
+print("Test podaci liga za sezone 2018 i 2011 : ")
+datFrame = DataFrameFunc(fp)
+dt_clubs = DataFrameFuncClubs(fp_clubs)
+#print(fp)
+print("GetAVGExpendFORpayerArrivals ")
+GetAVGExpendFORpayerArrivals(datFrame)
+
+print("GetAVGIncomeFORpayerDepartures ")
+GetAVGIncomeFORpayerDepartures(datFrame)
+
+print("GetAVGBalanceFORpayerDepartures ")
+GetAVGBalanceFORpayerDepartures(datFrame)
+
+print("\n\n")
+print("GetBYyear : ")
+GetBYyear(datFrame)
+
+print("SortDataforYEAR_by_avg_Income_Season : ")
+SortDataforYEAR_by_avg_Income_Season(datFrame)
+
+print("GETDataClubs : ")
+GETDataClubs(dt_clubs)
+
+
+
 #DataF = DataFrameFuncClubs(fp_clubs)
 ## print datas and functions colls
 # print("Podaci:  : ")
@@ -91,12 +116,12 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 # WriteTOcsvFILE(save_csv_b,b,head)
 # WriteTOcsvFILE(save_csv_c,c,head)
 
-DFrame = DataFrameFunc(fp)
-DFrame_Clubs = DataFrameFuncClubs(fp_clubs)
-print("###################################################")
+# DFrame = DataFrameFunc(fp)
 # DFrame_Clubs = DataFrameFuncClubs(fp_clubs)
-# a = SortDataforCLUBS_by_Name_of_leuge(DFrame_Clubs)
-# print(a)
-print(GetBYyear(DFrame))
-
-print("###################################################")
+# print("###################################################")
+# # DFrame_Clubs = DataFrameFuncClubs(fp_clubs)
+# # a = SortDataforCLUBS_by_Name_of_leuge(DFrame_Clubs)
+# # print(a)
+# print(GetBYyear(DFrame))
+#
+# print("###################################################")

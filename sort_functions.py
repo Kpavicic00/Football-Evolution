@@ -105,7 +105,7 @@ def SortDataforYEAR_by_Depatrues (DFrame):
 def SortDataforYEAR_by_avg_Expend_Season (DFrame):
     print("Sort YEARS data for all leauges avg Expend/Season !!")
     d = DFrame
-    test = GetBYyear(DFrame)
+    test = GetBYyear(d)
     return test.sort_values(by=['    avg Expend/Season |  '])
     print("Sort YEARS data for all leauges avg Expend/Season!!")# # function sort ~ 12.
 
@@ -113,8 +113,8 @@ def SortDataforYEAR_by_avg_Expend_Season (DFrame):
 def SortDataforYEAR_by_avg_Income_Season (DFrame):
     print("Sort YEARS data for all leauges by  avg Income/Seasons !!")
     d = DFrame
-    test = GetBYyear(DFrame)
-    return test.sort_values(by=['    avg Income/Season |  '])
+    test = GetBYyear(d)
+    return test.sort_values(by=['    avg Income/Season |  '],ascending=True)
     print("Sort YEARS data for all leauges by  avg Income/Season!!")# # function sort ~ 13.
 
 #functions sort
@@ -122,10 +122,14 @@ def SortDataforYEAR_by_avg_Income_Season (DFrame):
 
 # sort YEARS data for all leauges by number  by  ExpendFORpayerArrivals
 def SortDataforLEAUGES_byExpendFORpayerArrivals (DFrame):
-    print("Sort YEARS data for all leauges by   Expend + Inflation by player !!")
+    print("Sort YEARS data for all leauges by   Expend + Inflation by player !! XXXX")
     d = DFrame
-    test = GetAVGExpendFORpayerArrivals(DFrame)
-    return test.sort_values(by=['  Expend + Inflation by player|  '])
+    test = GetAVGExpendFORpayerArrivals(d)
+    #a = test.sort_values(test.columns[4])
+    #a = sorted(test,key=lambda test: float(test[3]))
+    #test = np.asarray(test[3], dtype=np.float64, order='C')
+
+    return test
     print("Sort YEARS data for all leauges by    Expend + Inflation by player !!")# # function sort ~ 14.
 
 # sort YEARS data for all leauges by number  by  IncomeFORpayerDeparture
@@ -133,13 +137,13 @@ def SortDataforLEAUGES_IncomeFORpayerDeparture (DFrame):
     print("Sort YEARS data for all leauges by  Income + Inflation by player  !!")
     d = DFrame
     test = GetAVGIncomeFORpayerDepartures(DFrame)
-    return test.sort_values(by=['  Income + Inflation by player|  ']])
+    return test.sort_values(by=['  Income + Inflation by player|  '])
     print("Sort YEARS data for all leauges by  Income + Inflation by player !!")# # function sort ~ 15.
 
 # sort YEARS data for all leauges by number  by  BalanceFORpayerDepartures
 def SortDataforLEAUGES_BalanceFORpayerDepartures (DFrame):
     print("Sort YEARS data for all leauges by  Income + Balance + Inflation by player  !!")
     d = DFrame
-    test = GetAVGBalanceFORpayerDepartures(DFrame)
-    return test.sort_values(by=['  Balance + Inflation by player|  ']])
+    test = GetAVGBalanceFORpayerDepartures(d)
+    return test.sort_values(by=['  Balance + Inflation by player|  '])
     print("Sort YEARS data for all leauges by  Balance + Inflation by player !!")# # function sort ~ 16.
