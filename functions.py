@@ -1000,7 +1000,7 @@ def GetDate_for_Clubs_throught_all_seasons(DFrame):
     np_niz3 = np.asarray(niz_N1, dtype = 'float64')
 
     #set arr to stack for operations with data lik sort and convert
-    new_niz = np.stack((np_niz2,np_niz1,np_niz1,np_niz1,np_niz3,np_niz2,np_niz3,np_niz2,np_niz3,np_niz2,np_niz3,np_niz3,np_niz3),axis= -1)
+    new_niz = np.stack((np_niz2,np_niz1,np_niz1,np_niz1,np_niz3,np_niz2,np_niz3,np_niz2,np_niz3,np_niz3,np_niz3,np_niz3),axis= -1)
 
     # avg Balance number the seasons
     for i in range(0,N):
@@ -1013,26 +1013,115 @@ def GetDate_for_Clubs_throught_all_seasons(DFrame):
         new_niz[i][5] = niz[i][6]
         new_niz[i][7] = niz[i][7]
         new_niz[i][8] = niz[i][8]
-        new_niz[i][9] = niz[i][9]
-        new_niz[i][10] = niz[i][10]
-        new_niz[i][11] = niz[i][11]
-        new_niz[i][12] = niz[i][12]
+        #new_niz[i][9] = niz[i][9]
+        new_niz[i][9] = niz[i][10]
+        new_niz[i][10] = niz[i][11]
+        new_niz[i][11] = niz[i][12]
         ###############################################################################
 
 
-    #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[])) one of examples
+    #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[7])) #one of examples
     # sort by appropriate elements and by columns
-    a = sorted(new_niz, key=itemgetter(9), reverse=False)
+    a = Input_chose_of_sort(new_niz)
 
     # convert from stack with values to data for dataFrame
     data = np.array(a)
     # set to DataFrame
     df = pd.DataFrame(data)
     # name of labels for head or names of collums
-    df.columns = ['    Order |  ', '    Club |  ','    State |  ', '    Competition |  ','    Expenditures |  ',
-     '    Arrivals |  ','    Income |  ', '    Departures |  ','    Balance |  ','    Season|  ',
-     '    inflation Expenditure |  ',' inflation Expenditure |  ',' inflation Balance |  ']
-    ###############################################################################
+    df.columns = ['    Order of Expend |  ', '    Club |  ','    State |  ', '    Competition |  ','    Expenditures |  ',
+     '    Income |  ','    Arrivals |  ', '    Departures |  ','    Balance |  ',
+     '    inflation Expenditure |  ',' inflation Income |  ',' inflation Balance |  ']
+    ###############################################################################(
     # return DataFrame with head an names of collums
     print(df)
     return df # function ~ 16.
+
+
+def Meni_of_options_for_sorting():
+    print(" 1 =>  Sort data BY Order of Expend") # 0
+    print(" 2 =>  Sort data BY Club") # 1
+    print(" 3 =>  Sort data BY State") # 2
+    print(" 4 =>  Sort data BY Competition") # 3
+    print(" 5 =>  Sort data BY Expenditures") # 4
+    print(" 6 =>  Sort data BY Income") # 5
+    print(" 7 =>  Sort data BY Arrivals") # 6
+    print(" 8 =>  Sort data BY Departures") # 7
+    print(" 9 =>  Sort data BY Balance") # 8
+    print(" 10 =>  Sort data BY inflation calculate on Expenditure") # 9
+    print(" 11 =>  Sort data BY inflation calculate on Income") # 10
+    print(" 12 =>  Sort data BY inflation calculate on Balance") # 11
+     # function ~ 17.
+
+
+def Input_chose_of_sort(new_niz):
+    while True:
+        print("\n\t Chose a option of sorting   : ")
+        Meni_of_options_for_sorting()
+        value = input("\n\tValue between 1 and 12 :")
+        try:
+           value = int(value)
+        except ValueError:
+           print("\n\tValid options, please !!")
+           Meni_of_options_for_sorting()
+           continue
+        if value == 1:
+           print(" Sorted by Order of Expend  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[0])) # Order of Expend sort int
+           return a
+           break
+        elif value == 2:
+           print(" Sorted by Club sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[1])) # Club sort str
+           return a
+           break
+        elif value == 3:
+           print(" Sorted by State sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[2])) # State sort str
+           return a
+           break
+        elif value == 4:
+           print(" Sorted by State sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[3])) # Competition sort str
+           return a
+           break
+        elif value == 5:
+           print(" Sorted by Expenditures  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[4])) # Expenditures sort ,float
+           return a
+           break
+        elif value == 6:
+           print(" Sorted by Income  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[5])) # Income sort , float
+           return a
+           break
+        elif value == 7:
+           print(" Sorted by Arrivals  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[6])) # Arrivals sort , int
+           return a
+           break
+        elif value == 8:
+           print(" Sorted by Departures  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[7])) # Departures sort , int
+           return a
+           break
+        elif value == 9:
+           print(" Sorted by Balance sort !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[8])) # Balance sort ,float
+           return a
+        elif value == 10:
+           print(" Sorted by inflation calculate on Expenditure sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[9])) # inflation calculate on Expenditure sort ,float
+           return a
+           break
+        elif value == 11:
+           print(" Sorted by inflation calculate on Expenditure sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[10])) # inflation calculate on Income sort ,float
+           return a
+           break
+        elif value == 12:
+           print(" Sorted by inflation calculate on Balance sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[11])) # inflation calculate on Balance sort ,float
+           return a
+        else:
+           print("\n\tValue between 1 and 12 !!!") # function ~ 18.
