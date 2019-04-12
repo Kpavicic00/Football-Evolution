@@ -13,6 +13,7 @@ import sys
 
 
 # txt FILES
+fail_pathclubs = '/home/kristijan/github/FootballEvolcion/Datas/test_podaci_klubovi.csv'
 fp_clubs = '/home/kristijan/github/FootballEvolcion/Datas/Club_statstic.csv'
 fp = '/home/kristijan/github/FootballEvolcion/Datas/testni_podaci.csv'
 filePath ='/home/kristijan/github/FootballEvolcion/Datas/TEST_CSV.csv'
@@ -28,7 +29,10 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 
 print("Test podaci liga za sezone 2018 i 2011 : ")
 datFrame = DataFrameFunc(fp)
-dt_clubs = DataFrameFuncClubs(fp_clubs)
+dt_clubs = DataFrameFuncClubs(fail_pathclubs)
+print("fail_pathclubs")
+print(dt_clubs)
+GetDate_for_Clubs_throught_all_seasons(dt_clubs)
 #print(fp)
 # print("GetAVGExpendFORpayerArrivals ")
 # GetAVGExpendFORpayerArrivals(datFrame)
@@ -46,11 +50,11 @@ dt_clubs = DataFrameFuncClubs(fp_clubs)
 # print("SortDataforYEAR_by_avg_Income_Season : ")
 # SortDataforYEAR_by_avg_Income_Season(datFrame)
 
-print("GETDataClubs : ")
-GETDataClubs(dt_clubs)
-GetDate_for_Clubs_throught_all_seasons
-print("GetDate_for_Clubs_throught_all_seasons : ")
-GetDate_for_Clubs_throught_all_seasons(dt_clubs)
+# print("GETDataClubs : ")
+# GETDataClubs(dt_clubs)
+# GetDate_for_Clubs_throught_all_seasons
+# print("GetDate_for_Clubs_throught_all_seasons : ")
+# GetDate_for_Clubs_throught_all_seasons(dt_clubs)
 
 
 #DataF = DataFrameFuncClubs(fp_clubs)
