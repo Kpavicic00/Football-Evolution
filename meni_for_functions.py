@@ -46,8 +46,45 @@ def Meni_of_options_for_sorting():
 
 # meni for Chose_reverse_or functions
 def Meni_of_Chose_reverse_or():
-    print("======> Sort  for Clubs throught all seasons   <======")
+    print("======> Options for sorting   <======")
     print(" 1 =>  Sort data BY Clasic sort  ")
     print(" 2 =>  Sort data BY Reverse sort ")
-    print("======> Sort  for Clubs throught all seasons   <======")  # function ~ 2.
+    print("======> Options for sorting   <======")  # function ~ 2.
+########################################################################################################################################################################################################
+
+# meni for GetBYyea
+def Meni_of_GetBYyear():
+    print("======> Sort  for LAUGES by year   <======")
+    print(" 1 =>  Sort data BY Year") # 0
+    print(" 2 =>  Sort data BY Expend") # 1
+    print(" 3 =>  Sort data BY Income") # 2
+    print(" 4 =>  Sort data BY Balance") # 3
+    print(" 5 =>  Sort data BY number of Season") # 4
+    print(" 6 =>  Sort data BY sum of Arrivlas") # 5
+    print(" 7 =>  Sort data BY sum of Depatrues") # 6
+    print(" 8 =>  Sort data BY avg Expend of Arrivlas") # 7
+    print(" 9 =>  Sort data BY avg Income of Depatrues ") # 8
+    print(" 10 =>  Sort data BY  avg Balance of Depatrues ") # 9
+    print(" 11 =>  Sort data BY avg Expend/Season ") # 10
+    print(" 12 =>  Sort data BY avg Income/Season") # 11
+    print(" 12 =>  Sort data BY avg Balance/Season") # 12
+    print("======>Sort  for LAUGES by year   <======")  # function ~ 4.
+########################################################################################################################################################################################################
+
+# meni for GetDataForLeauge_AVG_Seasons
+def Meni_of_GetDataForLeauge_AVG_Seasons():
+    print(" 1 =>  Sort data BY Name of leauge") # 0
+    print(" 2 =>  Sort data BY Expend") # 1
+    print(" 3 =>  Sort data BY Income") # 2
+    print(" 4 =>  Sort data BY Balance") # 3
+    print(" 5 =>  Sort data BY number of Season") # 4
+    print(" 6 =>  Sort data BY sum of Arrivlas") # 5
+    print(" 7 =>  Sort data BY sum of Depatrues") # 6
+    print(" 8 =>  Sort data BY avg Expend of Arrivlas") # 7
+    print(" 9 =>  Sort data BY avg Income of Depatrues ") # 8
+    print(" 10 =>  Sort data BY  avg Balance of Depatrues ") # 9
+    print(" 11 =>  Sort data BY avg Expend/Season ") # 10
+    print(" 12 =>  Sort data BY avg Income/Season") # 11
+    print(" 12 =>  Sort data BY avg Balance/Season") # 12
+    print("======>Sort  for LAUGES by year   <======")  # function ~ 4.
 ########################################################################################################################################################################################################

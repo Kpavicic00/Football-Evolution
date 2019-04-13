@@ -538,6 +538,7 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
 
     #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[]))
     a = sorted(new_niz, key=itemgetter(0), reverse=False) # sortiranje po elemnetima i po stupcima
+    # cekanj e na glavnu funkciju 
 
     data = np.array(a)
     df = pd.DataFrame(data)
@@ -552,12 +553,12 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
 def GetBYyear(DFrame):
 
     #count number of rows in date frame
-    count = NumberOfRows(DFrame)
+    count = NumberOfRows(DFrame)s
 
     #reserving the number of elements in a row
+    # "0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"
     Nationality = [0] * count
     Arrivals = [0] * count
-    koef = [0] * count
     Season = [0] * count
     leauge = [0] * count
     niz1 = [0] *count
@@ -565,6 +566,8 @@ def GetBYyear(DFrame):
     Income = [0] *count
     Balance = [0] *count
     Departures = [0] *count
+
+    koef = [0] * count
     inter_Balance = [0] *count
     inter_Expenditures = [0] *count
     inter_Income = [0] * count
@@ -719,7 +722,7 @@ def GetBYyear(DFrame):
 
     #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[])) one of examples
     # sort by appropriate elements and by columns
-    a = sorted(new_niz, key=itemgetter(0), reverse=False)
+    # cekanje na funkciju !!!!!  meni napravljen
 
     # convert from stack with values to data for dataFrame
     data = np.array(a)
