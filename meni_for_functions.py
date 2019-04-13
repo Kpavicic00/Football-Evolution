@@ -41,3 +41,10 @@ def Meni_of_options_for_sorting():
     print(" 11 =>  Sort data BY inflation calculate on Income") # 10
     print(" 12 =>  Sort data BY inflation calculate on Balance") # 11
     print("======> Sort  for Clubs throught all seasons   <======")  # function ~ 2.
+
+# meni for Chose_reverse_or functions
+def Meni_of_Chose_reverse_or():
+    print("======> Sort  for Clubs throught all seasons   <======")
+    print(" 1 =>  Sort data BY Clasic sort  ")
+    print(" 2 =>  Sort data BY Reverse sort ")
+    print("======> Sort  for Clubs throught all seasons   <======")  # function ~ 2.
