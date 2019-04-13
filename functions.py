@@ -13,12 +13,14 @@ coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 def WriteTOcsvFILE(csv_file,dat,head):
     np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=head, footer='     => End of file <=')
     print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
+########################################################################################################################################################################################################
 
 #function count number of rows for specific DateFrame
 def NumberOfRows(datFrame):
     total_rows = len(datFrame)
     #print("Total rows : ", total_rows )
     return  total_rows # function ~ 2.
+########################################################################################################################################################################################################
 
 # functions_fore choose of season
 def Input_season():
@@ -35,6 +37,7 @@ def Input_season():
            break
         else:
            print("\n\tValue between 2000 and 2018 !!!") # function ~ 3.
+########################################################################################################################################################################################################
 
 # function for input years interval 2000 to 2018
 def Input_year():
@@ -51,6 +54,7 @@ def Input_year():
            break
         else:
            print("\n\tValue between 2000 and 2018 !!!") # function ~ 4.
+########################################################################################################################################################################################################
 
 # print the txt file
 def printFile(data):
@@ -58,6 +62,7 @@ def printFile(data):
     f = open(data, "r")
     print(f.read())
     f.close() # function ~ 5.
+########################################################################################################################################################################################################
 
 # function  count the length of lines for the required size allocation of the string
 def file_lengthy(fname):
@@ -65,6 +70,7 @@ def file_lengthy(fname):
         for i ,j in enumerate (f):
             pass
         return i +1 # function ~ 6.
+########################################################################################################################################################################################################
 
 #function get Coefients for specific year
 def GETCoefficients(files,year):
@@ -96,6 +102,7 @@ def GETCoefficients(files,year):
     #print("\n\t You have chosen a year :  ",i)
 
     return np_specific_coefficient # function ~ 7.
+########################################################################################################################################################################################################
 
 # picking up and dealing with the data in terms of coefficients
 def Coefficients(files):
@@ -126,18 +133,21 @@ def Coefficients(files):
     np_specific_coefficient = np_koef[np_years == i]
     #print("\n\t You have chosen a year :  ",i)
     return np_specific_coefficient # function ~ 8.
+########################################################################################################################################################################################################
 
 # takes data with pandas function DataFrame
 def DataFrameFunc(filePath):
     colls = ["0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat # function ~ 9.
+########################################################################################################################################################################################################
 
 # takes data with pandas function DataFrame for Clubs datas
 def DataFrameFuncClubs(filePath):
     colls = ["Order","Club","State","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat # function ~ 10.
+########################################################################################################################################################################################################
 
 #get average League spending for each player
 def GetAVGExpendFORpayerArrivals(DFrame):
@@ -212,6 +222,7 @@ def GetAVGExpendFORpayerArrivals(DFrame):
     # return DataFrame with head an names of collums
     print(df)
     return df # function ~ 11.
+########################################################################################################################################################################################################
 
 #get average League brutto earnings for each player
 def GetAVGIncomeFORpayerDepartures(DFrame):
@@ -285,6 +296,7 @@ def GetAVGIncomeFORpayerDepartures(DFrame):
     # return DataFrame with head an names of collums
     print(df)
     return df# function ~ 11.
+########################################################################################################################################################################################################
 
 #get average League netto earnings for each player
 def GetAVGBalanceFORpayerDepartures(DFrame):
@@ -361,6 +373,7 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         # return DataFrame with head an names of collums
         print(df)
         return df # function ~ 12.
+########################################################################################################################################################################################################
 
 # get sorted data by the leauge
 def GetDataForLeauge_AVG_Seasons(DFrame):
@@ -533,6 +546,7 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
      '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
     ###############################################################################
     return df # function ~ 13.
+########################################################################################################################################################################################################
 
 # get avg Year Season of first 25 leuge money transaction for all Leuges ,regardless of the league, therefore, only years of all seasons together
 def GetBYyear(DFrame):
@@ -719,7 +733,9 @@ def GetBYyear(DFrame):
     # return DataFrame with head an names of collums
     print(df)
     return df # function ~ 14.
-
+########################################################################################################################################################################################################
+########################################################################################################################################################################################################
+########################################################################################################################################################################################################
 # get data for clubs calculate inflacion for profit ,Income and Expend
 def GETDataClubs_with_seasons(DFrame):
 
@@ -836,7 +852,8 @@ def GETDataClubs_with_seasons(DFrame):
 
     # return DataFrame with head an names of collums
     print(df)
-    return df # # function ~ 15.
+    return df # # function optimized ~ 15.
+########################################################################################################################################################################################################
 
 # get data for clubs calculate inflacion for profit ,Income and Expend but for clubs for all seasons
 def GetDate_for_Clubs_throught_all_seasons(DFrame):
@@ -1058,4 +1075,5 @@ def GetDate_for_Clubs_throught_all_seasons(DFrame):
     ###############################################################################(
     # return DataFrame with head an names of collums
     print(df)
-    return df # function ~ 16.
+    return df # function optimized ~ 16.
+########################################################################################################################################################################################################

@@ -24,6 +24,7 @@ def Meni_of_options_for_sorting_CLUBS_GETDataClubs_with_seasons():
     print(" 12 =>  Sort data BY Inflacion + Expenditures") # 12
     print(" 13 =>  Sort data BY Inflacion + Balance") # 13 ,
     print("======> Sort for Clubs with year of seasons   <======")  # function ~ 1.
+########################################################################################################################################################################################################
 
 # meni of options for sort for function Input_chose_of_sort
 def Meni_of_options_for_sorting():
@@ -41,6 +42,7 @@ def Meni_of_options_for_sorting():
     print(" 11 =>  Sort data BY inflation calculate on Income") # 10
     print(" 12 =>  Sort data BY inflation calculate on Balance") # 11
     print("======> Sort  for Clubs throught all seasons   <======")  # function ~ 2.
+########################################################################################################################################################################################################
 
 # meni for Chose_reverse_or functions
 def Meni_of_Chose_reverse_or():
@@ -48,3 +50,4 @@ def Meni_of_Chose_reverse_or():
     print(" 1 =>  Sort data BY Clasic sort  ")
     print(" 2 =>  Sort data BY Reverse sort ")
     print("======> Sort  for Clubs throught all seasons   <======")  # function ~ 2.
+########################################################################################################################################################################################################
