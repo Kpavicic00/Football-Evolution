@@ -5,145 +5,170 @@ import pandas as pd
 import csv
 import sys
 from functions import *
+from meni_for_functions import *
+
+
+
+#functions meni unicate functions
+
+###############################################################################################################################
+#functions sort
+# for clubs Club_statstic for batch GETDataClubs_with_seasons
+# take the chose of sort and return the sort of specific collum
+
+def Input_chose_of_sort_CLUBS_GETDataClubs_with_seasons(new_niz):
+    while True:
+        print("\n\t Chose a option of sorting   : ")
+        Meni_of_options_for_sorting_CLUBS_GETDataClubs_with_seasons()
+        value = input("\n\tValue between 1 and 11 :")
+            #'    Order |  ', '    Club |  ','    State |  ', '    Competition |  ','    Expenditures |  ',
+            # '    Arrivals |  ','    Income  |  ', '    Departures |  ','    Balance |  ','    Season |  ',
+            # ' Inflacion + Income |  ',' Inflacion + Expenditures |  ',' Inflacion + Balance |
+        try:
+           value = int(value)
+        except ValueError:
+           print("\n\tValid options, please !!")
+           Meni_of_options_for_sorting_CLUBS_GETDataClubs_with_seasons()
+           continue
+        if value == 1:
+           print(" Sorted by  Order  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[0])) #  Order sort ,int
+           return a
+           break
+        elif value == 2:
+           print(" Sorted by Club  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[1])) # Club sort ,str
+           return a
+           break
+        elif value == 3:
+           print(" Sorted by State  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[2])) # State sort , str
+           return a
+           break
+        elif value == 4:
+           print(" Sorted by Competition  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[3])) # Competition sort , str
+           return a
+           break
+        elif value == 5:
+           print(" Sorted by Expenditures  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[4])) # Expenditures, float
+           return a
+           break
+        elif value == 6:
+           print(" Sorted by Arrivals  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[5])) # Arrivals sort , int
+           return a
+           break
+        elif value == 7:
+           print(" Sorted by Income  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[6])) # Income sort , float
+           return a
+           break
+        elif value == 8:
+           print(" Sorted by Departures  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[7])) # Departures sort , int
+           return a
+           break
+        elif value == 9:
+           print(" Sorted by Balance !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[8])) # Balance sort ,int
+           return a
+        elif value == 10:
+           print(" Sorted by Season  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[9])) # Season sort ,int
+           return a
+           break
+        elif value == 11:
+           print(" Sorted by  Inflacion + Income  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[10])) #  Inflacion + Income sort ,float
+           return a
+        elif value == 12:
+           print(" Sorted by  Inflacion + Expenditures  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[11])) #  Inflacion + Expenditures sort ,float
+           return a
+           break
+        elif value == 13:
+           print(" Sorted by  Inflacion + Balance  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[12])) #  Inflacion + Balance sort ,float
+           return a
+        else:
+           print("\n\tValue between 1 and 11 !!!") # function ~ 2.
+###############################################################################################################################
 
 #functions sort
-# for clubs Club_statstic
+# for clubs Club_statstic for batch GetDate_for_Clubs_throught_all_seasons
+# take the chose of sort and return the sort of specific collum
 
-# sort Clubs Data for Arrivals by Name of leuge
-def SortDataforCLUBS_by_Name_of_leuge (DFrame):
-    print("Sort by the Name of League !!")
-    d = DFrame
-    test = GETDataClubs(DFrame)
-    return test.sort_values(by=[' Name of  League |  '])
-    print("Sort by the Name of League !!") # # function sort ~ 1.
-
-# sort Clubs Data  by Depatrues
-def SortDataforCLUBS_Depatrues (DFrame):
-    print("Sort by Depatrues !!")
-    d = DFrame
-    test = GETDataClubs(DFrame)
-    return test.sort_values(by=['    Depatrues |  '])
-    print("Sort by Depatrues !!") # # function sort ~ 2.
-
-# sort Clubs Data by Arrivals
-def SortDataforCLUBS_Arrivals (DFrame):
-    print("Sort by Arrivals !!")
-    d = DFrame
-    test = GETDataClubs(DFrame)
-    return test.sort_values(by=['    Arrivals|  '])
-    print("Sort by Arrivals !!")# # function sort ~ 3.
-
-# sort Clubs Data by Balance with Inflacion
-def SortDataforCLUBS_Balance_with_Inflacion (DFrame):
-    print("Sort by Balance + Inflation !!")
-    d = DFrame
-    test = GETDataClubs(DFrame)
-    return test.sort_values(by=['    Balance + Inflation |  '])
-    print("Sort by Balance + Inflation !!")# # function sort ~ 4.
-
-# sort Clubs Data by Income with Inflacion
-def SortDataforCLUBS_Income_Inflation (DFrame):
-    print("Sort by Income + Inflation !!")
-    d = DFrame
-    test = GETDataClubs(DFrame)
-    return test.sort_values(by=['    Income + Inflation |  '])
-    print("Sort by Income + Inflation !!")# # function sort ~ 5.
-
-# sort Clubs Data by Expend with Inflacion
-def SortDataforCLUBS_Expend_Inflation (DFrame):
-    print("Sort by Expend + Inflation !!")
-    d = DFrame
-    test = GETDataClubs(DFrame)
-    return test.sort_values(by=['    Expend + Inflation |  '])
-    print("Sort by Expend + Inflation !!")# # function sort ~ 6.
-
-# sort Clubs Data by year of Season
-def SortDataforCLUBS_year_of_Season (DFrame):
-    print("Sort by year of Season !!")
-    d = DFrame
-    test = GETDataClubs(DFrame)
-    return test.sort_values(by=['    year of Season |  '])
-    print("Sort by year of Season!!")# # function sort ~ 7.
-
-
-#functions sort
-# for clubs Championship and leagues by YEARRRRR
-
-# sort YEARS data for all leauges by Expend
-def SortDataforYEAR_by_EXPEND (DFrame):
-    print("Sort YEARS data for all leauges by Expend !!")
-    d = DFrame
-    test = GetBYyear(DFrame)
-    return test.sort_values(by=['    Expend |  '])
-    print("Sort YEARS data for all leauges by Expend!!")# # function sort ~ 8.
-
-# sort YEARS data for all leauges by Income
-def SortDataforYEAR_by_INCOME (DFrame):
-    print("Sort YEARS data for all leauges by Income !!")
-    d = DFrame
-    test = GetBYyear(DFrame)
-    return test.sort_values(by=['    Income |  '])
-    print("Sort YEARS data for all leauges by Income!!")# # function sort ~ 9.
-
-# sort YEARS data for all leauges by number  of Arrivlas
-def SortDataforYEAR_by_Arrivlas (DFrame):
-    print("Sort YEARS data for all leauges by Arrivlas !!")
-    d = DFrame
-    test = GetBYyear(DFrame)
-    return test.sort_values(by=['    sum of Arrivlas |  '])
-    print("Sort YEARS data for all leauges by Arrivlas!!")# # function sort ~ 10.
-
-# sort YEARS data for all leauges by number  of Depatrues
-def SortDataforYEAR_by_Depatrues (DFrame):
-    print("Sort YEARS data for all leauges by Depatrues !!")
-    d = DFrame
-    test = GetBYyear(DFrame)
-    return test.sort_values(by=['    sum of Depatrues |  ',])
-    print("Sort YEARS data for all leauges by Depatrues!!")# # function sort ~ 10.
-
-# sort YEARS data for all leauges by number  of avg Expend/Season
-def SortDataforYEAR_by_avg_Expend_Season (DFrame):
-    print("Sort YEARS data for all leauges avg Expend/Season !!")
-    d = DFrame
-    test = GetBYyear(d)
-    return test.sort_values(by=['    avg Expend/Season |  '])
-    print("Sort YEARS data for all leauges avg Expend/Season!!")# # function sort ~ 12.
-
-# sort YEARS data for all leauges by number  by  avg Income/Season
-def SortDataforYEAR_by_avg_Income_Season (DFrame):
-    print("Sort YEARS data for all leauges by  avg Income/Seasons !!")
-    d = DFrame
-    test = GetBYyear(d)
-    return test.sort_values(by=['    avg Income/Season |  '],ascending=True)
-    print("Sort YEARS data for all leauges by  avg Income/Season!!")# # function sort ~ 13.
-
-#functions sort
-# for GETDataClubs  Leauge statsitic by LEAUGES
-
-# sort YEARS data for all leauges by number  by  ExpendFORpayerArrivals
-def SortDataforLEAUGES_byExpendFORpayerArrivals (DFrame):
-    print("Sort YEARS data for all leauges by   Expend + Inflation by player !! XXXX")
-    d = DFrame
-    test = GetAVGExpendFORpayerArrivals(d)
-    #a = test.sort_values(test.columns[4])
-    #a = sorted(test,key=lambda test: float(test[3]))
-    #test = np.asarray(test[3], dtype=np.float64, order='C')
-
-    return test
-    print("Sort YEARS data for all leauges by    Expend + Inflation by player !!")# # function sort ~ 14.
-
-# sort YEARS data for all leauges by number  by  IncomeFORpayerDeparture
-def SortDataforLEAUGES_IncomeFORpayerDeparture (DFrame):
-    print("Sort YEARS data for all leauges by  Income + Inflation by player  !!")
-    d = DFrame
-    test = GetAVGIncomeFORpayerDepartures(DFrame)
-    return test.sort_values(by=['  Income + Inflation by player|  '])
-    print("Sort YEARS data for all leauges by  Income + Inflation by player !!")# # function sort ~ 15.
-
-# sort YEARS data for all leauges by number  by  BalanceFORpayerDepartures
-def SortDataforLEAUGES_BalanceFORpayerDepartures (DFrame):
-    print("Sort YEARS data for all leauges by  Income + Balance + Inflation by player  !!")
-    d = DFrame
-    test = GetAVGBalanceFORpayerDepartures(d)
-    return test.sort_values(by=['  Balance + Inflation by player|  '])
-    print("Sort YEARS data for all leauges by  Balance + Inflation by player !!")# # function sort ~ 16.
+def Input_chose_of_sort_CLUBS(new_niz):
+    while True:
+        print("\n\t Chose a option of sorting   : ")
+        Meni_of_options_for_sorting()
+        value = input("\n\tValue between 1 and 12 :")
+        try:
+           value = int(value)
+        except ValueError:
+           print("\n\tValid options, please !!")
+           Meni_of_options_for_sorting()
+           continue
+        if value == 1:
+           print(" Sorted by Order of Expend  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[0])) # Order of Expend sort , int
+           return a
+           break
+        elif value == 2:
+           print(" Sorted by Club sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[1])) # Club sort , str
+           return a
+           break
+        elif value == 3:
+           print(" Sorted by State sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[2])) # State sort , str
+           return a
+           break
+        elif value == 4:
+           print(" Sorted by State sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[3])) # Competition sort , str
+           return a
+           break
+        elif value == 5:
+           print(" Sorted by Expenditures  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[4])) # Expenditures sort , float
+           return a
+           break
+        elif value == 6:
+           print(" Sorted by Income  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[5])) # Income sort , float
+           return a
+           break
+        elif value == 7:
+           print(" Sorted by Arrivals  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[6])) # Arrivals sort , int
+           return a
+           break
+        elif value == 8:
+           print(" Sorted by Departures  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[7])) # Departures sort , int
+           return a
+           break
+        elif value == 9:
+           print(" Sorted by Balance sort !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[8])) # Balance sort ,float
+           return a
+        elif value == 10:
+           print(" Sorted by inflation calculate on Expenditure sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[9])) # inflation calculate on Expenditure sort ,float
+           return a
+           break
+        elif value == 11:
+           print(" Sorted by inflation calculate on Expenditure sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[10])) # inflation calculate on Income sort ,float
+           return a
+           break
+        elif value == 12:
+           print(" Sorted by inflation calculate on Balance sort  !!! ")
+           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[11])) # inflation calculate on Balance sort ,float
+           return a
+        else:
+           print("\n\tValue between 1 and 12 !!!") # function ~ 3.
+###############################################################################################################################

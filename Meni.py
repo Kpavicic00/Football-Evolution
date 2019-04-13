@@ -29,13 +29,16 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 
 # print("Test podaci liga za sezone 2018 i 2011 : ")
 # datFrame = DataFrameFunc(fp)
-# dt_clubs = DataFrameFuncClubs(fail_pathclubs)
+dt_clubs = DataFrameFuncClubs(fail_pathclubs)
 # print("fail_pathclubs")
 # #print(dt_clubs)
-# GetDate_for_Clubs_throught_all_seasons(dt_clubs)
-#print(fp)
-# print("GetAVGExpendFORpayerArrivals ")
-# GetAVGExpendFORpayerArrivals(datFrame)
+print("GETDataClubs_with_seasons ")
+GETDataClubs_with_seasons(dt_clubs)
+dt_clubs_1 = DataFrameFuncClubs(fail_pathclubs)
+print("GetDate_for_Clubs_throught_all_seasons")
+GetDate_for_Clubs_throught_all_seasons(dt_clubs_1)
+
+#GETDataClubs_with_seasons(datFrame)
 #
 # print("GetAVGIncomeFORpayerDepartures ")
 # GetAVGIncomeFORpayerDepartures(datFrame)
@@ -86,11 +89,11 @@ save_csv_c = '/home/kristijan/github/FootballEvolcion/Datas/Save_csv_Parsing_c.c
 # print("GetDataForLeauge_AVG_Seasons(DFrame)")
 # print(GetDataForLeauge_AVG_Seasons(DFrame))
 # print("test 4  radiiiiiii")
-a = DataFrameFuncClubs(fp_clubs)
-
-#print(a)
-print("test 1: ")
-GETDataClubs_with_seasons(a)
+# a = DataFrameFuncClubs(fp_clubs)
+#
+# #print(a)
+# print("test 1: ")
+# GETDataClubs_with_seasons(a)
 # # print(GetAVGIncinterception[i] = (Expenditures[i]*koef[i])omeFORpayerDepartures(DFrame))
 # # print(GetDataForLeauge_AVG_Seasons(DFrame))
 # # print("test 2: ")

@@ -1,5 +1,6 @@
 from collections import Counter
 from operator import itemgetter
+from sort_functions import*
 import numpy as np
 import pandas as pd
 import csv
@@ -726,42 +727,53 @@ def GETDataClubs_with_seasons(DFrame):
     count = NumberOfRows(DFrame)
 
     #reserving the number of elements in a row
-    Season = [0] * count
-    Name_of_club = [0] * count
-    Arrivals = [0] * count
-    Departures = [0] * count
-    Income = [0] * count
-    Expenditures = [0] * count
-    Balance =  [0] * count
-    Competition =  [0] * count
+    Order = [0] * count # 0
+    Name_of_club = [0] * count # 1
+    State = [0] * count # 2
+    Competition =  [0] * count # 3
+    Expenditures = [0] * count # 4
+    Arrivals = [0] * count # 5
+    Income = [0] * count # 6
+    Departures = [0] * count # 7
+    Balance =  [0] * count # 8
+    Season = [0] * count # 9
+
     koef =  [0] * count
     interception_Expenditures = [0] * count
     interception_Income =  [0] * count
     interception_Balance = [0] * count
     int_koef = [0]* count
+    ###############################################################################
 
     # cast DataFrame rows to folat and int
-    DFrame["Season"].astype(np.float64)
-    DFrame["Club"].astype(np.str)
-    DFrame["Arrivals"].astype(np.int64)
-    DFrame["Departures"].astype(np.int64)
-    DFrame["Income"].astype(np.float64)
-    DFrame["Expenditures"].astype(np.float64)
-    DFrame["Balance"].astype(np.str)
-    DFrame["Competition"].astype(np.str)
+    DFrame["Order"].astype(np.int64) # 0
+    DFrame["Club"].astype(np.str) # 1
+    DFrame["State"].astype(np.str) # 2
+    DFrame["Competition"].astype(np.str) # 3
+    DFrame["Expenditures"].astype(np.float64) # 4
+    DFrame["Arrivals"].astype(np.int64) # 5
+    DFrame["Income"].astype(np.float64) # 6
+    DFrame["Departures"].astype(np.int64) # 7
+    DFrame["Balance"].astype(np.float64) # 8
+    DFrame["Season"].astype(np.int64) # 9
+    ###############################################################################
 
 
     #save values from the dateframe to a arrays
     i = 0
     for i in range(0,count):
-        Season[i] = DFrame["Season"][i]
-        Name_of_club[i] = DFrame["Club"][i]
-        Arrivals[i] = DFrame["Arrivals"][i]
-        Departures[i] = DFrame["Departures"][i]
-        Income[i] = DFrame["Income"][i]
-        Expenditures[i] = DFrame["Expenditures"][i]
-        Balance[i] = DFrame["Balance"][i]
-        Competition[i] = DFrame["Competition"][i]
+
+        Order[i] = DFrame["Order"][i] # 0
+        Name_of_club[i] = DFrame["Club"][i] # 1
+        State[i] = DFrame["State"][i] # 2
+        Competition[i] = DFrame["Competition"][i] # 3
+        Expenditures[i] = DFrame["Expenditures"][i]# 4
+        Arrivals[i] = DFrame["Arrivals"][i]# 5
+        Income[i] = DFrame["Income"][i]# 6
+        Departures[i] = DFrame["Departures"][i]# 7
+        Balance[i] =  DFrame["Balance"][i]# 8
+        Season[i] =  DFrame["Season"][i]# 9
+        ############################################################################
 
 
     # calcualtion of coeficent for clubs seasons
@@ -769,11 +781,13 @@ def GETDataClubs_with_seasons(DFrame):
         temp = Season[i]
         a = GETCoefficients(coef,temp)
         koef[i] = a
+        ###############################################################################
 
     # calculation of coeficent of inflacion
     for i in range (0,len(int_koef)):
         temp = float(koef[i])
         int_koef[i] = temp
+        ###############################################################################
 
     # calculation  Inflation for Potential, Earned and Profit
     for i in range(0,count):
@@ -787,122 +801,42 @@ def GETDataClubs_with_seasons(DFrame):
 
 
     # conversion to numpy
-    np_Competition = np.asarray(Competition,dtype='str')
-    np_Depart = np.asarray(Departures,dtype='int64')
-    np_Arrival = np.asarray(Arrivals,dtype='int64')
-    np_Name_of_club = np.asarray(Name_of_club,dtype='str')
-    np_Balance = np.asarray(Balance,dtype='int64')
-    np_Expenditures = np.asarray(Expenditures,dtype='int64')
-    np_Income = np.asarray(Income,dtype='int64')
-    np_in_Balance = np.asarray(interception_Balance,dtype='float64')
-    np_in_Expenditure = np.asarray(interception_Expenditures,dtype='float64')
-    np_in_Income = np.asarray(interception_Income,dtype='float64')
-    np_Seasons =  np.asarray(Season,dtype='int64')
+    np_Order = np.asarray(Order,dtype='int64') # 0
+    np_Club = np.asarray(Name_of_club,dtype='str') # 1
+    np_State = np.asarray(State,dtype='str') # 2
+    np_Competition = np.asarray(Competition,dtype='str') # 3
+    np_Expenditures = np.asarray(Expenditures,dtype='float64') # 4
+    np_Arrivals = np.asarray(Arrivals,dtype='int64') # 5
+    np_Income = np.asarray(Income,dtype='float64') # 6
+    np_Departures = np.asarray(Departures,dtype='int64') # 7
+    np_Balance = np.asarray(Balance,dtype='float64') # 8
+    np_Seasons =  np.asarray(Season,dtype='int64') # 9
+
+    np_INF_Income = np.asarray(interception_Income,dtype='float64') # 10
+    np_INF_Balance = np.asarray(interception_Balance,dtype='float64') # 11
+    np_INF_Expenditures = np.asarray(interception_Expenditures,dtype='float64') # 12
     ###############################################################################
 
     # set the numpy arrays values into stack
-    niz = np.stack((np_Name_of_club,np_Expenditures,np_Income,np_Balance,np_Seasons,np_in_Expenditure,np_in_Income,
-    np_in_Balance,np_Arrival,np_Depart,np_Competition),axis= -1)
+    niz = np.stack((np_Order,np_Club,np_State,np_Competition,np_Expenditures,np_Arrivals,np_Income,np_Departures,
+    np_Balance,np_Seasons,np_INF_Income,np_INF_Expenditures,np_INF_Balance),axis= -1)
 
     # convert from stack with values to data for dataFrame
     a = Input_chose_of_sort_CLUBS_GETDataClubs_with_seasons(niz)
     data = np.array(a)
     # set to DataFrame
     df = pd.DataFrame(data)
+    #   "Order","Club","State","Competition","Expenditures",
+    #   "Arrivals","Income","Departures","Balance","Season"
     # name of labels for head or names of collums
-    df.columns = ['    Club |  ', '    Expend |  ','    Income |  ', '    Balance |  ','    year of Season |  ',
-     '    Expend + Inflation |  ','    Income + Inflation |  ', '    Balance + Inflation |  ','    Arrivals|  ',
-     '    Depatrues |  ',' Name of  League |  ']
+    df.columns = ['    Order |  ', '    Club |  ','    State |  ', '    Competition |  ','    Expenditures |  ',
+     '    Arrivals |  ','    Income  |  ', '    Departures |  ','    Balance |  ','    Season |  ',
+     ' Inflacion + Income |  ',' Inflacion + Expenditures |  ',' Inflacion + Balance |  ']
     ###############################################################################
 
     # return DataFrame with head an names of collums
     print(df)
     return df # # function ~ 15.
-
-# meni of options for sort for function Input_chose_of_sort
-def Meni_of_options_for_sorting_CLUBS_GETDataClubs_with_seasons():
-    print(" 1 =>  Sort data BY Club") # 0
-    print(" 2 =>  Sort data BY Expend") # 1
-    print(" 3 =>  Sort data BY Income") # 2
-    print(" 4 =>  Sort data BY Balance") # 3
-    print(" 5 =>  Sort data BY year of Season") # 4
-    print(" 6 =>  Sort data BY Expend + Inflation") # 5
-    print(" 7 =>  Sort data BY Income + Inflation") # 6
-    print(" 8 =>  Sort data BY Balance + Inflation") # 7
-    print(" 9 =>  Sort data BY Arrivals") # 8
-    print(" 10 =>  Sort data BY Depatrues") # 9
-    print(" 11 =>  Sort data BY Name of  League") # 10 ,  # function ~ 17.
-
-# take the chose of sort and return the sort of specific collum
-def Input_chose_of_sort_CLUBS_GETDataClubs_with_seasons(new_niz):
-    while True:
-        print("\n\t Chose a option of sorting   : ")
-        Meni_of_options_for_sorting_CLUBS_GETDataClubs_with_seasons()
-        value = input("\n\tValue between 1 and 11 :")
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n\tValid options, please !!")
-           Meni_of_options_for_sorting_CLUBS_GETDataClubs_with_seasons()
-           continue
-        if value == 1:
-           print(" Sorted by  Club  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[0])) #  Club sort ,str
-           return a
-           break
-        elif value == 2:
-           print(" Sorted by Expend sort  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[1])) # Expend sort ,int
-           return a
-           break
-        elif value == 3:
-           print(" Sorted by Income sort  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[2])) # Income sort , int
-           return a
-           break
-        elif value == 4:
-           print(" Sorted by Balance sort  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[3])) # Balance sort , int
-           return a
-           break
-        elif value == 5:
-           print(" Sorted by year of Season  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[4])) # year of Season sort , int
-           return a
-           break
-        elif value == 6:
-           print(" Sorted by Expend + Inflation  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[5])) # Expend + Inflation sort , float
-           return a
-           break
-        elif value == 7:
-           print(" Sorted by Income + Inflation  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[6])) # Income + Inflation sort , float
-           return a
-           break
-        elif value == 8:
-           print(" Sorted by Balance + Inflation  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[7])) # Balance + Inflation sort , float
-           return a
-           break
-        elif value == 9:
-           print(" Sorted by Arrivals sort !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[8])) # Arrivals sort ,int
-           return a
-        elif value == 10:
-           print(" Sorted by Depatrues  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[9])) # Depatrues sort ,int
-           return a
-           break
-        elif value == 11:
-           print(" Sorted by  Name of  League  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[10])) #  Name of  League sort ,float
-           return a
-           break
-        else:
-           print("\n\tValue between 1 and 11 !!!") # function ~ 18.
-
-
 
 # get data for clubs calculate inflacion for profit ,Income and Expend but for clubs for all seasons
 def GetDate_for_Clubs_throught_all_seasons(DFrame):
@@ -1125,91 +1059,3 @@ def GetDate_for_Clubs_throught_all_seasons(DFrame):
     # return DataFrame with head an names of collums
     print(df)
     return df # function ~ 16.
-
-# meni of options for sort for function Input_chose_of_sort
-def Meni_of_options_for_sorting():
-    print(" 1 =>  Sort data BY Order of Expend") # 0
-    print(" 2 =>  Sort data BY Club") # 1
-    print(" 3 =>  Sort data BY State") # 2
-    print(" 4 =>  Sort data BY Competition") # 3
-    print(" 5 =>  Sort data BY Expenditures") # 4
-    print(" 6 =>  Sort data BY Income") # 5
-    print(" 7 =>  Sort data BY Arrivals") # 6
-    print(" 8 =>  Sort data BY Departures") # 7
-    print(" 9 =>  Sort data BY Balance") # 8
-    print(" 10 =>  Sort data BY inflation calculate on Expenditure") # 9
-    print(" 11 =>  Sort data BY inflation calculate on Income") # 10
-    print(" 12 =>  Sort data BY inflation calculate on Balance") # 11 ,  # function ~ 17.
-
-# take the chose of sort and return the sort of specific collum
-def Input_chose_of_sort_CLUBS(new_niz):
-    while True:
-        print("\n\t Chose a option of sorting   : ")
-        Meni_of_options_for_sorting()
-        value = input("\n\tValue between 1 and 12 :")
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n\tValid options, please !!")
-           Meni_of_options_for_sorting()
-           continue
-        if value == 1:
-           print(" Sorted by Order of Expend  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[0])) # Order of Expend sort , int
-           return a
-           break
-        elif value == 2:
-           print(" Sorted by Club sort  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[1])) # Club sort , str
-           return a
-           break
-        elif value == 3:
-           print(" Sorted by State sort  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[2])) # State sort , str
-           return a
-           break
-        elif value == 4:
-           print(" Sorted by State sort  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: str(new_niz[3])) # Competition sort , str
-           return a
-           break
-        elif value == 5:
-           print(" Sorted by Expenditures  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[4])) # Expenditures sort , float
-           return a
-           break
-        elif value == 6:
-           print(" Sorted by Income  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[5])) # Income sort , float
-           return a
-           break
-        elif value == 7:
-           print(" Sorted by Arrivals  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[6])) # Arrivals sort , int
-           return a
-           break
-        elif value == 8:
-           print(" Sorted by Departures  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: int(new_niz[7])) # Departures sort , int
-           return a
-           break
-        elif value == 9:
-           print(" Sorted by Balance sort !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[8])) # Balance sort ,float
-           return a
-        elif value == 10:
-           print(" Sorted by inflation calculate on Expenditure sort  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[9])) # inflation calculate on Expenditure sort ,float
-           return a
-           break
-        elif value == 11:
-           print(" Sorted by inflation calculate on Expenditure sort  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[10])) # inflation calculate on Income sort ,float
-           return a
-           break
-        elif value == 12:
-           print(" Sorted by inflation calculate on Balance sort  !!! ")
-           a =  sorted(new_niz, key=lambda new_niz: float(new_niz[11])) # inflation calculate on Balance sort ,float
-           return a
-        else:
-           print("\n\tValue between 1 and 12 !!!") # function ~ 18.
