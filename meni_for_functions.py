@@ -132,3 +132,14 @@ def Meni_of_GetAVGExpendFORpayerArrivals():
     print("\t======>Sort  for LAUGES by year   <======")
     print("\n")# function ~ 7.
 ###################################################################################################################################################
+
+def Meni_for_MAIN_program():
+    print("\t======> Sort  for GetAVGBalanceFORpayerDepartures   <======")
+    print("\t 1 =>  Sort data BY Name of League") # 0
+    print("\t 2 =>  Sort data BY Year of Season") # 1
+    print("\t 3 =>  Sort data BY Nationality") # 2
+    print("\t 4 =>  Sort data BY Expend by player") # 3
+    print("\t 5 =>  Sort data BY Expend + Inflation by player") # 4
+    print("\t======>Sort  for LAUGES by year   <======")
+    print("\n")# function ~ 7.
+###################################################################################################################################################
