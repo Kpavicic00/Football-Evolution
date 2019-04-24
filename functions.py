@@ -283,7 +283,7 @@ def GetAVGIncomeFORpayerDepartures(DFrame):
     np_CUT_inflation = np_Interception/np_Departures
 
     niz = np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
-    #a = sorted(niz,key=lambda niz: float(niz[3]), reverse=True)
+
     ###############################################################################
     a = Input_chose_of_GetAVGIncomeFORpayerDepartures(niz)
     # convert from stack with values to data for dataFrame
@@ -358,12 +358,10 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
 
 
         niz = np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
-        #a = sorted(niz, key=lambda a_entry: a_entry[1])
-        #a = sorted(niz,key=lambda niz: float(niz[3]))
-        # convert from stack with values to data for dataFrame
-        #a = sorted(niz,key=lambda niz: float(niz[3]), reverse=True)
+
         ###############################################################################
         a = Input_chose_of_GetAVGBalanceFORpayerDepartures(niz)
+        # set to DataFrame
         data = np.array(a)
         # set to DataFrame
         df = pd.DataFrame(data)
@@ -537,13 +535,11 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
             new_niz[i][12] = niz[i][12] # avg Balance number the seasons
             ###############################################################################
 
-    #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[]))
-    #te = sorted(new_niz, key=itemgetter(0), reverse=False) # sortiranje po elemnetima i po stupcima
-    # cekanj e na glavnu funkciju
-    # a = Input_chose_of_sort_CLUBS_GETDataClubs_with_seasons(niz)
-    # data = np.array(a)
+    # call the function
     a = Input_chose_of_GetDataForLeauge_AVG_Season(new_niz)
+    # set to DataFrame
     data = np.array(a)
+
     df = pd.DataFrame(data)
     df.columns = ['    Name of leauge |  ', '    Expend |  ','    Income |  ', '    Balance |  ','    number of Season |  ',
      '    sum of Arrivlas |  ','    sum of Depatrues |  ', '    avg Expend of Arrivlas |  ','    avg Income of Depatrues |  ',
@@ -560,7 +556,6 @@ def GetBYyear(DFrame):
     count = NumberOfRows(DFrame)
 
     #reserving the number of elements in a row
-    # "0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"
     Nationality = [0] * count
     Arrivals = [0] * count
     Season = [0] * count
@@ -724,7 +719,6 @@ def GetBYyear(DFrame):
             ###############################################################################
 
 
-    #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[])) one of examples
     # sort by appropriate elements and by columns
     # cekanje na funkciju !!!!!  meni napravljen
 
@@ -846,12 +840,11 @@ def GETDataClubs_with_seasons(DFrame):
 
     # convert from stack with values to data for dataFrame
     a = Input_chose_of_sort_CLUBS_GETDataClubs_with_seasons(niz)
+    # set to DataFrame
     data = np.array(a)
     # set to DataFrame
     df = pd.DataFrame(data)
-    #   "Order","Club","State","Competition","Expenditures",
-    #   "Arrivals","Income","Departures","Balance","Season"
-    # name of labels for head or names of collums
+
     df.columns = ['    Order |  ', '    Club |  ','    State |  ', '    Competition |  ','    Expenditures |  ',
      '    Arrivals |  ','    Income  |  ', '    Departures |  ','    Balance |  ','    Season |  ',
      ' Inflacion + Income |  ',' Inflacion + Expenditures |  ',' Inflacion + Balance |  ']
@@ -1066,8 +1059,6 @@ def GetDate_for_Clubs_throught_all_seasons(DFrame):
         new_niz[i][11] = niz[i][12]
         ###############################################################################
 
-
-    #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[7])) #one of examples
     # sort by appropriate elements and by columns
     a = Input_chose_of_sort_CLUBS(new_niz)
 
