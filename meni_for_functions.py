@@ -24,7 +24,7 @@ def Meni_of_options_for_sorting_CLUBS_GETDataClubs_with_seasons():
     print(" 12 =>  Sort data BY Inflacion + Expenditures") # 12
     print(" 13 =>  Sort data BY Inflacion + Balance") # 13 ,
     print("======> Sort for Clubs with year of seasons   <======")  # function ~ 1.
-########################################################################################################################################################################################################
+###################################################################################################################################################
 
 # meni of options for sort for function Input_chose_of_sort
 def Meni_of_options_for_sorting():
@@ -41,8 +41,8 @@ def Meni_of_options_for_sorting():
     print(" 10 =>  Sort data BY inflation calculate on Expenditure") # 9
     print(" 11 =>  Sort data BY inflation calculate on Income") # 10
     print(" 12 =>  Sort data BY inflation calculate on Balance") # 11
-    print("======> Sort  for Clubs throught all seasons   <======")  # function ~ 2.
-########################################################################################################################################################################################################
+    print("======> Sort  for Clubs throught all seasons   <======")  # function ~ 1.
+###################################################################################################################################################
 
 # meni for Chose_reverse_or functions
 def Meni_of_Chose_reverse_or():
@@ -50,7 +50,7 @@ def Meni_of_Chose_reverse_or():
     print(" 1 =>  Sort data BY Clasic sort  ")
     print(" 2 =>  Sort data BY Reverse sort ")
     print("======> Options for sorting   <======")  # function ~ 2.
-########################################################################################################################################################################################################
+###################################################################################################################################################
 
 # meni for GetBYyea
 def Meni_of_GetBYyear():
@@ -67,9 +67,9 @@ def Meni_of_GetBYyear():
     print(" 10 =>  Sort data BY  avg Balance of Depatrues ") # 9
     print(" 11 =>  Sort data BY avg Expend/Season ") # 10
     print(" 12 =>  Sort data BY avg Income/Season") # 11
-    print(" 12 =>  Sort data BY avg Balance/Season") # 12
-    print("======>Sort  for LAUGES by year   <======")  # function ~ 4.
-########################################################################################################################################################################################################
+    print(" 13 =>  Sort data BY avg Balance/Season") # 12
+    print("======>Sort  for LAUGES by year   <======")  # function ~ 3.
+###################################################################################################################################################
 
 # meni for GetDataForLeauge_AVG_Seasons
 def Meni_of_GetDataForLeauge_AVG_Seasons():
@@ -87,4 +87,34 @@ def Meni_of_GetDataForLeauge_AVG_Seasons():
     print(" 12=>  Sort data BY avg Income/Season") # 11
     print(" 13 =>  Sort data BY avg Balance/Season") # 12
     print("======>Sort  for LAUGES by year   <======")  # function ~ 4.
-########################################################################################################################################################################################################
+###################################################################################################################################################
+
+def Meni_of_GetAVGBalanceFORpayerDepartures():
+    print("======> Sort  for GetAVGBalanceFORpayerDepartures   <======")
+    print(" 1 =>  Sort data BY Name of League") # 0
+    print(" 2 =>  Sort data BY Year of Season") # 1
+    print(" 3 =>  Sort data BY Nationality") # 2
+    print(" 4 =>  Sort data BY Balance by player") # 3
+    print(" 5 =>  Sort data BY Balance + Inflation by player") # 4
+    print("======>Sort  for LAUGES by year   <======")  # function ~ 5.
+###################################################################################################################################################
+
+def Meni_of_GetAVGIncomeFORpayerDepartures():
+    print("======> Sort  for GetAVGBalanceFORpayerDepartures   <======")
+    print(" 1 =>  Sort data BY Name of League") # 0
+    print(" 2 =>  Sort data BY Year of Season") # 1
+    print(" 3 =>  Sort data BY Nationality") # 2
+    print(" 4 =>  Sort data BY Income by player") # 3
+    print(" 5 =>  Sort data BY Income + Inflation by player") # 4
+    print("======>Sort  for LAUGES by year   <======")  # function ~ 6.
+###################################################################################################################################################
+
+def Meni_of_GetAVGExpendFORpayerArrivals():
+    print("======> Sort  for GetAVGBalanceFORpayerDepartures   <======")
+    print(" 1 =>  Sort data BY Name of League") # 0
+    print(" 2 =>  Sort data BY Year of Season") # 1
+    print(" 3 =>  Sort data BY Nationality") # 2
+    print(" 4 =>  Sort data BY Expend by player") # 3
+    print(" 5 =>  Sort data BY Expend + Inflation by player") # 4
+    print("======>Sort  for LAUGES by year   <======")  # function ~ 7.
+###################################################################################################################################################
