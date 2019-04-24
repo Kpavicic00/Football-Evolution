@@ -371,6 +371,7 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         ###############################################################################
         df.columns = ['    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Balance by player|  ', '  Balance + Inflation by player|  ']
         # return DataFrame with head an names of collums
+        print("GetDataForLeauge_AVG_Seasons TEST")
         print(df)
         return df # function ~ 12.
 ########################################################################################################################################################################################################
@@ -537,14 +538,17 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
             ###############################################################################
 
     #a =  sorted(new_niz, key=lambda new_niz: int(new_niz[]))
-    a = sorted(new_niz, key=itemgetter(0), reverse=False) # sortiranje po elemnetima i po stupcima
-    # cekanj e na glavnu funkciju 
-
+    #te = sorted(new_niz, key=itemgetter(0), reverse=False) # sortiranje po elemnetima i po stupcima
+    # cekanj e na glavnu funkciju
+    # a = Input_chose_of_sort_CLUBS_GETDataClubs_with_seasons(niz)
+    # data = np.array(a)
+    a = Input_chose_of_GetDataForLeauge_AVG_Season(new_niz)
     data = np.array(a)
     df = pd.DataFrame(data)
     df.columns = ['    Name of leauge |  ', '    Expend |  ','    Income |  ', '    Balance |  ','    number of Season |  ',
      '    sum of Arrivlas |  ','    sum of Depatrues |  ', '    avg Expend of Arrivlas |  ','    avg Income of Depatrues |  ',
      '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
+    print(df)
     ###############################################################################
     return df # function ~ 13.
 ########################################################################################################################################################################################################
@@ -553,7 +557,7 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
 def GetBYyear(DFrame):
 
     #count number of rows in date frame
-    count = NumberOfRows(DFrame)s
+    count = NumberOfRows(DFrame)
 
     #reserving the number of elements in a row
     # "0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"

@@ -73,7 +73,7 @@ def Meni_of_GetBYyear():
 
 # meni for GetDataForLeauge_AVG_Seasons
 def Meni_of_GetDataForLeauge_AVG_Seasons():
-    print(" 1 =>  Sort data BY Name of leauge") # 0
+    print(" 1 =>  Sort data BY Name of leauge") # 1
     print(" 2 =>  Sort data BY Expend") # 1
     print(" 3 =>  Sort data BY Income") # 2
     print(" 4 =>  Sort data BY Balance") # 3
@@ -84,7 +84,7 @@ def Meni_of_GetDataForLeauge_AVG_Seasons():
     print(" 9 =>  Sort data BY avg Income of Depatrues ") # 8
     print(" 10 =>  Sort data BY  avg Balance of Depatrues ") # 9
     print(" 11 =>  Sort data BY avg Expend/Season ") # 10
-    print(" 12 =>  Sort data BY avg Income/Season") # 11
-    print(" 12 =>  Sort data BY avg Balance/Season") # 12
+    print(" 12=>  Sort data BY avg Income/Season") # 11
+    print(" 13 =>  Sort data BY avg Balance/Season") # 12
     print("======>Sort  for LAUGES by year   <======")  # function ~ 4.
 ########################################################################################################################################################################################################
