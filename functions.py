@@ -150,6 +150,7 @@ def DataFrameFuncClubs(filePath):
 ###################################################################################################################################################
 
 #get average League spending for each player
+#  --> for League datas
 def GetAVGExpendFORpayerArrivals(DFrame):
 
     #count number of rows in date frame
@@ -225,6 +226,7 @@ def GetAVGExpendFORpayerArrivals(DFrame):
 ###################################################################################################################################################
 
 #get average League brutto earnings for each player
+#  --> for League datas
 def GetAVGIncomeFORpayerDepartures(DFrame):
 
     #count number of rows in date frame
@@ -295,10 +297,11 @@ def GetAVGIncomeFORpayerDepartures(DFrame):
     ###############################################################################
     # return DataFrame with head an names of collums
     print(df)
-    return df# function ~ 11.
+    return df# function ~ 12.
 ###################################################################################################################################################
 
 #get average League netto earnings for each player
+#  --> for League datas
 def GetAVGBalanceFORpayerDepartures(DFrame):
 
         #count number of rows in date frame
@@ -371,10 +374,11 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         # return DataFrame with head an names of collums
         print("GetAVGBalanceFORpayerDepartures TEST")
         print(df)
-        return df # function ~ 12.
+        return df # function ~ 13.
 ###################################################################################################################################################
 
 # get sorted data by the leauge
+#  --> for League datas
 def GetDataForLeauge_AVG_Seasons(DFrame):
 
     #count number of rows in date frame
@@ -546,10 +550,11 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
      '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
     print(df)
     ###############################################################################
-    return df # function ~ 13.
+    return df # function ~ 14.
 ###################################################################################################################################################
 
 # get avg Year Season of first 25 leuge money transaction for all Leuges ,regardless of the league, therefore, only years of all seasons together
+#  --> for League datas
 def GetBYyear(DFrame):
 
     #count number of rows in date frame
@@ -734,10 +739,11 @@ def GetBYyear(DFrame):
     ###############################################################################
     # return DataFrame with head an names of collums
     print(df)
-    return df # function ~ 14.
+    return df # function ~ 15.
 ###################################################################################################################################################
 
 # get data for clubs calculate inflacion for profit ,Income and Expend
+#  --> for Clubs datas
 def GETDataClubs_with_seasons(DFrame):
 
     #count number of rows in date frame
@@ -852,10 +858,11 @@ def GETDataClubs_with_seasons(DFrame):
 
     # return DataFrame with head an names of collums
     print(df)
-    return df # # function optimized ~ 15.
+    return df # # function optimized ~ 16.
 ###################################################################################################################################################
 
 # get data for clubs calculate inflacion for profit ,Income and Expend but for clubs for all seasons
+#  --> for Clubs data
 def GetDate_for_Clubs_throught_all_seasons(DFrame):
 
         #count number of rows in date frame
@@ -1073,5 +1080,5 @@ def GetDate_for_Clubs_throught_all_seasons(DFrame):
     ###############################################################################(
     # return DataFrame with head an names of collums
     print(df)
-    return df # function optimized ~ 16.
+    return df # function optimized ~ 17.
 ###################################################################################################################################################
