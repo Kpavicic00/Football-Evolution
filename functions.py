@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from collections import Counter
 from operator import itemgetter
 from sort_functions import*
@@ -23,20 +24,20 @@ def NumberOfRows(datFrame):
 ###################################################################################################################################################
 
 # functions_fore choose of season
-def Input_season():
+def Input_order():
     while True:
         print("\n\t Enter a year of season   : ")
-        value = input("\n\tValue between 2000 and 2018 :")
+        value = input("\n\tValue between 1 and 7 :")
         try:
            value = int(value)
         except ValueError:
            print("\n\tValid number, please !!")
            continue
-        if 2000 <= value <= 2018:
+        if 1 <= value <= 7:
            return value
            break
         else:
-           print("\n\tValue between 2000 and 2018 !!!") # function ~ 3.
+           print("\n\tValue between 1 and 7 !!!") # function ~ 3.
 ###################################################################################################################################################
 
 # function for input years interval 2000 to 2018
@@ -1081,4 +1082,201 @@ def GetDate_for_Clubs_throught_all_seasons(DFrame):
     # return DataFrame with head an names of collums
     print(df)
     return df # function optimized ~ 17.
+###################################################################################################################################################
+
+# BATCH for  specific filtring data from estraction data from function GetDate_for_Clubs_throught_all_seasons
+#  --> for Clubs data
+def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
+
+    # DataFrame to ecstract data
+    nDFRAME = GetDate_for_Clubs_throught_all_seasons(DFrame)
+
+    #count number of rows in date frame
+    count = NumberOfRows(nDFRAME)
+
+
+    #reserving the number of elements in a row
+    Order_of_Expend  = [0] * count # indx 0
+    Club = [0] * count # indx 1
+    State = [0] * count # indx 2
+    Competition =  [0] * count # indx 3
+    Expenditures = [0] * count # indx 4
+    Income = [0] * count # indx 5
+    Arrivals = [0] * count # indx 6
+    Departures = [0] * count # indx 7
+    Balance =  [0] * count # indx 8
+    inflation_Expenditure = [0] * count # indx 9
+    inflation_Income = [0] * count # indx 10
+    inflation_Balance =  [0] * count # indx 11
+
+
+    # cast DataFrame rows to folat and int
+    nDFRAME["    Order of Expend |  "].astype(np.int64)# ind 0
+    nDFRAME["    Club |  "].astype(np.str)# ind 1
+    nDFRAME["    State |  "].astype(np.str)# ind 2
+    nDFRAME["    Competition |  "].astype(np.str)# ind 3
+    nDFRAME["    Expenditures |  "].astype(np.float64)# ind 4
+    nDFRAME["    Income |  "].astype(np.float64)# ind 5
+    nDFRAME["    Arrivals |  "].astype(np.int64)# ind 6
+    nDFRAME["    Departures |  "].astype(np.int64)# ind 7
+    nDFRAME["    Balance |  "].astype(np.float64)# ind 8
+    nDFRAME["    inflation Expenditure |  "].astype(np.float64)# ind 9
+    nDFRAME[" inflation Income |  "].astype(np.float64)# ind 10
+    nDFRAME[" inflation Balance |  "].astype(np.float64)# ind 11
+    ###############################################################################
+
+    #save values from the dateframe to a arrays
+    i = 0
+    for i in range(0,count):
+
+        Order_of_Expend[i] =  nDFRAME["    Order of Expend |  "][i] # indx 0
+        Club[i] = nDFRAME["    Club |  "][i] # indx 1
+        State[i] = nDFRAME["    State |  "][i] # indx 2
+        Competition[i] = nDFRAME["    Competition |  "][i] # indx 3
+        Expenditures[i] = nDFRAME["    Expenditures |  "][i] # indx 4
+        Income[i] = nDFRAME["    Income |  "][i] # indx 5
+        Arrivals[i] = nDFRAME["    Arrivals |  "][i] # indx 6
+        Departures[i] = nDFRAME["    Departures |  "][i] # indx 7
+        Balance[i] = nDFRAME["    Balance |  "][i] # indx 8
+        inflation_Expenditure[i] = nDFRAME["    inflation Expenditure |  "][i] # indx 9
+        inflation_Income[i] = nDFRAME[" inflation Income |  "][i] # indx 10
+        inflation_Balance[i] = nDFRAME[" inflation Balance |  "][i] # indx 11
+        ###############################################################################
+
+        # conversion to numpy
+    np_Order_of_Expend = np.asarray(Order_of_Expend, dtype = 'int64') # indx 0
+    np_Club = np.asarray(Club,dtype='str')# indx 1
+    np_State = np.asarray(State,dtype='str')# indx 2
+    np_Competition = np.asarray(Competition, dtype = 'str') # indx 3
+    np_Expenditures = np.asarray(Expenditures,dtype='float64') # indx 4
+    np_Income = np.asarray(Income, dtype ='float64') # indx 5
+    np_Arrivals = np.asarray(Arrivals,dtype='int64') # indx 6
+    np_Departures = np.asarray(Departures, dtype = 'int64' ) # indx 7
+    np_Balance = np.asarray(Balance,dtype='float64') # indx 8
+    np_inflation_Expenditure = np.asarray(inflation_Expenditure, dtype = 'float64' ) # indx 9
+    np_inflation_Income = np.asarray(inflation_Income, dtype = 'float64' ) # indx 10
+    np_inflation_Balance = np.asarray(inflation_Balance, dtype = 'float64' ) # indx 11
+    ###############################################################################
+
+    # set the numpy arrays values into stack
+    a = np.stack((np_Order_of_Expend,np_Club,np_State,np_Competition,np_Expenditures,np_Income,np_Arrivals,np_Departures,np_Departures,
+    np_Balance,np_inflation_Expenditure,np_inflation_Income,np_inflation_Balance),axis= -1)
+
+    listSTATE = np_State.tolist()
+    listSTATE = remove_duplicates(listSTATE)
+    listCompetition = np_Competition.tolist()
+    listCompetition = remove_duplicates(listCompetition)
+    print("listSTATE[0]",listSTATE[2])
+    print("listSTATE[0]",listCompetition[2])
+
+    
+
+
+
+
+
+    dat1 = np.stack((np_Competition),axis= -1)
+    dat2 = np.stack((np_State),axis= -1)
+
+    data1 = np.array(dat1)
+    data2 = np.array(dat2)
+    # set to DataFrame
+    dfr1 = pd.DataFrame(data1)
+    dfr1.columns = ['Competition']
+    dfr2 = pd.DataFrame(data2)
+    dfr2.columns = ['State']
+    print("numberDATAFRAME : ")
+    print("###################################################################################################################################################")
+    print(dfr1)
+    print(dfr2)
+    print("###################################################################################################################################################")
+
+    # test sortiranja
+    bro = 0
+    vari = 'England'
+    for i in range(0,len(a)):
+        print(" prije if -a a[i][0]",str(a[i][2]),vari)
+        if str(a[i][2]) == vari :
+            bro +=1
+
+    print("bro", bro)
+    array1 = [0] * bro
+    array2 = [0] * bro
+    array3 = [0] * bro
+    array4 = [0] * bro
+    array5 = [0] * bro
+    array6 = [0] * bro
+    array7 = [0] * bro
+    array8 = [0] * bro
+    array9 = [0] * bro
+    array10 = [0] * bro
+    array11 = [0] * bro
+    array12 = [0] * bro
+
+
+
+    y = 0
+    for i in range(0,len(a)):
+        if str(a[i][2]) == 'England' :
+            if str(a[i][2]) != 0:
+                array1[y] = a[i][0]
+                array2[y] = a[i][1]
+                array3[y] = a[i][2]
+                array4[y] = a[i][3]
+                array5[y] = a[i][4]
+                array6[y] = a[i][5]
+                array7[y] = a[i][6]
+                array8[y] = a[i][7]
+                array9[y] = a[i][8]
+                array10[y] = a[i][9]
+                array11[y] = a[i][10]
+                array12[y] = a[i][11]
+                y+=1
+
+
+    #for i in range(0,len(array1)):
+        #print(array1[i],array2[i],array3[i],array4[i],array5[i],array6[i],array7[i],array8[i],array9[i],array10[i],array11[i],array12[i])
+
+    niz_N1 = [0]*bro
+    #Initialize a new array
+    np_niz1 = np.asarray(niz_N1, dtype = 'str')
+    np_niz2 = np.asarray(niz_N1, dtype = 'int64')
+    np_niz3 = np.asarray(niz_N1, dtype = 'float64')
+
+    #set arr to stack for operations with data lik sort and convert
+    new_niz = np.stack((np_niz2,np_niz1,np_niz1,np_niz1,np_niz3,np_niz3,np_niz2,np_niz2,np_niz3,np_niz3,np_niz3,np_niz3),axis= -1)
+
+    y = 0
+    for i in range(0,bro):
+        new_niz[i][0] = array1[y]
+        new_niz[i][1] = array2[y]
+        new_niz[i][2] = array3[y]
+        new_niz[i][3] = array4[y]
+        new_niz[i][4] = array5[y]
+        new_niz[i][5] = array6[y]
+        new_niz[i][6] = array7[y]
+        new_niz[i][7] = array8[y]
+        new_niz[i][8] = array9[y]
+        new_niz[i][9] = array10[y]
+        new_niz[i][10] = array11[y]
+        new_niz[i][11] = array12[y]
+        y+=1
+
+    new_data = np.array(new_niz)
+    # set to DataFrame
+    df_new = pd.DataFrame(new_data)
+    print("numberDATAFRAME : ")
+    print("###################################################################################################################################################")
+    print(df_new)
+    print("###################################################################################################################################################")
+
+
+
+    #return new_niz # function optimized ~ 18.
+###################################################################################################################################################
+
+
+# a function in python that erases repeating sequence members from the array
+def remove_duplicates(l):
+    return list(set(l)) # function optimized ~ 19.
 ###################################################################################################################################################
