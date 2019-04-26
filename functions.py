@@ -1159,8 +1159,21 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
     ###############################################################################
 
     # set the numpy arrays values into stack
-    a = np.stack((np_Order_of_Expend,np_Club,np_State,np_Competition,np_Expenditures,np_Income,np_Arrivals,np_Departures,np_Departures,
+    a = np.stack((np_Order_of_Expend,np_Club,np_State,np_Competition,np_Expenditures,np_Income,np_Arrivals,np_Departures,
     np_Balance,np_inflation_Expenditure,np_inflation_Income,np_inflation_Balance),axis= -1)
+
+    a_data = np.array(a)
+    # set to DataFrame
+    df_a = pd.DataFrame(a_data)
+
+    # name of labels for head or names of collums
+    df_a.columns = ['    Order of Expend |  ', '    Club |  ','    State |  ', '    Competition |  ','    Expenditures |  ',
+     '    Income |  ','    Arrivals |  ', '    Departures |  ','    Balance |  ',
+     '    inflation Expenditure |  ',' inflation Income |  ',' inflation Balance |  ']
+    print("###################################################################################################################################################")
+    print(df_a)
+    print("###################################################################################################################################################")
+
 
     listSTATE = np_State.tolist()
     listSTATE = remove_duplicates(listSTATE)
@@ -1245,39 +1258,19 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
         else:
             print("\n\tValue between 1 or  2  !!!")
 
-    print(" prvi test ->>> flagTemp",flagTemp)
 
-    # dat1 = np.stack((np_Competition),axis= -1)
-    # dat2 = np.stack((np_State),axis= -1)
-    #
-    # data1 = np.array(dat1)
-    # data2 = np.array(dat2)
-    # # set to DataFrame
-    # dfr1 = pd.DataFrame(data1)
-    # dfr1.columns = ['Competition']
-    # dfr2 = pd.DataFrame(data2)
-    # dfr2.columns = ['State']
-    # print("numberDATAFRAME : ")
-    # print("###################################################################################################################################################")
-    # print(dfr1)
-    # print(dfr2)
-    # print("###################################################################################################################################################")
 
     # test sortiranja
     bro = 0
-    print("flag == 1",flag)
+
     if flag == 1:
         for i in range(0,len(a)):
-            print("flagTemp",flagTemp)
             if str(a[i][2]) == flagTemp :
-                print("str(a[i][2]) == flagTemp ",str(a[i][2]),flagTemp )
                 bro +=1
-    print("flag == 2",flag)
+
     if flag == 2:
         for i in range(0,len(a)):
-            print("flagTemp",flagTemp)
             if str(a[i][3]) == flagTemp :
-                print("str(a[i][3]) == flagTemp ",str(a[i][3]),flagTemp )
                 bro +=1
 
     array1 = [0] * bro
@@ -1292,7 +1285,6 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
     array10 = [0] * bro
     array11 = [0] * bro
     array12 = [0] * bro
-
 
 
     y = 0
@@ -1329,11 +1321,6 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
                 array11[y] = a[i][10]
                 array12[y] = a[i][11]
                 y+=1
-
-
-
-    #for i in range(0,len(array1)):
-        #print(array1[i],array2[i],array3[i],array4[i],array5[i],array6[i],array7[i],array8[i],array9[i],array10[i],array11[i],array12[i])
 
     niz_N1 = [0]*bro
     #Initialize a new array
@@ -1363,14 +1350,16 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
     new_data = np.array(new_niz)
     # set to DataFrame
     df_new = pd.DataFrame(new_data)
+    # name of labels for head or names of collums
+    df_new.columns = ['    Order of Expend |  ', '    Club |  ','    State |  ', '    Competition |  ','    Expenditures |  ',
+     '    Income |  ','    Arrivals |  ', '    Departures |  ','    Balance |  ',
+     '    inflation Expenditure |  ',' inflation Income |  ',' inflation Balance |  ']
     print("numberDATAFRAME : ")
     print("###################################################################################################################################################")
     print(df_new)
     print("###################################################################################################################################################")
 
-
-
-    #return new_niz # function optimized ~ 18.
+    return df_new # function optimized ~ 18.
 ###################################################################################################################################################
 
 
