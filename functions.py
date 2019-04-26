@@ -1166,40 +1166,120 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
     listSTATE = remove_duplicates(listSTATE)
     listCompetition = np_Competition.tolist()
     listCompetition = remove_duplicates(listCompetition)
-    print("listSTATE[0]",listSTATE[2])
-    print("listSTATE[0]",listCompetition[2])
 
-    
+    ###############################
+    flag = 0
+    flagTemp = '0'
 
+    while True:
+        print("\n")
+        print("\n\t Chose a option of proces data by State or Competition  : ")
+        print("\t 1 -> State ! ")
+        print("\t 2 -> Competition ! ")
+        value = input("\n\tValue between 1 or  2  : ")
+        print("\n")
+        try:
+           value = int(value)
+        except ValueError:
+           print("\n")
+           print("\n\tValid options, please !!")
+           continue
+        if value == 1:
+            flag = 1
+            ###############################################################################
+            # drzave
+            cont_state = 0
+            print("###############################################################################")
+            print("\t Meni  State!!!")
+            #cont_state = 0
+            for i in range(0,len(listSTATE)):
+                print(i+1,". : ",listSTATE[i])
+                cont_state += 1
+            print("###############################################################################")
+            while True:
+                print("\n\t Enter State   between 0 and ",cont_state," : ")
+                value = input("\n\tValue : " )
+                value =value -1
+                try:
+                   value = (value)
+                except ValueError:
+                    print("\n\tValid number, please !!")
+                    continue
+                if 0 <= value <= cont_state:
+                    print("listCompetition[value]",listSTATE[value])
+                    flagTemp =  str(listSTATE[value])
+                    break
+                else:
+                   print("\n\tValue between bounds :")
+            break
+            ###############################################################################
+        elif value == 2:
+            flag = 2
+            ###############################################################################
+            cont_Compe = 0
+            print("###############################################################################")
+            print("\t Meni  Competition!!!")
+            #cont_Compe = 0
+            for i in range(0,len(listCompetition)):
+                print(i+1,". : ",listCompetition[i])
+                cont_Compe += 1
+            print("###############################################################################")
 
+            while True:
+                print("\n\t Enter Competition   between 0 and ",cont_Compe," : ")
+                value = input("\n\tValue : " )
+                value =value -1
+                try:
+                   value = (value)
+                except ValueError:
+                    print("\n\tValid number, please !!")
+                    continue
+                if 0 <= value <= cont_Compe:
+                    print("listCompetition[value]",listCompetition[value])
+                    flagTemp =  str(listCompetition[value])
+                    break
+                else:
+                   print("\n\tValue between 1 and ",cont_Compe," :")
+            break
+            ###############################################################################
+        else:
+            print("\n\tValue between 1 or  2  !!!")
 
+    print(" prvi test ->>> flagTemp",flagTemp)
 
-
-    dat1 = np.stack((np_Competition),axis= -1)
-    dat2 = np.stack((np_State),axis= -1)
-
-    data1 = np.array(dat1)
-    data2 = np.array(dat2)
-    # set to DataFrame
-    dfr1 = pd.DataFrame(data1)
-    dfr1.columns = ['Competition']
-    dfr2 = pd.DataFrame(data2)
-    dfr2.columns = ['State']
-    print("numberDATAFRAME : ")
-    print("###################################################################################################################################################")
-    print(dfr1)
-    print(dfr2)
-    print("###################################################################################################################################################")
+    # dat1 = np.stack((np_Competition),axis= -1)
+    # dat2 = np.stack((np_State),axis= -1)
+    #
+    # data1 = np.array(dat1)
+    # data2 = np.array(dat2)
+    # # set to DataFrame
+    # dfr1 = pd.DataFrame(data1)
+    # dfr1.columns = ['Competition']
+    # dfr2 = pd.DataFrame(data2)
+    # dfr2.columns = ['State']
+    # print("numberDATAFRAME : ")
+    # print("###################################################################################################################################################")
+    # print(dfr1)
+    # print(dfr2)
+    # print("###################################################################################################################################################")
 
     # test sortiranja
     bro = 0
-    vari = 'England'
-    for i in range(0,len(a)):
-        print(" prije if -a a[i][0]",str(a[i][2]),vari)
-        if str(a[i][2]) == vari :
-            bro +=1
+    print("flag == 1",flag)
+    if flag == 1:
+        for i in range(0,len(a)):
+            print("flagTemp",flagTemp)
+            if str(a[i][2]) == flagTemp :
+                print("str(a[i][2]) == flagTemp ",str(a[i][2]),flagTemp )
+                bro +=1
+    print("flag == 2",flag)
+    if flag == 2:
+        for i in range(0,len(a)):
+            print("flagTemp",flagTemp)
+            if str(a[i][3]) == flagTemp :
+                print("str(a[i][3]) == flagTemp ",str(a[i][3]),flagTemp )
+                bro +=1
 
-    print("bro", bro)
     array1 = [0] * bro
     array2 = [0] * bro
     array3 = [0] * bro
@@ -1216,9 +1296,9 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
 
 
     y = 0
-    for i in range(0,len(a)):
-        if str(a[i][2]) == 'England' :
-            if str(a[i][2]) != 0:
+    if flag == 1:
+        for i in range(0,len(a)):
+            if str(a[i][2]) == flagTemp :
                 array1[y] = a[i][0]
                 array2[y] = a[i][1]
                 array3[y] = a[i][2]
@@ -1232,6 +1312,24 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
                 array11[y] = a[i][10]
                 array12[y] = a[i][11]
                 y+=1
+
+    if flag == 2:
+        for i in range(0,len(a)):
+            if str(a[i][3]) == flagTemp :
+                array1[y] = a[i][0]
+                array2[y] = a[i][1]
+                array3[y] = a[i][2]
+                array4[y] = a[i][3]
+                array5[y] = a[i][4]
+                array6[y] = a[i][5]
+                array7[y] = a[i][6]
+                array8[y] = a[i][7]
+                array9[y] = a[i][8]
+                array10[y] = a[i][9]
+                array11[y] = a[i][10]
+                array12[y] = a[i][11]
+                y+=1
+
 
 
     #for i in range(0,len(array1)):
