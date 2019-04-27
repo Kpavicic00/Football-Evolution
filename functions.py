@@ -14,14 +14,14 @@ coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 def WriteTOcsvFILE(csv_file,dat,head):
     np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=head, footer='     => End of file <=')
     print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
-###################################################################################################################################################
+#######################################################################################################################################
 
 #function count number of rows for specific DateFrame
 def NumberOfRows(datFrame):
     total_rows = len(datFrame)
     #print("Total rows : ", total_rows )
     return  total_rows # function ~ 2.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # functions_fore choose of season
 def Input_order():
@@ -38,7 +38,7 @@ def Input_order():
            break
         else:
            print("\n\tValue between 1 and 7 !!!") # function ~ 3.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # function for input years interval 2000 to 2018
 def Input_year():
@@ -55,7 +55,7 @@ def Input_year():
            break
         else:
            print("\n\tValue between 2000 and 2018 !!!") # function ~ 4.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # print the txt file
 def printFile(data):
@@ -63,7 +63,7 @@ def printFile(data):
     f = open(data, "r")
     print(f.read())
     f.close() # function ~ 5.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # function  count the length of lines for the required size allocation of the string
 def file_lengthy(fname):
@@ -71,7 +71,7 @@ def file_lengthy(fname):
         for i ,j in enumerate (f):
             pass
         return i +1 # function ~ 6.
-###################################################################################################################################################
+#######################################################################################################################################
 
 #function get Coefients for specific year
 def GETCoefficients(files,year):
@@ -103,7 +103,7 @@ def GETCoefficients(files,year):
     #print("\n\t You have chosen a year :  ",i)
 
     return np_specific_coefficient # function ~ 7.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # picking up and dealing with the data in terms of coefficients
 def Coefficients(files):
@@ -134,21 +134,21 @@ def Coefficients(files):
     np_specific_coefficient = np_koef[np_years == i]
     #print("\n\t You have chosen a year :  ",i)
     return np_specific_coefficient # function ~ 8.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # takes data with pandas function DataFrame
 def DataFrameFunc(filePath):
     colls = ["0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat # function ~ 9.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # takes data with pandas function DataFrame for Clubs datas
 def DataFrameFuncClubs(filePath):
     colls = ["Order","Club","State","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat # function ~ 10.
-###################################################################################################################################################
+#######################################################################################################################################
 
 #get average League spending for each player
 #  --> for League datas
@@ -224,7 +224,7 @@ def GetAVGExpendFORpayerArrivals(DFrame):
     # return DataFrame with head an names of collums
     print(df)
     return df # function ~ 11.
-###################################################################################################################################################
+#######################################################################################################################################
 
 #get average League brutto earnings for each player
 #  --> for League datas
@@ -299,7 +299,7 @@ def GetAVGIncomeFORpayerDepartures(DFrame):
     # return DataFrame with head an names of collums
     print(df)
     return df# function ~ 12.
-###################################################################################################################################################
+#######################################################################################################################################
 
 #get average League netto earnings for each player
 #  --> for League datas
@@ -376,7 +376,7 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         print("GetAVGBalanceFORpayerDepartures TEST")
         print(df)
         return df # function ~ 13.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # get sorted data by the leauge
 #  --> for League datas
@@ -552,7 +552,7 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
     print(df)
     ###############################################################################
     return df # function ~ 14.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # get avg Year Season of first 25 leuge money transaction for all Leuges ,regardless of the league, therefore, only years of all seasons together
 #  --> for League datas
@@ -741,7 +741,7 @@ def GetBYyear(DFrame):
     # return DataFrame with head an names of collums
     print(df)
     return df # function ~ 15.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # get data for clubs calculate inflacion for profit ,Income and Expend
 #  --> for Clubs datas
@@ -860,7 +860,7 @@ def GETDataClubs_with_seasons(DFrame):
     # return DataFrame with head an names of collums
     print(df)
     return df # # function optimized ~ 16.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # get data for clubs calculate inflacion for profit ,Income and Expend but for clubs for all seasons
 #  --> for Clubs data
@@ -1082,7 +1082,7 @@ def GetDate_for_Clubs_throught_all_seasons(DFrame):
     # return DataFrame with head an names of collums
     print(df)
     return df # function optimized ~ 17.
-###################################################################################################################################################
+#######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GetDate_for_Clubs_throught_all_seasons
 #  --> for Clubs data
@@ -1143,7 +1143,7 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
         inflation_Balance[i] = nDFRAME[" inflation Balance |  "][i] # indx 11
         ###############################################################################
 
-        # conversion to numpy
+    # conversion to numpy
     np_Order_of_Expend = np.asarray(Order_of_Expend, dtype = 'int64') # indx 0
     np_Club = np.asarray(Club,dtype='str')# indx 1
     np_State = np.asarray(State,dtype='str')# indx 2
@@ -1161,26 +1161,35 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
     # set the numpy arrays values into stack
     a = np.stack((np_Order_of_Expend,np_Club,np_State,np_Competition,np_Expenditures,np_Income,np_Arrivals,np_Departures,
     np_Balance,np_inflation_Expenditure,np_inflation_Income,np_inflation_Balance),axis= -1)
+    ###############################################################################
 
+    # convert from stack with values to data for dataFrame
     a_data = np.array(a)
     # set to DataFrame
     df_a = pd.DataFrame(a_data)
-
     # name of labels for head or names of collums
     df_a.columns = ['    Order of Expend |  ', '    Club |  ','    State |  ', '    Competition |  ','    Expenditures |  ',
      '    Income |  ','    Arrivals |  ', '    Departures |  ','    Balance |  ',
      '    inflation Expenditure |  ',' inflation Income |  ',' inflation Balance |  ']
-    print("###################################################################################################################################################")
+    ###############################################################################
+
+    print("################################################################################################################")
     print(df_a)
-    print("###################################################################################################################################################")
+    print("################################################################################################################")
 
-
+    # convert data from numpay ndarray to list and remove duplicates elemtes of list for states
     listSTATE = np_State.tolist()
     listSTATE = remove_duplicates(listSTATE)
+
+    # convert data from numpay ndarray to list and remove duplicates elemtes of list for Competition
     listCompetition = np_Competition.tolist()
     listCompetition = remove_duplicates(listCompetition)
+    ###############################################################################
 
-    ###############################
+    # a function in which a user selects a choice of country or championship,
+    # and chooses the name of the state or championship after which the data is printed
+
+    # temporary variables that note the value the ticker chooses
     flag = 0
     flagTemp = '0'
 
@@ -1219,7 +1228,7 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
                     print("\n\tValid number, please !!")
                     continue
                 if 0 <= value <= cont_state:
-                    print("listCompetition[value]",listSTATE[value])
+                    print("You Chose : ",listSTATE[value])
                     flagTemp =  str(listSTATE[value])
                     break
                 else:
@@ -1248,7 +1257,7 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
                     print("\n\tValid number, please !!")
                     continue
                 if 0 <= value <= cont_Compe:
-                    print("listCompetition[value]",listCompetition[value])
+                    print("You Chose : ",listCompetition[value])
                     flagTemp =  str(listCompetition[value])
                     break
                 else:
@@ -1257,22 +1266,27 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
             ###############################################################################
         else:
             print("\n\tValue between 1 or  2  !!!")
+    #######################################################################################################################################
 
+    #count number of rows in date frame
+    count = NumberOfRows(nDFRAME)
 
-
-    # test sortiranja
+    # temp var for count number of roew for dynamic reserving
     bro = 0
 
+    # count number of rows in date frame
     if flag == 1:
         for i in range(0,len(a)):
             if str(a[i][2]) == flagTemp :
                 bro +=1
-
+    ###############################################################################
+    # count number of rows in date frame
     if flag == 2:
         for i in range(0,len(a)):
             if str(a[i][3]) == flagTemp :
                 bro +=1
-
+    ###############################################################################
+    # reserving the number of elements in a row
     array1 = [0] * bro
     array2 = [0] * bro
     array3 = [0] * bro
@@ -1285,8 +1299,11 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
     array10 = [0] * bro
     array11 = [0] * bro
     array12 = [0] * bro
+    ###############################################################################
 
-
+    # temporarily storing data from a numpy array into a
+    # common array to allocate as many places as you need to avoid empty places in the DataFrame
+    # storing data from State user chose options
     y = 0
     if flag == 1:
         for i in range(0,len(a)):
@@ -1304,7 +1321,11 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
                 array11[y] = a[i][10]
                 array12[y] = a[i][11]
                 y+=1
+    ###############################################################################
 
+    # temporarily storing data from a numpy array into a
+    # common array to allocate as many places as you need to avoid empty places in the DataFrame
+    # storing data from Competition user chose options
     if flag == 2:
         for i in range(0,len(a)):
             if str(a[i][3]) == flagTemp :
@@ -1321,7 +1342,9 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
                 array11[y] = a[i][10]
                 array12[y] = a[i][11]
                 y+=1
+    ###############################################################################
 
+    # reserving the number of elements in a row
     niz_N1 = [0]*bro
     #Initialize a new array
     np_niz1 = np.asarray(niz_N1, dtype = 'str')
@@ -1330,7 +1353,9 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
 
     #set arr to stack for operations with data lik sort and convert
     new_niz = np.stack((np_niz2,np_niz1,np_niz1,np_niz1,np_niz3,np_niz3,np_niz2,np_niz2,np_niz3,np_niz3,np_niz3,np_niz3),axis= -1)
+    #######################################################################################################################################
 
+    # relocating data from temporary arrays to numpy arrays
     y = 0
     for i in range(0,bro):
         new_niz[i][0] = array1[y]
@@ -1346,7 +1371,9 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
         new_niz[i][10] = array11[y]
         new_niz[i][11] = array12[y]
         y+=1
+    ###############################################################################
 
+    # convert from stack with values to data for dataFrame
     new_data = np.array(new_niz)
     # set to DataFrame
     df_new = pd.DataFrame(new_data)
@@ -1354,16 +1381,14 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
     df_new.columns = ['    Order of Expend |  ', '    Club |  ','    State |  ', '    Competition |  ','    Expenditures |  ',
      '    Income |  ','    Arrivals |  ', '    Departures |  ','    Balance |  ',
      '    inflation Expenditure |  ',' inflation Income |  ',' inflation Balance |  ']
-    print("numberDATAFRAME : ")
     print("###################################################################################################################################################")
     print(df_new)
     print("###################################################################################################################################################")
 
     return df_new # function optimized ~ 18.
-###################################################################################################################################################
-
+#######################################################################################################################################
 
 # a function in python that erases repeating sequence members from the array
 def remove_duplicates(l):
     return list(set(l)) # function optimized ~ 19.
-###################################################################################################################################################
+#######################################################################################################################################
