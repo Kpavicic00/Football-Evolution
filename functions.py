@@ -152,7 +152,7 @@ def DataFrameFuncClubs(filePath):
 
 #get average League spending for each player
 #  --> for League datas
-def GetAVGExpendFORplayerrArrivals(DFrame):
+def GetAVGExpendFORplayerArrivals(DFrame):
 
     #count number of rows in date frame
     count = NumberOfRows(DFrame)
@@ -213,7 +213,7 @@ def GetAVGExpendFORplayerrArrivals(DFrame):
     #a = sorted(niz, key=itemgetter(2), reverse=False)
     a = sorted(niz,key=lambda niz: float(niz[3]), reverse=True)
     ###############################################################################
-    a = Input_chose_of_GetAVGExpendFORpayerArrivals(niz)
+    a = Input_chose_of_GetAVGExpendFORplayerArrivals(niz)
     # convert from stack with values to data for dataFrame
     data = np.array(a)
     # set to DataFrame
@@ -288,7 +288,7 @@ def GetAVGIncomeFORplayerDepartures(DFrame):
     niz = np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
 
     ###############################################################################
-    a = Input_chose_of_GetAVGIncomeFORpayerDepartures(niz)
+    a = Input_chose_of_GetAVGIncomeFORplayerDepartures(niz)
     # convert from stack with values to data for dataFrame
     data = np.array(a)
     # set to DataFrame
@@ -303,7 +303,7 @@ def GetAVGIncomeFORplayerDepartures(DFrame):
 
 #get average League netto earnings for each player
 #  --> for League datas
-def GetAVGBalanceFORpayerDepartures(DFrame):
+def GetAVGBalanceFORplayerDepartures(DFrame):
 
         #count number of rows in date frame
         count = NumberOfRows(DFrame)
@@ -364,7 +364,7 @@ def GetAVGBalanceFORpayerDepartures(DFrame):
         niz = np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
 
         ###############################################################################
-        a = Input_chose_of_GetAVGBalanceFORpayerDepartures(niz)
+        a = Input_chose_of_GetAVGBalanceFORplayerDepartures(niz)
         # set to DataFrame
         data = np.array(a)
         # set to DataFrame
