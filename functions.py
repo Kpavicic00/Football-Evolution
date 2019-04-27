@@ -152,7 +152,7 @@ def DataFrameFuncClubs(filePath):
 
 #get average League spending for each player
 #  --> for League datas
-def GetAVGExpendFORpayerArrivals(DFrame):
+def GetAVGExpendFORplayerrArrivals(DFrame):
 
     #count number of rows in date frame
     count = NumberOfRows(DFrame)
@@ -228,7 +228,7 @@ def GetAVGExpendFORpayerArrivals(DFrame):
 
 #get average League brutto earnings for each player
 #  --> for League datas
-def GetAVGIncomeFORpayerDepartures(DFrame):
+def GetAVGIncomeFORplayerDepartures(DFrame):
 
     #count number of rows in date frame
     count = NumberOfRows(DFrame)
@@ -1081,7 +1081,7 @@ def GetDate_for_Clubs_throught_all_seasons(DFrame):
     ###############################################################################(
     # return DataFrame with head an names of collums
     print(df)
-    return df # function optimized ~ 17.
+    return df # function FULL -> BATCH optimized ~ 17.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GetDate_for_Clubs_throught_all_seasons
@@ -1385,7 +1385,7 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
     print(df_new)
     print("###################################################################################################################################################")
 
-    return df_new # function optimized ~ 18.
+    return df_new # function FULL optimized ~ 18.
 #######################################################################################################################################
 
 # a function in python that erases repeating sequence members from the array

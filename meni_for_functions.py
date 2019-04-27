@@ -98,9 +98,10 @@ def Meni_of_GetDataForLeauge_AVG_Seasons():
     print("\n")# function ~ 4.
 ###################################################################################################################################################
 
-def Meni_of_GetAVGBalanceFORpayerDepartures():
+# meni for GetAVGBalanceFORplayerDepartures
+def Meni_of_GetAVGBalanceFORplayerDepartures():
     print("\n")
-    print("\t======> Sort  for GetAVGBalanceFORpayerDepartures   <======")
+    print("\t======> Sort  for GetAVGBalanceFORplayerDepartures   <======")
     print("\t 1 =>  Sort data BY Name of League") # 0
     print("\t 2 =>  Sort data BY Year of Season") # 1
     print("\t 3 =>  Sort data BY Nationality") # 2
@@ -110,9 +111,10 @@ def Meni_of_GetAVGBalanceFORpayerDepartures():
     print("\n")# function ~ 5.
 ###################################################################################################################################################
 
-def Meni_of_GetAVGIncomeFORpayerDepartures():
+# meni for GetAVGIncomeFORplayerDepartures
+def Meni_of_GetAVGIncomeFORplayerDepartures():
     print("\n")
-    print("\t======> Sort  for GetAVGBalanceFORpayerDepartures   <======")
+    print("\t======> Sort  for GetAVGIncomeFORplayerDepartures   <======")
     print("\t 1 =>  Sort data BY Name of League") # 0
     print("\t 2 =>  Sort data BY Year of Season") # 1
     print("\t 3 =>  Sort data BY Nationality") # 2
@@ -122,8 +124,9 @@ def Meni_of_GetAVGIncomeFORpayerDepartures():
     print("\n")# function ~ 6.
 ###################################################################################################################################################
 
-def Meni_of_GetAVGExpendFORpayerArrivals():
-    print("\t======> Sort  for GetAVGBalanceFORpayerDepartures   <======")
+# meni for GetAVGBalanceFORplayerDepartures
+def Meni_of_GetAVGExpendFORplayerArrivals():
+    print("\t======> Sort  for GetAVGBalanceFORplayerDepartures   <======")
     print("\t 1 =>  Sort data BY Name of League") # 0
     print("\t 2 =>  Sort data BY Year of Season") # 1
     print("\t 3 =>  Sort data BY Nationality") # 2

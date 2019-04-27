@@ -515,12 +515,12 @@ def Input_chose_of_GetBYyear(new_niz):
 # for clubs Club_statstic for batch GetAVGBalanceFORpayerDepartures
 # take the chose of sort and return the sort of specific collum
 
-def Input_chose_of_GetAVGBalanceFORpayerDepartures(new_niz):
+def Input_chose_of_GetAVGBalanceFORplayerDepartures(new_niz):
     while True:
         print("\n")
         print("\n\t Chose a option of sorting   : ")
         print("\n")
-        Meni_of_GetAVGBalanceFORpayerDepartures()
+        Meni_of_GetAVGBalanceFORplayerDepartures()
         value = input("\n\tValue between 1 and 5 : ")
         print("\n")
 
@@ -530,7 +530,7 @@ def Input_chose_of_GetAVGBalanceFORpayerDepartures(new_niz):
            print("\n")
            print("\n\tValid options, please !!")
            print("\n")
-           Meni_of_GetAVGBalanceFORpayerDepartures()
+           Meni_of_GetAVGBalanceFORplayerDepartures()
            continue
         if value == 1:
            print("\n")
@@ -581,12 +581,12 @@ def Input_chose_of_GetAVGBalanceFORpayerDepartures(new_niz):
 # for clubs Club_statstic for batch GetAVGIncomeFORpayerDepartures
 # take the chose of sort and return the sort of specific collum
 
-def Input_chose_of_GetAVGIncomeFORpayerDepartures(new_niz):
+def Input_chose_of_GetAVGIncomeFORplayerDepartures(new_niz):
     while True:
         print("\n")
         print("\n\t Chose a option of sorting   : ")
         print("\n")
-        Meni_of_GetAVGIncomeFORpayerDepartures()
+        Meni_of_GetAVGIncomeFORplayerDepartures()
         value = input("\n\tValue between 1 and 5 : ")
         print("\n")
 
@@ -596,7 +596,7 @@ def Input_chose_of_GetAVGIncomeFORpayerDepartures(new_niz):
            print("\n")
            print("\n\tValid options, please !!")
            print("\n")
-           Meni_of_GetAVGIncomeFORpayerDepartures()
+           Meni_of_GetAVGIncomeFORplayerDepartures()
            print("\n")
            continue
         if value == 1:
@@ -648,12 +648,12 @@ def Input_chose_of_GetAVGIncomeFORpayerDepartures(new_niz):
 # for clubs Club_statstic for batch GetAVGExpendFORpayerArrival
 # take the chose of sort and return the sort of specific collum
 
-def Input_chose_of_GetAVGExpendFORpayerArrivals(new_niz):
+def Input_chose_of_GetAVGExpendFORplayerArrivals(new_niz):
     while True:
         print("\n")
         print("\n\t Chose a option of sorting   : ")
         print("\n")
-        Meni_of_GetAVGExpendFORpayerArrivals()
+        Meni_of_GetAVGExpendFORplayerArrivals()
         value = input("\n\tValue between 1 and 5 : ")
         print("\n")
 
@@ -662,7 +662,7 @@ def Input_chose_of_GetAVGExpendFORpayerArrivals(new_niz):
         except ValueError:
            print("\n")
            print("\n\tValid options, please !!")
-           Meni_of_GetAVGExpendFORpayerArrivals()
+           Meni_of_GetAVGExpendFORplayerArrivals()
            print("\n")
            continue
         if value == 1:

@@ -15,7 +15,7 @@ import sys
 # csv , txt files for datas
 fail_pathclubs = '/home/kristijan/github/FootballEvolcion/Datas/test_podaci_klubovi.csv'
 fp_clubs = '/home/kristijan/github/FootballEvolcion/Datas/Club_statstic.csv'
-fp = '/home/kristijan/github/FootballEvolcion/Datas/testni_podaci.csv'
+fp_league = '/home/kristijan/github/FootballEvolcion/Datas/testni_podaci.csv'
 filePath ='/home/kristijan/github/FootballEvolcion/Datas/TEST_CSV.csv'
 koef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 data = "/home/kristijan/github/FootballEvolcion/Datas/datas.txt"
@@ -31,9 +31,11 @@ save_csv_f = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Pa
 save_csv_g = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_g.csv'
 save_csv_h = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_h.csv'
 
-dt = DataFrameFuncClubs(fail_pathclubs) # season
-BATCH_for_GetDate_for_Clubs_throught_all_seasons(dt)
+#dt = DataFrameFuncClubs(fail_pathclubs) # season
+#GETDataClubs_with_seasons(dt)
 
+dt_leauges = DataFrameFunc(fp_league)
+GetAVGExpendFORplayerArrivals(dt_leauges)
 # print("\tGetBYyear")
 # GetBYyear(dt)
 # print("########################################################")
