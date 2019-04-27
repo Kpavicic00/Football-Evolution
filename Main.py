@@ -31,24 +31,5 @@ save_csv_f = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Pa
 save_csv_g = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_g.csv'
 save_csv_h = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_h.csv'
 
-#dt = DataFrameFuncClubs(fail_pathclubs) # season
-#GETDataClubs_with_seasons(dt)
-
-dt_leauges = DataFrameFunc(fp_league)
-GetAVGExpendFORplayerArrivals(dt_leauges)
-# print("\tGetBYyear")
-# GetBYyear(dt)
-# print("########################################################")
-# print("\tGetDataForLeauge_AVG_Seasons")
-# GetDataForLeauge_AVG_Seasons(dt)
-# print("########################################################")
-# print("\tGetAVGBalanceFORpayerDepartures")
-# GetAVGBalanceFORpayerDepartures(dt)
-# print("########################################################")
-# print("\tGetAVGIncomeFORpayerDepartures")
-# GetAVGIncomeFORpayerDepartures(dt)
-# print("########################################################")
-# print("\tGetAVGExpendFORpayerArrivals")
-# GetAVGExpendFORpayerArrivals(dt)
-# print("########################################################")
-#
+dt = DataFrameFuncClubs(fail_pathclubs) # season
+BATCH_for_GETDataClubs_with_seasons(dt)
