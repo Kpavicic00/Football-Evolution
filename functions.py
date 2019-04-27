@@ -494,7 +494,7 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
                 except ValueError:
                     print("\n\tValid number, please !!")
                     continue
-                if 0 <= value <= cont_LEAUGE:
+                if 0 <= value <= cont_CLUB:
                     print("You Chose : ",listLEAUGE[value])
                     flagTemp =  str(listLEAUGE[value])
                     break
@@ -2021,21 +2021,28 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     # CLUB
     if flag == 1:
         for i in range(0,len(a)):
-            if str(a[i][0]) == flagTemp :
+            if str(a[i][1]) == flagTemp :
                 bro +=1
     ###############################################################################
     # count number of rows in date frame
     # STATE
     if flag == 2:
         for i in range(0,len(a)):
-            if int(a[i][1]) == flagTemp :
+            if str(a[i][2]) == flagTemp :
                 bro +=1
     ###############################################################################
     # count number of rows in date frame
     # COMPETITION
     if flag == 3:
         for i in range(0,len(a)):
-            if str(a[i][2]) == flagTemp :
+            if str(a[i][3]) == flagTemp :
+                bro +=1
+    ###############################################################################
+    # count number of rows in date frame
+    # SESAON
+    if flag == 4:
+        for i in range(0,len(a)):
+            if int(a[i][9]) == flagTemp :
                 bro +=1
     ###############################################################################
     #######################################################################################################################################
@@ -2045,6 +2052,14 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     array3 = [0] * bro
     array4 = [0] * bro
     array5 = [0] * bro
+    array6 = [0] * bro
+    array7 = [0] * bro
+    array8 = [0] * bro
+    array9 = [0] * bro
+    array10 = [0] * bro
+    array11 = [0] * bro
+    array12 = [0] * bro
+    array13 = [0] * bro
     ###############################################################################
 
     y = 0
@@ -2054,12 +2069,20 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     # CLUB
     if flag == 1:
         for i in range(0,len(a)):
-            if str(a[i][0]) == flagTemp :
+            if str(a[i][1]) == flagTemp :
                 array1[y] = a[i][0]
                 array2[y] = a[i][1]
                 array3[y] = a[i][2]
                 array4[y] = a[i][3]
                 array5[y] = a[i][4]
+                array6[y] = a[i][5]
+                array7[y] = a[i][6]
+                array8[y] = a[i][7]
+                array9[y] = a[i][8]
+                array10[y] = a[i][9]
+                array11[y] = a[i][10]
+                array12[y] = a[i][11]
+                array13[y] = a[i][12]
                 y+=1
     ###############################################################################
 
@@ -2069,12 +2092,20 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     # STATE
     if flag == 2:
         for i in range(0,len(a)):
-            if str(a[i][1]) == flagTemp :
+            if str(a[i][2]) == flagTemp :
                 array1[y] = a[i][0]
                 array2[y] = a[i][1]
                 array3[y] = a[i][2]
                 array4[y] = a[i][3]
                 array5[y] = a[i][4]
+                array6[y] = a[i][5]
+                array7[y] = a[i][6]
+                array8[y] = a[i][7]
+                array9[y] = a[i][8]
+                array10[y] = a[i][9]
+                array11[y] = a[i][10]
+                array12[y] = a[i][11]
+                array13[y] = a[i][12]
                 y+=1
     ###############################################################################
 
@@ -2084,16 +2115,45 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     # COMPETITION
     if flag == 3:
         for i in range(0,len(a)):
-            if str(a[i][2]) == flagTemp :
+            if str(a[i][3]) == flagTemp :
                 array1[y] = a[i][0]
                 array2[y] = a[i][1]
                 array3[y] = a[i][2]
                 array4[y] = a[i][3]
                 array5[y] = a[i][4]
+                array6[y] = a[i][5]
+                array7[y] = a[i][6]
+                array8[y] = a[i][7]
+                array9[y] = a[i][8]
+                array10[y] = a[i][9]
+                array11[y] = a[i][10]
+                array12[y] = a[i][11]
+                array13[y] = a[i][12]
                 y+=1
     ###############################################################################
 
-
+    # temporarily storing data from a numpy array into a
+    # common array to allocate as many places as you need to avoid empty places in the DataFrame
+    # storing data from Competition user chose options
+    # SESAON
+    if flag == 4:
+        for i in range(0,len(a)):
+            if str(a[i][9]) == flagTemp :
+                array1[y] = a[i][0]
+                array2[y] = a[i][1]
+                array3[y] = a[i][2]
+                array4[y] = a[i][3]
+                array5[y] = a[i][4]
+                array6[y] = a[i][5]
+                array7[y] = a[i][6]
+                array8[y] = a[i][7]
+                array9[y] = a[i][8]
+                array10[y] = a[i][9]
+                array11[y] = a[i][10]
+                array12[y] = a[i][11]
+                array13[y] = a[i][12]
+                y+=1
+    ###############################################################################
 
     # reserving the number of elements in a row
     niz_N1 = [0]*bro
@@ -2103,7 +2163,7 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     np_niz3 = np.asarray(niz_N1, dtype = 'float64')
 
     #set arr to stack for operations with data lik sort and convert
-    new_niz = np.stack((np_niz1,np_niz2,np_niz1,np_niz3,np_niz3),axis= -1)
+    new_niz = np.stack((np_niz2,np_niz1,np_niz1,np_niz1,np_niz3,np_niz2,np_niz3,np_niz2,np_niz3,np_niz2,np_niz3,np_niz3,np_niz3),axis= -1)
     #######################################################################################################################################
 
     # relocating data from temporary arrays to numpy arrays
