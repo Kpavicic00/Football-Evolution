@@ -743,6 +743,259 @@ def GetBYyear(DFrame):
     return df # function ~ 15.
 #######################################################################################################################################
 
+# BATCH for  specific filtring data from estraction data from function GetDate_for_Clubs_throught_all_seasons
+#  --> for Clubs data
+def BATCH_for_GetBYyear(DFrame):
+
+    # DataFrame to ecstract data
+    nDFRAME = GetBYyear(DFrame)
+
+    #count number of rows in date frame
+    count = NumberOfRows(nDFRAME)
+
+
+    #reserving the number of elements in a row
+    Year  = [0] * count # indx 0
+    Expend = [0] * count # indx 1
+    Income = [0] * count # indx 2
+    Balance =  [0] * count # indx 3
+    number_of_Season = [0] * count # indx 4
+    sum_of_Arrivlas = [0] * count # indx 5
+    sum_of_Depatrues = [0] * count # indx 6
+    avg_Expend_of_Arrivlas = [0] * count # indx 7
+    avg_Income_of_Depatrues =  [0] * count # indx 8
+    avg_Balance_of_Depatrues = [0] * count # indx 9
+    avg_Expend_Season = [0] * count # indx 10
+    avg_Income_Season  =  [0] * count # indx 11
+    avg_Balance_Season  =  [0] * count # indx 12
+
+
+    # cast DataFrame rows to folat and int
+    nDFRAME["    Year |  "].astype(np.int64)# ind 0
+    nDFRAME["    Expend |  "].astype(np.str)# ind 1
+    nDFRAME["    Income |  "].astype(np.str)# ind 2
+    nDFRAME["    Balance |  "].astype(np.str)# ind 3
+    nDFRAME["    number of Season |  "].astype(np.float64)# ind 4
+    nDFRAME["    sum of Arrivlas |  "].astype(np.float64)# ind 5
+    nDFRAME["    sum of Depatrues |  "].astype(np.int64)# ind 6
+    nDFRAME["    avg Expend of Arrivlas |  "].astype(np.float64)# ind 7
+    nDFRAME["    avg Income of Depatrues |  "].astype(np.float64)# ind 8
+    nDFRAME["    avg Balance of Depatrues |  "].astype(np.float64)# ind 9
+    nDFRAME["    avg Expend/Season |  "].astype(np.float64)# ind 10
+    nDFRAME["    avg Income/Season |  "].astype(np.float64)# ind 11
+    nDFRAME["    avg Balance/Season |  "].astype(np.float64)# ind 12
+    ###############################################################################
+
+    #save values from the dateframe to a arrays
+    i = 0
+    for i in range(0,count):
+
+        Year[i] =  nDFRAME["    Year |  "][i] # indx 0
+        Expend[i] = nDFRAME["    Expend |  "][i] # indx 1
+        Income[i] = nDFRAME["    Income |  "][i] # indx 2
+        Balance[i] = nDFRAME["    Balance |  "][i] # indx 3
+        number_of_Season[i] = nDFRAME["    number of Season |  "][i] # indx 4
+        sum_of_Arrivlas[i] = nDFRAME["    sum of Arrivlas |  "][i] # indx 5
+        sum_of_Depatrues[i] = nDFRAME["    sum of Depatrues |  "][i] # indx 6
+        avg_Expend_of_Arrivlas[i] = nDFRAME["    avg Expend of Arrivlas |  "][i] # indx 7
+        avg_Income_of_Depatrues[i] = nDFRAME["    avg Income of Depatrues |  "][i] # indx 8
+        avg_Balance_of_Depatrues[i] = nDFRAME["    avg Balance of Depatrues |  "][i] # indx 9
+        avg_Expend_Season[i] = nDFRAME["    avg Expend/Season |  "][i] # indx 10
+        avg_Income_Season[i] = nDFRAME["    avg Income/Season |  "][i] # indx 11
+        avg_Balance_Season[i] = nDFRAME["    avg Balance/Season |  "][i] # indx 12
+        ###############################################################################
+
+    # conversion to numpy
+    np_Year = np.asarray(Year, dtype = 'int64') # indx 0
+    np_Expend = np.asarray(Expend,dtype='float64')# indx 1
+    np_Income = np.asarray(Income,dtype='float64')# indx 2
+    np_Balance = np.asarray(Balance, dtype = 'float64') # indx 3
+    np_number_of_Season = np.asarray(number_of_Season,dtype='int64') # indx 4
+    np_sum_of_Arrivlas = np.asarray(sum_of_Arrivlas, dtype ='int64') # indx 5
+    np_sum_of_Depatrues = np.asarray(sum_of_Depatrues,dtype='int64') # indx 6
+    np_avg_Expend_of_Arrivlas = np.asarray(avg_Expend_of_Arrivlas, dtype = 'float64' ) # indx 7
+    np_avg_Income_of_Depatrues = np.asarray(avg_Income_of_Depatrues,dtype='float64') # indx 8
+    np_avg_Balance_of_Depatrues = np.asarray(avg_Balance_of_Depatrues, dtype = 'float64' ) # indx 9
+    np_avg_Expend_Season = np.asarray(avg_Expend_Season, dtype = 'float64' ) # indx 10
+    np_avg_Income_Season = np.asarray(avg_Income_Season, dtype = 'float64' ) # indx 11
+    np_avg_Balance_Season = np.asarray(avg_Balance_Season, dtype = 'float64' ) # indx 12
+    ###############################################################################
+
+    # set the numpy arrays values into stack
+    a = np.stack((np_Year,np_Expend,np_Income,np_Balance,np_number_of_Season,np_sum_of_Arrivlas,np_sum_of_Depatrues,
+    np_avg_Expend_of_Arrivlas,np_avg_Income_of_Depatrues,np_avg_Balance_of_Depatrues,np_avg_Expend_Season,np_avg_Income_Season,np_avg_Balance_Season),axis= -1)
+    ###############################################################################
+
+    # convert from stack with values to data for dataFrame
+    a_data = np.array(a)
+    # set to DataFrame
+    df_a = pd.DataFrame(a_data)
+    # name of labels for head or names of collums
+    df_a.columns = ['    Year |  ', '    Expend |  ','    Income |  ', '    Balance |  ','    number of Season |  ',
+     '    sum of Arrivlas |  ','    sum of Depatrues |  ', '    avg Expend of Arrivlas |  ','    avg Income of Depatrues |  ',
+     '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
+    ###############################################################################
+
+    print("################################################################################################################")
+    print(df_a)
+    print("################################################################################################################")
+
+    # convert data from numpay ndarray to list and remove duplicates elemtes of list for YEAR
+    listYEAR = np_Year.tolist()
+    listYEAR = remove_duplicates(listYEAR)
+
+
+    # a function in which a user selects a choice of country or championship,
+    # and chooses the name of the state or championship after which the data is printed
+
+    # temporary variables that note the value the ticker chooses
+    flag = 0
+    flagTemp = '0'
+
+    while True:
+        print("\n")
+        print("\n\t Chose a option of proces data by YEAR : ")
+        print("\t 1 -> YEAR ! ")
+        value = input("\n\tValue ")
+        print("\n")
+        try:
+           value = int(value)
+        except ValueError:
+           print("\n")
+           print("\n\tValid options, please !!")
+           continue
+        if value == 1:
+            flag = 1
+            ###############################################################################
+            # drzave
+            cont_YEAR = 0
+            print("###############################################################################")
+            print("\t Meni  State!!!")
+            #cont_state = 0
+            for i in range(0,len(listYEAR)):
+                print(i+1,". : ",listYEAR[i])
+                cont_YEAR += 1
+            print("###############################################################################")
+            while True:
+                print("\n\t Enter State   between 0 and ",cont_YEAR," : ")
+                value = input("\n\tValue : " )
+                value =value -1
+                try:
+                   value = (value)
+                except ValueError:
+                    print("\n\tValid number, please !!")
+                    continue
+                if 0 <= value <= cont_YEAR:
+                    print("You Chose : ",listYEAR[value])
+                    flagTemp =  int(listYEAR[value])
+                    break
+                else:
+                   print("\n\tValue between bounds :")
+            break
+            ###############################################################################
+        else:
+            print("\n\tValue :  !!!")
+    #######################################################################################################################################
+
+    #count number of rows in date frame
+    count = NumberOfRows(nDFRAME)
+
+    # temp var for count number of roew for dynamic reserving
+    bro = 0
+
+    # count number of rows in date frame
+    # YEAR
+    if flag == 1:
+        for i in range(0,len(a)):
+            if int(a[i][0]) == flagTemp :
+                bro +=1
+    ###############################################################################
+
+    # reserving the number of elements in a row
+    array1 = [0] * bro
+    array2 = [0] * bro
+    array3 = [0] * bro
+    array4 = [0] * bro
+    array5 = [0] * bro
+    array6 = [0] * bro
+    array7 = [0] * bro
+    array8 = [0] * bro
+    array9 = [0] * bro
+    array10 = [0] * bro
+    array11 = [0] * bro
+    array12 = [0] * bro
+    array13 = [0] * bro
+    ###############################################################################
+
+    # temporarily storing data from a numpy array into a
+    # common array to allocate as many places as you need to avoid empty places in the DataFrame
+    # storing data from State user chose options
+    y = 0
+    if flag == 1:
+        for i in range(0,len(a)):
+            if int(a[i][0]) == flagTemp :
+                array1[y] = a[i][0]
+                array2[y] = a[i][1]
+                array3[y] = a[i][2]
+                array4[y] = a[i][3]
+                array5[y] = a[i][4]
+                array6[y] = a[i][5]
+                array7[y] = a[i][6]
+                array8[y] = a[i][7]
+                array9[y] = a[i][8]
+                array10[y] = a[i][9]
+                array11[y] = a[i][10]
+                array12[y] = a[i][11]
+                array13[y] = a[i][12]
+                y+=1
+    ###############################################################################
+
+
+    # reserving the number of elements in a row
+    niz_N1 = [0]*bro
+    #Initialize a new array
+    np_niz2 = np.asarray(niz_N1, dtype = 'int64')
+    np_niz3 = np.asarray(niz_N1, dtype = 'float64')
+
+    #set arr to stack for operations with data lik sort and convert
+    new_niz = np.stack((np_niz2,np_niz3,np_niz3,np_niz3,np_niz2,np_niz2,np_niz2,np_niz3,np_niz3,np_niz3,np_niz3,np_niz3,np_niz3),axis= -1)
+    #######################################################################################################################################
+
+    # relocating data from temporary arrays to numpy arrays
+    y = 0
+    for i in range(0,bro):
+        new_niz[i][0] = array1[y]
+        new_niz[i][1] = array2[y]
+        new_niz[i][2] = array3[y]
+        new_niz[i][3] = array4[y]
+        new_niz[i][4] = array5[y]
+        new_niz[i][5] = array6[y]
+        new_niz[i][6] = array7[y]
+        new_niz[i][7] = array8[y]
+        new_niz[i][8] = array9[y]
+        new_niz[i][9] = array10[y]
+        new_niz[i][10] = array11[y]
+        new_niz[i][11] = array12[y]
+        new_niz[i][12] = array13[y]
+        y+=1
+    ###############################################################################
+
+    # convert from stack with values to data for dataFrame
+    new_data = np.array(new_niz)
+    # set to DataFrame
+    df_new = pd.DataFrame(new_data)
+    # name of labels for head or names of collums
+    df_new.columns = ['    Year |  ', '    Expend |  ','    Income |  ', '    Balance |  ','    number of Season |  ',
+     '    sum of Arrivlas |  ','    sum of Depatrues |  ', '    avg Expend of Arrivlas |  ','    avg Income of Depatrues |  ',
+     '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
+    print("###################################################################################################################################################")
+    print(df_new)
+    print("###################################################################################################################################################")
+
+    return df_new # function FULL optimized ~ 18.
+#######################################################################################################################################
+
+
 # get data for clubs calculate inflacion for profit ,Income and Expend
 #  --> for Clubs datas
 def GETDataClubs_with_seasons(DFrame):
@@ -859,7 +1112,7 @@ def GETDataClubs_with_seasons(DFrame):
 
     # return DataFrame with head an names of collums
     print(df)
-    return df # # function optimized ~ 16.
+    return df # # function FULL -> BATCH optimized ~ 16.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GETDataClubs_with_seasons
@@ -1309,9 +1562,8 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     print(df_new)
     print("###################################################################################################################################################")
 
-    return df_new # function FULL optimized ~ 18.
+    return df_new # function   optimized ~ 18.
 #######################################################################################################################################
-
 
 # get data for clubs calculate inflacion for profit ,Income and Expend but for clubs for all seasons
 #  --> for Clubs data

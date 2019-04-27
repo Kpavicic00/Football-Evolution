@@ -31,5 +31,5 @@ save_csv_f = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Pa
 save_csv_g = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_g.csv'
 save_csv_h = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_h.csv'
 
-dt = DataFrameFuncClubs(fail_pathclubs) # season
-BATCH_for_GETDataClubs_with_seasons(dt)
+dt_lg = DataFrameFunc(fp_league)
+BATCH_for_GetBYyear(dt_lg)
