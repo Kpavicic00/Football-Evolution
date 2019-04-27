@@ -32,4 +32,4 @@ save_csv_g = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Pa
 save_csv_h = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_h.csv'
 
 dt_lg = DataFrameFunc(fp_league)
-BATCH_for_GetDataForLeauge_AVG_Seasons(dt_lg)
+GetAVGBalanceFORplayerDepartures(dt_lg)

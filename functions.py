@@ -378,6 +378,323 @@ def GetAVGBalanceFORplayerDepartures(DFrame):
         return df # function ~ 13.
 #######################################################################################################################################
 
+# BATCH for  specific filtring data from estraction data from function GetDataForLeauge_AVG_Seasons
+#  --> for League datas
+def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
+
+    # DataFrame to ecstract data
+    nDFRAME = GetAVGBalanceFORplayerDepartures(DFrame)
+
+    #count number of rows in date frame
+    count = NumberOfRows(nDFRAME)
+
+
+    #reserving the number of elements in a row
+    Name_of_leauge  = [0] * count # indx 0
+    Year_of_Season = [0] * count # indx 1
+    Nationality = [0] * count # indx 2
+    Balance_by_player = [0] * count # indx 3
+    Balance_Inflation_by_player = [0] * count # indx 4
+
+    # '    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Balance by player|  ', '  Balance + Inflation by player|  '
+    # cast DataFrame rows to folat and int
+    nDFRAME["    Name of League |  "].astype(np.str)# ind 0
+    nDFRAME["   Year of Season |  "].astype(np.int64)# ind 1
+    nDFRAME["    Nationality |  "].astype(np.str)# ind 2
+    nDFRAME["    Balance by player|  "].astype(np.float64)# ind 3
+    nDFRAME["  Balance + Inflation by player|  "].astype(np.float64)# ind 4
+    ###############################################################################
+
+    #save values from the dateframe to a arrays
+    i = 0
+    for i in range(0,count):
+        Name_of_leauge[i] =  nDFRAME[""    Name of League |  "][i] # indx 0
+        Year_of_Season[i] = nDFRAME["   Year of Season |  "][i] # indx 1
+        Nationality[i] = nDFRAME["    Nationality |  "][i] # indx 2
+        Balance_by_player[i] = nDFRAME["    Balance by player|  "][i] # indx 3
+        Balance_Inflation_by_player[i] = nDFRAME["  Balance + Inflation by player|  "][i] # indx 4
+        ###############################################################################
+
+    # conversion to numpy
+    np_Name_of_leauge = np.asarray(Name_of_leauge, dtype = 'str') # indx 0
+    np_Year_of_Season = np.asarray(Year_of_Season,dtype='int64')# indx 1
+    np_Nationality = np.asarray(Nationality,dtype='str')# indx 2
+    np_Balance_by_player = np.asarray(Balance_by_player, dtype = 'float64') # indx 3
+    np_Balance_Inflation_by_player = np.asarray(number_of_Season,dtype='float64') # indx 4
+    ###############################################################################
+
+    # set the numpy arrays values into stack
+    a = np.stack((np_Name_of_leauge,np_Year_of_Season,np_Nationality,np_Balance_by_player,np_Balance_Inflation_by_player),axis= -1)
+    ###############################################################################
+
+    # convert from stack with values to data for dataFrame
+    a_data = np.array(a)
+    # set to DataFrame
+    df_a = pd.DataFrame(a_data)
+    # name of labels for head or names of collums
+    df_a.columns = ['    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Balance by player|  ', '  Balance + Inflation by player|  ']
+    ###############################################################################
+
+    print("################################################################################################################")
+    print(df_a)
+    print("################################################################################################################")
+
+    # convert data from numpay ndarray to list and remove duplicates elemtes of list for LEAUGE
+    listLEAUGE = np_Name_of_leauge.tolist()
+    listLEAUGE = remove_duplicates(listLEAUGE)
+
+    # convert data from numpay ndarray to list and remove duplicates elemtes of list for Year_of_Season
+    listYear_of_Season = np_Year_of_Season.tolist()
+    listYear_of_Season = remove_duplicates(listYear_of_Season)
+
+    # convert data from numpay ndarray to list and remove duplicates elemtes of list for Nationality
+    listNationality = np_Nationality.tolist()
+    listNationality = remove_duplicates(listNationality)
+
+
+    # a function in which a user selects a choice of country or championship,
+    # and chooses the name of the state or championship after which the data is printed
+
+    # temporary variables that note the value the ticker chooses
+    flag = 0
+    flagTemp = '0'
+
+    while True:
+        print("\n")
+        print("\n\t Chose a option of proces data by LEAUGE,Year_of_Season or Nationality  : ")
+        print("\t 1 -> LEAUGE statistic ! ")
+        print("\t 2 -> Year_of_Season statistic ! ")
+        print("\t 3 -> Nationality statistic ! ")
+        value = input("\n\tValue between 1 and 3    : ")
+        print("\n")
+        try:
+           value = int(value)
+        except ValueError:
+           print("\n")
+           print("\n\tValid options, please !!")
+           continue
+        if value == 1:
+            flag = 1
+            ###############################################################################
+            # CLUBS
+            cont_CLUB = 0
+            print("###############################################################################")
+            print("\t Meni  Club statistic  !!!")
+            #cont_state = 0
+            for i in range(0,len(listClub)):
+                print(i+1,". : ",listClub[i])
+                cont_CLUB += 1
+            print("###############################################################################")
+            while True:
+                print("\n\t Enter Club   between 0 and ",cont_CLUB," : ")
+                value = input("\n\tValue : " )
+                value =value -1
+                try:
+                   value = (value)
+                except ValueError:
+                    print("\n\tValid number, please !!")
+                    continue
+                if 0 <= value <= cont_CLUB:
+                    print("You Chose : ",listClub[value])
+                    flagTemp =  str(listClub[value])
+                    break
+                else:
+                   print("\n\tValue between bounds :")
+            break
+            ###############################################################################
+        elif value == 2:
+            flag = 2
+            ###############################################################################
+            cont_State = 0
+            print("###############################################################################")
+            print("\t Meni  State statistic!!!")
+            #cont_Compe = 0
+            for i in range(0,len(listState)):
+                print(i+1,". : ",listState[i])
+                cont_State += 1
+            print("###############################################################################")
+
+            while True:
+                print("\n\t Enter State   between 1 and ",cont_State," : ")
+                value = input("\n\tValue : " )
+                value =value -1
+                try:
+                   value = (value)
+                except ValueError:
+                    print("\n\tValid number, please !!")
+                    continue
+                if 0 <= value <= cont_State:
+                    print("You Chose : ",listState[value])
+                    flagTemp =  str(listState[value])
+                    break
+                else:
+                   print("\n\tValue between bounds :")
+            break
+            ###############################################################################
+        elif value == 3:
+            flag = 3
+            ###############################################################################
+            cont_COMPETITION = 0
+            print("###############################################################################")
+            print("\t Meni  Competition statistic!!!")
+            #cont_Compe = 0
+            for i in range(0,len(listCOMPETITION)):
+                print(i+1,". : ",listCOMPETITION[i])
+                cont_COMPETITION += 1
+            print("###############################################################################")
+
+            while True:
+                print("\n\t Enter Competition   between 1 and ",cont_COMPETITION," : ")
+                value = input("\n\tValue : " )
+                value =value -1
+                try:
+                   value = (value)
+                except ValueError:
+                    print("\n\tValid number, please !!")
+                    continue
+                if 0 <= value <= cont_COMPETITION:
+                    print("You Chose : ",listCOMPETITION[value])
+                    flagTemp =  str(listCOMPETITION[value])
+                    break
+                else:
+                   print("\n\tValue between bounds :")
+            break
+            ###############################################################################
+
+        else:
+            print("\n\tValue between 1 or  4  !!!")
+    #######################################################################################################################################
+
+
+    #######################################################################################################################################
+
+    #count number of rows in date frame
+    count = NumberOfRows(nDFRAME)
+
+    # temp var for count number of roew for dynamic reserving
+    bro = 0
+
+    # count number of rows in date frame
+    # LEAUGE
+    if flag == 1:
+        for i in range(0,len(a)):
+            if str(a[i][0]) == flagTemp :
+                bro +=1
+    ###############################################################################
+
+    # count number of rows in date frame
+    # number of Season
+    if flag == 2:
+        for i in range(0,len(a)):
+            if int(a[i][4]) == flagTemp :
+                bro +=1
+    ###############################################################################
+
+    # reserving the number of elements in a row
+    array1 = [0] * bro
+    array2 = [0] * bro
+    array3 = [0] * bro
+    array4 = [0] * bro
+    array5 = [0] * bro
+    array6 = [0] * bro
+    array7 = [0] * bro
+    array8 = [0] * bro
+    array9 = [0] * bro
+    array10 = [0] * bro
+    array11 = [0] * bro
+    array12 = [0] * bro
+    array13 = [0] * bro
+    ###############################################################################
+
+    # temporarily storing data from a numpy array into a
+    # common array to allocate as many places as you need to avoid empty places in the DataFrame
+    # storing data from State user chose options
+    y = 0
+    if flag == 1:
+        for i in range(0,len(a)):
+            if str(a[i][0]) == flagTemp :
+                array1[y] = a[i][0]
+                array2[y] = a[i][1]
+                array3[y] = a[i][2]
+                array4[y] = a[i][3]
+                array5[y] = a[i][4]
+                array6[y] = a[i][5]
+                array7[y] = a[i][6]
+                array8[y] = a[i][7]
+                array9[y] = a[i][8]
+                array10[y] = a[i][9]
+                array11[y] = a[i][10]
+                array12[y] = a[i][11]
+                array13[y] = a[i][12]
+                y+=1
+    ###############################################################################
+
+    if flag == 2:
+        for i in range(0,len(a)):
+            if int(a[i][4]) == flagTemp :
+                array1[y] = a[i][0]
+                array2[y] = a[i][1]
+                array3[y] = a[i][2]
+                array4[y] = a[i][3]
+                array5[y] = a[i][4]
+                array6[y] = a[i][5]
+                array7[y] = a[i][6]
+                array8[y] = a[i][7]
+                array9[y] = a[i][8]
+                array10[y] = a[i][9]
+                array11[y] = a[i][10]
+                array12[y] = a[i][11]
+                array13[y] = a[i][12]
+                y+=1
+    ###############################################################################
+
+
+    # reserving the number of elements in a row
+    niz_N1 = [0]*bro
+    #Initialize a new array
+    np_niz1 = np.asarray(niz_N1, dtype = 'str')
+    np_niz2 = np.asarray(niz_N1, dtype = 'int64')
+    np_niz3 = np.asarray(niz_N1, dtype = 'float64')
+
+    #set arr to stack for operations with data lik sort and convert
+    new_niz = np.stack((np_niz1,np_niz3,np_niz3,np_niz3,np_niz2,np_niz2,np_niz2,np_niz3,np_niz3,np_niz3,np_niz3,np_niz3,np_niz3),axis= -1)
+    #######################################################################################################################################
+
+    # relocating data from temporary arrays to numpy arrays
+    y = 0
+    for i in range(0,bro):
+        new_niz[i][0] = array1[y]
+        new_niz[i][1] = array2[y]
+        new_niz[i][2] = array3[y]
+        new_niz[i][3] = array4[y]
+        new_niz[i][4] = array5[y]
+        new_niz[i][5] = array6[y]
+        new_niz[i][6] = array7[y]
+        new_niz[i][7] = array8[y]
+        new_niz[i][8] = array9[y]
+        new_niz[i][9] = array10[y]
+        new_niz[i][10] = array11[y]
+        new_niz[i][11] = array12[y]
+        new_niz[i][12] = array13[y]
+        y+=1
+    ###############################################################################
+
+    # convert from stack with values to data for dataFrame
+    new_data = np.array(new_niz)
+    # set to DataFrame
+    df_new = pd.DataFrame(new_data)
+    # name of labels for head or names of collums
+    df_new.columns = ['    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Balance by player|  ', '  Balance + Inflation by player|  ']
+    print("###################################################################################################################################################")
+    print(df_new)
+    print("###################################################################################################################################################")
+
+    return df_new # function FULL optimized ~ 18.
+#######################################################################################################################################
+
+
+##dovde goovo
+
 # get sorted data by the leauge
 #  --> for League datas
 def GetDataForLeauge_AVG_Seasons(DFrame):
@@ -551,10 +868,10 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
      '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
     print(df)
     ###############################################################################
-    return df # function ~ 14.
+    return df # function FULL -> BATCH ~ 14.
 #######################################################################################################################################
 
-# BATCH for  specific filtring data from estraction data from function GetBYyear
+# BATCH for  specific filtring data from estraction data from function GetDataForLeauge_AVG_Seasons
 #  --> for League datas
 def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
 
@@ -582,9 +899,6 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
 
 
     # cast DataFrame rows to folat and int
-        # '    Name of leauge |  ', '    Expend |  ','    Income |  ', '    Balance |  ','    number of Season |  ',
-        #  '    sum of Arrivlas |  ','    sum of Depatrues |  ', '    avg Expend of Arrivlas |  ','    avg Income of Depatrues |  ',
-        #  '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  '
     nDFRAME["    Name of leauge |  "].astype(np.str)# ind 0
     nDFRAME["    Expend |  "].astype(np.float64)# ind 1
     nDFRAME["    Income |  "].astype(np.float64)# ind 2
@@ -712,6 +1026,8 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
                    print("\n\tValue between bounds :")
             break
             ###############################################################################
+
+
         elif value == 2:
             flag = 2
             ###############################################################################
@@ -873,10 +1189,6 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
 
     return df_new # function FULL optimized ~ 18.
 #######################################################################################################################################
-
-##dovde goovo
-
-
 
 # get avg Year Season of first 25 leuge money transaction for all Leuges ,regardless of the league, therefore, only years of all seasons together
 #  --> for League datas
