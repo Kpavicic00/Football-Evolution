@@ -16,6 +16,16 @@ def WriteTOcsvFILE(csv_file,dat,head):
     print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
 #######################################################################################################################################
 
+#   read csv file
+def ReadCSV_file(file):
+    with open(file, 'r') as csvFile:
+
+        reader = csv.reader(csvFile)
+        for row in reader:
+            print(row)
+
+    csvFile.close()
+
 #function count number of rows for specific DateFrame
 def NumberOfRows(datFrame):
     total_rows = len(datFrame)
@@ -225,6 +235,7 @@ def GetAVGExpendFORplayerArrivals(DFrame):
     print(df)
     return df # function ~ 11. # function FULL -> BATCH optimized
 #######################################################################################################################################
+
 # BATCH for  specific filtring data from estraction data from function GetAVGIncomeFORplayerDepartures
 #  --> for League datas
 def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
@@ -596,6 +607,7 @@ def GetAVGIncomeFORplayerDepartures(DFrame):
     print(df)
     return df# function ~ 12. # function FULL -> BATCH optimized
 #######################################################################################################################################
+
 # BATCH for  specific filtring data from estraction data from function GetAVGIncomeFORplayerDepartures
 #  --> for League datas
 def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):

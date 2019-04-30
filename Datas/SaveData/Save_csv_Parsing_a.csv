@@ -1,37 +1,28 @@
-# Name_of_leauge Season Nationality AvgExpend +INFLACION
-PremierLeague 2018 England 1219466.67 1238499.27
-PremierLeague 2011 England 1219466.67 1345207.61
-PremierLeague 2001 England 267085.71 362225.97
-PremierLeague 2018 England 1219466.67 1238499.27
-PremierLeague 2011 England 1219466.67 1345207.61
-PremierLeague 2001 England 267085.71 362225.97
-PremierLeague 2018 England 1219466.67 1238499.27
-PremierLeague 2011 England 1219466.67 1345207.61
-PremierLeague 2001 England 267085.71 362225.97
-PremierLeague 2011 England 1219466.67 1345207.61
-SerieA 2011 Italy 529199.32 583765.81
-LaLiga 2011 Spain 1131022.73 1247644.09
-Ligue1 2011 France 788945.69 870295.0
-Bundesliga 2011 Germany 805869.57 888963.92
-PremierLiga 2011 Russia 895121.95 987419.25
-S�perLig 2011 Turkey 306904.76 338550.15
-LigaNOS 2011 Portugal 206731.11 228047.45
-BrasileiroS�rieA 2011 Brazil 118451.94 130665.68
-Championship 2011 England 110258.62 121627.54
-Eredivisie 2011 Netherlands 266949.81 294475.38
-PremierLiga 2011 Ukraine 203946.49 224975.7
-ChineseSuperLeague 2011 China 241692.31 266613.54
-SerieB 2011 Italy 56296.3 62101.09
-JupilerProLeague 2011 Belgium 122910.22 135583.66
-SaudiProfessionalLeague 2011 SaudiArabia 147714.29 162945.32
-QatarStarsLeague 2011 Qatar 234622.64 258814.92
-Ligue2 2011 France 74482.76 82162.78
-SuperLeague 2011 Greece 39920.21 44036.44
-Liga1Betano 2011 Romania 29235.81 32250.35
-ArgentinaTorneoFinal 2011 Argentina 35283.02 38921.1
-2.Bundesliga 2011 Germany 41467.18 45742.92
-SuperLeague 2011 Switzerland 48494.62 53494.97
-ScottishPremiership 2011 Scotland 34468.09 38022.14
-KLeague1 2011 SouthKorea 23731.34 26178.32
-1.HNL 2011 Croatia 12957.75 14293.84
-#      => End of file <=
+,    Expend by player|  ,    Income by player|  ,    Name of League |  ,    Nationality |  ,   Year of Season |  ,  Expend + Inflation by player|  ,  Income + Inflation by player|  
+0,241692.31,,Chinese ChineseSuperLeague,China,2011,266613.54,
+0,,778421.05,PremierLeague,England,2011,,858685.15
+1,,597284.62,SerieA,Italy,2011,,658871.49
+2,,872861.11,LaLiga,Spain,2011,,962863.06
+3,,601172.64,Ligue1,France,2011,,663160.4
+4,,693709.09,Bundesliga,Germany,2011,,765238.42
+5,,194897.96,PremierLiga,Russia,2011,,214994.16
+6,,228716.71,SüperLig,Turkey,2011,,252300.01
+7,,259332.06,LigaNOS,Portugal  ,2011,,286072.16
+8,,125388.24,BrasileiroSérieA,Brazil,2011,,138317.19
+9,,184313.47,Championship,England,2011,,203318.3
+10,,412400.0, Eredivisie,Netherlands,2011,,454923.15
+11,,118184.82,PremierLiga,Ukraine,2011,,130371.02
+12,,55668.45,Chinese ChineseSuperLeague,China,2011,,61408.5
+13,,93981.48,SerieB,Italy,2011,,103672.05
+14,,322596.15,JupilerProLeague,Belgium,2011,,355859.5
+15,,70726.26,SaudiProfessionalLeague,Saudi Arabia,2011,,78018.94
+16,,26041.67,QatarStarsLeague,Qatar,2011,,28726.86
+17,,206647.4,Ligue2,France,2011,,227955.11
+18,,55105.26,SuperLeague,Greece,2011,,60787.25
+19,,40100.0,Liga1Betano,Romania,2011,,44234.77
+20,,113715.71,PrimeraDivisión,Argentina,2011,,125441.1
+21,,89704.8,2.Bundesliga,Germany,2011,,98954.39
+22,,197393.62,SuperLeague,Switzerland,2011,,217747.15
+23,,62676.06,ScottishPremiership,Scotland,2011,,69138.67
+24,,26776.86,KLeague1,SouthKorea,2011,,29537.86
+25,,22033.1,1.HNL,Croatia,2011,,24304.96
