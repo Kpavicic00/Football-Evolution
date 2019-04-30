@@ -126,7 +126,7 @@ def Meni_of_GetAVGIncomeFORplayerDepartures():
 
 # meni for GetAVGBalanceFORplayerDepartures
 def Meni_of_GetAVGExpendFORplayerArrivals():
-    print("\t======> Sort  for GetAVGBalanceFORplayerDepartures   <======")
+    print("\t======> Sort  for GetAVGExpendFORplayerArrival   <======")
     print("\t 1 =>  Sort data BY Name of League") # 0
     print("\t 2 =>  Sort data BY Year of Season") # 1
     print("\t 3 =>  Sort data BY Nationality") # 2
