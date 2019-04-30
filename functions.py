@@ -16,6 +16,12 @@ def WriteTOcsvFILE(csv_file,dat,head):
     print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
 #######################################################################################################################################
 
+# write to file
+def WriteTOcsvFILE_mult_DATAFRAMES(csv_file,datFRAME):
+    with open(csv_file, 'w') as f:
+         pd.concat(datFRAME, axis=0).to_csv(f) # function ~ 1.
+#######################################################################################################################################
+
 #   read csv file
 def ReadCSV_file(file):
     with open(file, 'r') as csvFile:

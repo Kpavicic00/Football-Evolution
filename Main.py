@@ -35,24 +35,5 @@ dt_lg = DataFrameFunc(fp_league)
 a = BATCH_for_GetAVGExpendFORplayerArrivals(dt_lg)
 b = BATCH_for_GetAVGIncomeFORplayerDepartures(dt_lg)
 
-pars = [a,b]
-with open(save_csv_a, 'w') as f:
-     pd.concat([a, b], axis=0).to_csv(f)
-
-# pd.concat([
-#     pd.concat([a], axis=1),
-#     pd.concat([b], axis=0)]).to_csv(save_csv_a)
-# pd.DataFrame([a],[b]).to_csv(save_csv_b, index=True ,delimiter=',', newline='/n',header="/n")
-#pd.DataFrame([b]).to_csv(save_csv_b, index=True ,delimiter=',',header="/n")
-#pd.concat([pd.concat([a], axis=1),pd.concat([b], axis=0 )]).to_csv(save_csv_a)
-#df.to_csv(save_csv_a, index=False, header=False, mode='a')
-# with open(save_csv_a, 'w') as f:
-#      pd.concat([a], axis=1).to_csv(f)
-# with open(save_csv_a, 'a') as f:
-#      pd.concat([a], axis=1).to_csv(f, header=False)
-#ReadCSV_file(save_csv_b)
-#pd.concat([pars], axis=1).to_csv(save_csv_a)
-
-# dt_Clubs = DataFrameFuncClubs(fail_pathclubs)
-#
-# BATCH_for_GetDate_for_Clubs_throught_all_seasons(dt_Clubs)
+datF = [a,b]
+WriteTOcsvFILE_mult_DATAFRAMES(save_csv_b,datF)
