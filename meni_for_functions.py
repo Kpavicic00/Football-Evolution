@@ -75,7 +75,7 @@ def Meni_of_GetBYyear():
     print("\t 12 =>  Sort data BY avg Income/Season") # 11
     print("\t 13 =>  Sort data BY avg Balance/Season") # 12
     print("\t======>Sort  for LAUGES by year   <======")
-    print("\n") # function ~ 3.
+    print("\n") # function ~ 4.
 ###################################################################################################################################################
 
 # meni for GetDataForLeauge_AVG_Seasons
@@ -95,7 +95,7 @@ def Meni_of_GetDataForLeauge_AVG_Seasons():
     print("\t 12=>  Sort data BY avg Income/Season") # 11
     print("\t 13 =>  Sort data BY avg Balance/Season") # 12
     print("\t======>Sort  for LAUGES by year   <======")
-    print("\n")# function ~ 4.
+    print("\n")# function ~ 5.
 ###################################################################################################################################################
 
 # meni for GetAVGBalanceFORplayerDepartures
@@ -108,7 +108,7 @@ def Meni_of_GetAVGBalanceFORplayerDepartures():
     print("\t 4 =>  Sort data BY Balance by player") # 3
     print("\t 5 =>  Sort data BY Balance + Inflation by player") # 4
     print("\t======>Sort  for LAUGES by year   <======")
-    print("\n")# function ~ 5.
+    print("\n")# function ~ 6.
 ###################################################################################################################################################
 
 # meni for GetAVGIncomeFORplayerDepartures
@@ -121,7 +121,7 @@ def Meni_of_GetAVGIncomeFORplayerDepartures():
     print("\t 4 =>  Sort data BY Income by player") # 3
     print("\t 5 =>  Sort data BY Income + Inflation by player") # 4
     print("\t======>Sort  for LAUGES by year   <======")
-    print("\n")# function ~ 6.
+    print("\n")# function ~ 7.
 ###################################################################################################################################################
 
 # meni for GetAVGBalanceFORplayerDepartures
@@ -133,7 +133,7 @@ def Meni_of_GetAVGExpendFORplayerArrivals():
     print("\t 4 =>  Sort data BY Expend by player") # 3
     print("\t 5 =>  Sort data BY Expend + Inflation by player") # 4
     print("\t======>Sort  for LAUGES by year   <======")
-    print("\n")# function ~ 7.
+    print("\n")# function ~ 8.
 ###################################################################################################################################################
 
 def Meni_for_MAIN_program():
@@ -144,5 +144,5 @@ def Meni_for_MAIN_program():
     print("\t 4 =>  Sort data BY Expend by player") # 3
     print("\t 5 =>  Sort data BY Expend + Inflation by player") # 4
     print("\t======>Sort  for LAUGES by year   <======")
-    print("\n")# function ~ 7.
+    print("\n")# function ~ 9.
 ###################################################################################################################################################

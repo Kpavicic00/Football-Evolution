@@ -11,7 +11,7 @@ coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 # functions
 
 # write to file
-def WriteTOcsvFILE(csv_file,dat,head):
+def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat,head):
     np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=head, footer='     => End of file <=')
     print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
 #######################################################################################################################################
@@ -19,7 +19,7 @@ def WriteTOcsvFILE(csv_file,dat,head):
 # write to file
 def WriteTOcsvFILE_mult_DATAFRAMES(csv_file,datFRAME):
     with open(csv_file, 'w') as f:
-         pd.concat(datFRAME, axis=0).to_csv(f) # function ~ 1.
+         pd.concat(datFRAME, axis=0).to_csv(f) # function ~ 2.
 #######################################################################################################################################
 
 #   read csv file
@@ -36,7 +36,7 @@ def ReadCSV_file(file):
 def NumberOfRows(datFrame):
     total_rows = len(datFrame)
     #print("Total rows : ", total_rows )
-    return  total_rows # function ~ 2.
+    return  total_rows # function ~ 3.
 #######################################################################################################################################
 
 # functions_fore choose of season
@@ -53,7 +53,7 @@ def Input_order():
            return value
            break
         else:
-           print("\n\tValue between 1 and 7 !!!") # function ~ 3.
+           print("\n\tValue between 1 and 7 !!!") # function ~ 4.
 #######################################################################################################################################
 
 # function for input years interval 2000 to 2018
@@ -70,7 +70,7 @@ def Input_year():
            return value
            break
         else:
-           print("\n\tValue between 2000 and 2018 !!!") # function ~ 4.
+           print("\n\tValue between 2000 and 2018 !!!") # function ~ 5.
 #######################################################################################################################################
 
 # print the txt file
@@ -78,7 +78,7 @@ def printFile(data):
     #read the file
     f = open(data, "r")
     print(f.read())
-    f.close() # function ~ 5.
+    f.close() # function ~ 6
 #######################################################################################################################################
 
 # function  count the length of lines for the required size allocation of the string
@@ -86,7 +86,7 @@ def file_lengthy(fname):
     with open(fname) as f:
         for i ,j in enumerate (f):
             pass
-        return i +1 # function ~ 6.
+        return i +1 # function ~ 7.
 #######################################################################################################################################
 
 #function get Coefients for specific year
@@ -118,7 +118,7 @@ def GETCoefficients(files,year):
     np_specific_coefficient = np_koef[np_years == year]
     #print("\n\t You have chosen a year :  ",i)
 
-    return np_specific_coefficient # function ~ 7.
+    return np_specific_coefficient # function ~ 8.
 #######################################################################################################################################
 
 # picking up and dealing with the data in terms of coefficients
@@ -149,21 +149,21 @@ def Coefficients(files):
     i = Input_year()
     np_specific_coefficient = np_koef[np_years == i]
     #print("\n\t You have chosen a year :  ",i)
-    return np_specific_coefficient # function ~ 8.
+    return np_specific_coefficient # function ~ 9.
 #######################################################################################################################################
 
 # takes data with pandas function DataFrame
 def DataFrameFunc(filePath):
     colls = ["0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
     dat = pd.read_csv(filePath,header = None , names = colls)
-    return dat # function ~ 9.
+    return dat # function ~ 10.
 #######################################################################################################################################
 
 # takes data with pandas function DataFrame for Clubs datas
 def DataFrameFuncClubs(filePath):
     colls = ["Order","Club","State","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
     dat = pd.read_csv(filePath,header = None , names = colls)
-    return dat # function ~ 10.
+    return dat # function ~ 11.
 #######################################################################################################################################
 
 #get average League spending for each player
@@ -239,7 +239,7 @@ def GetAVGExpendFORplayerArrivals(DFrame):
     ###############################################################################
     # return DataFrame with head an names of collums
     print(df)
-    return df # function ~ 11. # function FULL -> BATCH optimized
+    return df # function ~ 11. # function FULL -> BATCH optimized ~ 12.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GetAVGIncomeFORplayerDepartures
@@ -536,7 +536,7 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
     print(df_new)
     print("###################################################################################################################################################")
 
-    return df_new # function FULL optimized ~ 18.
+    return df_new # function FULL optimized ~ 13.
 #######################################################################################################################################
 
 #get average League brutto earnings for each player
@@ -611,7 +611,7 @@ def GetAVGIncomeFORplayerDepartures(DFrame):
     ###############################################################################
     # return DataFrame with head an names of collums
     print(df)
-    return df# function ~ 12. # function FULL -> BATCH optimized
+    return df# function ~ 12. # function FULL -> BATCH optimized ~ 14.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GetAVGIncomeFORplayerDepartures
@@ -908,7 +908,7 @@ def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):
     print(df_new)
     print("###################################################################################################################################################")
 
-    return df_new # function FULL optimized ~ 18.
+    return df_new # function FULL optimized ~ 15.
 #######################################################################################################################################
 
 #get average League netto earnings for each player
@@ -985,7 +985,7 @@ def GetAVGBalanceFORplayerDepartures(DFrame):
         # return DataFrame with head an names of collums
         print("GetAVGBalanceFORpayerDepartures TEST")
         print(df)
-        return df # function FULL -> BATCH ~ 13.
+        return df # function FULL -> BATCH ~ 16.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GetAVGBalanceFORplayerDepartures
@@ -1282,7 +1282,7 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
     print(df_new)
     print("###################################################################################################################################################")
 
-    return df_new # function FULL optimized ~ 18.
+    return df_new # function FULL optimized ~ 17.
 #######################################################################################################################################
 
 # get sorted data by the leauge
@@ -1458,7 +1458,7 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
      '    avg Balance of Depatrues |  ','    avg Expend/Season |  ', '    avg Income/Season |  ','    avg Balance/Season |  ']
     print(df)
     ###############################################################################
-    return df # function FULL -> BATCH ~ 14.
+    return df # function FULL -> BATCH ~ 18.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GetDataForLeauge_AVG_Seasons
@@ -1777,7 +1777,7 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
     print(df_new)
     print("###################################################################################################################################################")
 
-    return df_new # function FULL optimized ~ 18.
+    return df_new # function FULL optimized ~ 19.
 #######################################################################################################################################
 
 # get avg Year Season of first 25 leuge money transaction for all Leuges ,regardless of the league, therefore, only years of all seasons together
@@ -1966,7 +1966,7 @@ def GetBYyear(DFrame):
     ###############################################################################
     # return DataFrame with head an names of collums
     print(df)
-    return df # function FULL -> BATCH  ~ 15.
+    return df # function FULL -> BATCH  ~ 20.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GetBYyear
@@ -2218,7 +2218,7 @@ def BATCH_for_GetBYyear(DFrame):
     print(df_new)
     print("###################################################################################################################################################")
 
-    return df_new # function FULL optimized ~ 18.
+    return df_new # function FULL optimized ~ 21.
 #######################################################################################################################################
 
 # get data for clubs calculate inflacion for profit ,Income and Expend
@@ -2337,7 +2337,7 @@ def GETDataClubs_with_seasons(DFrame):
 
     # return DataFrame with head an names of collums
     print(df)
-    return df # # function FULL -> BATCH optimized ~ 16.
+    return df # # function FULL -> BATCH optimized ~ 22.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GETDataClubs_with_seasons
@@ -2787,7 +2787,7 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     print(df_new)
     print("###################################################################################################################################################")
 
-    return df_new # function   optimized ~ 18.
+    return df_new # function   optimized ~ 23.
 #######################################################################################################################################
 
 # get data for clubs calculate inflacion for profit ,Income and Expend but for clubs for all seasons
@@ -3009,7 +3009,7 @@ def GetDate_for_Clubs_throught_all_seasons(DFrame):
     ###############################################################################(
     # return DataFrame with head an names of collums
     print(df)
-    return df # function FULL -> BATCH optimized ~ 17.
+    return df # function FULL -> BATCH optimized ~ 24.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GetDate_for_Clubs_throught_all_seasons
@@ -3313,10 +3313,10 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
     print(df_new)
     print("###################################################################################################################################################")
 
-    return df_new # function FULL optimized ~ 18.
+    return df_new # function FULL optimized ~ 25.
 #######################################################################################################################################
 
 # a function in python that erases repeating sequence members from the array
 def remove_duplicates(l):
-    return list(set(l)) # function optimized ~ 19.
+    return list(set(l)) # function optimized ~ 26.
 #######################################################################################################################################
