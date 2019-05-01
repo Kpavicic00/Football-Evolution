@@ -124,7 +124,7 @@ def Meni_of_GetAVGIncomeFORplayerDepartures():
     print("\n")# function ~ 7.
 ###################################################################################################################################################
 
-# meni for GetAVGBalanceFORplayerDepartures
+# meni for GetAVGExpendFORplayerArrivals
 def Meni_of_GetAVGExpendFORplayerArrivals():
     print("\t======> Sort  for GetAVGExpendFORplayerArrival   <======")
     print("\t 1 =>  Sort data BY Name of League") # 0
@@ -134,6 +134,17 @@ def Meni_of_GetAVGExpendFORplayerArrivals():
     print("\t 5 =>  Sort data BY Expend + Inflation by player") # 4
     print("\t======>Sort  for LAUGES by year   <======")
     print("\n")# function ~ 8.
+###################################################################################################################################################
+
+def Meni_for_MAIN_program():
+    print("\t======> Sort  for GetAVGBalanceFORpayerDepartures   <======")
+    print("\t 1 =>  Sort data BY Name of League") # 0
+    print("\t 2 =>  Sort data BY Year of Season") # 1
+    print("\t 3 =>  Sort data BY Nationality") # 2
+    print("\t 4 =>  Sort data BY Expend by player") # 3
+    print("\t 5 =>  Sort data BY Expend + Inflation by player") # 4
+    print("\t======>Sort  for LAUGES by year   <======")
+    print("\n")# function ~ 9.
 ###################################################################################################################################################
 
 def Meni_for_MAIN_program():
