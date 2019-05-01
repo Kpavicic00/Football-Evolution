@@ -1,4 +1,4 @@
-#,Club,Competition,Expenditures,Arrivals,Income,Departures,Balance,,,
+Order,Club,State,Competition,Expenditures,Arrivals,Income,Departures,Balance,Season,
 1,JuventusFC,Italy,SerieA,261500000,69,109000000,48,-152500000,2018,
 2,ParisSaintGermain,France,Ligue1,217000000,25,114000000,18,-103000000,2018,
 3,ChelseaFC,England,PremierLeague,210000000,38,61750000,30,-148250000,2018,
