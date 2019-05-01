@@ -19,37 +19,32 @@ def Chose_reverse_or():
         Meni_of_Chose_reverse_or()
         value = 0
         value = raw_input("\n\tValue between 1 or  2  : ")
-        val = int(vaule)
-        print("type valiue is digit : ",type(val))
-        a = 'aas'
-        print(" type(value) != type(a)", type(val) ,type(a))
-        if type(val) != type(a):
-            try:
-               value = int(value)
-            except ValueError:
-               print("\n")
-               print("\n\tValid options, please !!")
-               Meni_of_Chose_reverse_or()
-               print("\n")
-               continue
-            if value == 1:
-               print("\n")
-               print(" Sorted by  Classical sort  !!! ")
-               print("\n")
-               a =  False
-               return a
-               break
-            elif value == 2:
-               print("\n")
-               print(" Sorted by Reverse Sort  !!! ")
-               print("\n")
-               a =  True
-               return a
-               break
-            else:
-               print("\n\tValue between 1 or  2  !!!") # function ~ 1.
-        else :
-            print("\n\tINvalid options, please !!")
+        try:
+           value = int(value)
+        except ValueError:
+           print("\n")
+           print("\n\tValid options, please !!")
+           Meni_of_Chose_reverse_or()
+           print("\n")
+           continue
+        if value == 1:
+           print("\n")
+           print(" Sorted by  Classical sort  !!! ")
+           print("\n")
+           a =  False
+           return a
+           break
+        elif value == 2:
+           print("\n")
+           print(" Sorted by Reverse Sort  !!! ")
+           print("\n")
+           a =  True
+           return a
+           break
+        else:
+           print("\n\tValue between 1 or  2  !!!") # function ~ 1.
+
+
 
 ###############################################################################################################################
 

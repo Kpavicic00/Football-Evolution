@@ -13,6 +13,7 @@ import sys
 
 
 # csv , txt files for datas
+clubs_KONACNA = '/home/kristijan/github/FootballEvolcion/Datas/sportska_kubska_statsitika_OBRDENO.csv'
 fail_pathclubs = '/home/kristijan/github/FootballEvolcion/Datas/test_podaci_klubovi.csv' # ovaj za klubsku statistiku
 fp_clubs = '/home/kristijan/github/FootballEvolcion/Datas/Club_statstic.csv' # ovaj za ligasku statistiku
 fp_league = '/home/kristijan/github/FootballEvolcion/Datas/testni_podaci.csv'
@@ -31,8 +32,6 @@ save_csv_f = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Pa
 save_csv_g = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_g.csv'
 save_csv_h = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_h.csv'
 
-fp_clubs = DataFrameFuncClubs(fail_pathclubs)
+fp_clubs = DataFrameFuncClubs(clubs_KONACNA)
 
-ab = BATCH_for_GetDate_for_Clubs_throught_all_seasons(fp_clubs)
-with open(save_csv_c, 'a+') as f:
-    ab.to_csv(f, header=True)
+BATCH_for_GetDate_for_Clubs_throught_all_seasons(fp_clubs)
