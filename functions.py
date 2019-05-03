@@ -308,14 +308,21 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for LEAUGE
     listLEAUGE = np_Name_of_leauge.tolist()
     listLEAUGE = remove_duplicates(listLEAUGE)
+    listLEAUGE.sort()
+    ###############################################################################
 
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for Year_of_Season
     listYear_of_Season = np_Year_of_Season.tolist()
     listYear_of_Season = remove_duplicates(listYear_of_Season)
+    listYear_of_Season.sort()
+    ###############################################################################
 
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for Nationality
     listNationality = np_Nationality.tolist()
     listNationality = remove_duplicates(listNationality)
+    listNationality.sort()
+    ###############################################################################
+    #######################################################################################################################################
 
 
     # a function in which a user selects a choice of country or championship,
@@ -688,15 +695,21 @@ def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for LEAUGE
     listLEAUGE = np_Name_of_leauge.tolist()
     listLEAUGE = remove_duplicates(listLEAUGE)
+    listLEAUGE.sort()
+    ###############################################################################
 
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for Year_of_Season
     listYear_of_Season = np_Year_of_Season.tolist()
     listYear_of_Season = remove_duplicates(listYear_of_Season)
+    listYear_of_Season.sort()
+    ###############################################################################
 
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for Nationality
     listNationality = np_Nationality.tolist()
     listNationality = remove_duplicates(listNationality)
-
+    listNationality.sort()
+    ###############################################################################
+    #######################################################################################################################################
 
     # a function in which a user selects a choice of country or championship,
     # and chooses the name of the state or championship after which the data is printed
@@ -1079,14 +1092,21 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for LEAUGE
     listLEAUGE = np_Name_of_leauge.tolist()
     listLEAUGE = remove_duplicates(listLEAUGE)
+    listLEAUGE.sort()
+    ###############################################################################
 
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for Year_of_Season
     listYear_of_Season = np_Year_of_Season.tolist()
     listYear_of_Season = remove_duplicates(listYear_of_Season)
+    listYear_of_Season.sort()
+    ###############################################################################
 
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for Nationality
     listNationality = np_Nationality.tolist()
     listNationality = remove_duplicates(listNationality)
+    listNationality.sort()
+    ###############################################################################
+    #######################################################################################################################################
 
 
     # a function in which a user selects a choice of country or championship,
@@ -1597,10 +1617,15 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for LEAUGE
     listLEAUGE = np_Name_of_leauge.tolist()
     listLEAUGE = remove_duplicates(listLEAUGE)
+    listLEAUGE.sort()
+    ###############################################################################
 
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for number_of_Season
     listNUMBERofSesons = np_number_of_Season.tolist()
     listNUMBERofSesons = remove_duplicates(listNUMBERofSesons)
+    listNUMBERofSesons.sort()
+    ###############################################################################
+    #######################################################################################################################################
 
 
     # a function in which a user selects a choice of country or championship,
@@ -2113,6 +2138,8 @@ def BATCH_for_GetBYyear(DFrame):
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for YEAR
     listYEAR = np_Year.tolist()
     listYEAR = remove_duplicates(listYEAR)
+    listYEAR.sort()
+    ###############################################################################
 
 
     # a function in which a user selects a choice of country or championship,
@@ -2483,22 +2510,26 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for CLUB
     listClub = np_Club.tolist()
     listClub = remove_duplicates(listClub)
+    listClub.sort()
 
     #STATE
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for STATE
     listState = np_State.tolist()
     listState = remove_duplicates(listState)
+    listState.sort()
     ###############################################################################
 
     # COMPETITION
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for CLUB
     listCOMPETITION = np_Competition.tolist()
     listCOMPETITION = remove_duplicates(listCOMPETITION)
+    listCOMPETITION.sort()
 
     # SESAON
     # convert data from numpay ndarray to list and remove duplicates elemtes of list for Competition
     listSESAON = np_Season.tolist()
     listSESAON = remove_duplicates(listSESAON)
+    listSESAON.sort()
     ###############################################################################
     #######################################################################################################################################
 

@@ -14,7 +14,6 @@ def Chose_reverse_or():
     while True:
         print("\n")
         print("\n\t Chose a option of sorting   : ")
-        print("Chose_reverse_or()")
         print("\n")
         Meni_of_Chose_reverse_or()
         value = 0
