@@ -37,7 +37,7 @@ dt_leauge = DataFrameFunc(fp_league)
 a_DF = BATCH_for_GetBYyear(dt_leauge)
 print("a_DF")
 print(a_DF)
-with open(save_csv_d, 'w') as f:  # Use append mode.
+with open(save_csv_f, 'w') as f:  # Use append mode.
     a_DF.to_csv(f, index=False, header=False)
 #WriteTOcsvFILE_mult_DATAFRAMES(save_csv_h,a)
 #BATCH_for_GetAVGExpendFORplayerArrivals(fp_leauge)

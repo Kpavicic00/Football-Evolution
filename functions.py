@@ -11,7 +11,7 @@ coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 # functions
 
 # write to file
-def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat,head):
+def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat):
     np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=None, footer='     => End of file <=')
     print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
 #######################################################################################################################################
@@ -2045,8 +2045,8 @@ def BATCH_for_GetBYyear(DFrame):
     nDFRAME["    Expend |  "].astype(np.str)# ind 1
     nDFRAME["    Income |  "].astype(np.str)# ind 2
     nDFRAME["    Balance |  "].astype(np.str)# ind 3
-    nDFRAME["    number of Season |  "].astype(np.float64)# ind 4
-    nDFRAME["    sum of Arrivlas |  "].astype(np.float64)# ind 5
+    nDFRAME["    number of Season |  "].astype(np.int64)# ind 4
+    nDFRAME["    sum of Arrivlas |  "].astype(np.int64)# ind 5
     nDFRAME["    sum of Depatrues |  "].astype(np.int64)# ind 6
     nDFRAME["    avg Expend of Arrivlas |  "].astype(np.float64)# ind 7
     nDFRAME["    avg Income of Depatrues |  "].astype(np.float64)# ind 8
