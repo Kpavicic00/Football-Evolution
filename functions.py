@@ -3398,5 +3398,6 @@ def remove_duplicates(l):
 
 # a function in python that release  memory for dataframes
 def Delite_DataFrame_from_memory(DatFr):
+    print("\n\t Release DataFrame memory !!!")
     del(DatFr) # function  ~ 27.
 #######################################################################################################################################
