@@ -12,7 +12,7 @@ coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 
 # write to file
 def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat,head):
-    np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=head, footer='     => End of file <=')
+    np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=None, footer='     => End of file <=')
     print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
 #######################################################################################################################################
 
@@ -154,7 +154,7 @@ def Coefficients(files):
 
 # takes data with pandas function DataFrame
 def DataFrameFunc(filePath):
-    colls = ["0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
+    colls = ["0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Year"]
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat # function ~ 10.
 #######################################################################################################################################
@@ -172,62 +172,64 @@ def GetAVGExpendFORplayerArrivals(DFrame):
 
     #count number of rows in date frame
     count = NumberOfRows(DFrame)
-
+    #   '    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Expend by player|  ', '  Expend + Inflation by player|  '
     #reserving the number of elements in a row
-    Nationality = [0] * count
-    Expend = [0] * count
-    Arrival = [0] * count
-    leauge = [0] * count
-    Season = [0] * count
-    koef = [0] * count
-    CUT =  [0] * count
-    interception = [0] * count
-    ###############################################################################
 
-    # cast DataFrame rows to folat and int
-    DFrame["Expenditures"].astype(np.float64)
-    DFrame["Arrivals"].astype(np.int64)
-    DFrame["Competition"].astype(np.str)
-    DFrame["Nationality"].astype(np.str)
-    DFrame["Season"].astype(np.int64)
+    Name_of_leauge = [0] * count
+    Year_of_Season = [0] * count
+    arrivals_players = [0] * count
+    Nationality_leuge = [0] * count
+    expenditures = [0] * count
+
+    koef = [0] * count
+    int_koef = [0] * count
+    expend_inflation = [0] * count
+    ###############################################################################
+    DFrame["Competition"].astype(np.str) # ind 0
+    DFrame["Year"].astype(np.int64) # ind 1
+    DFrame["Arrivals"].astype(np.int64) # ind 2
+    DFrame["Nationality"].astype(np.str) # ind 3
+    DFrame["Expenditures"].astype(np.int64) # ind 4
     ###############################################################################
 
     #save values from the dateframe to a string
     i = 0
     for i in range(0,count):
-        Expend[i] = DFrame["Expenditures"][i]
-        Arrival[i] = DFrame["Arrivals"][i]
-        leauge[i] = DFrame["Competition"][i]
-        Season[i] = DFrame["Season"][i]
-        Nationality[i] = DFrame["Nationality"][i]
-        ###############################################################################
+        Name_of_leauge[i] = DFrame["Competition"][i] # ind 0
+        Year_of_Season[i] = DFrame["Year"][i] # ind 1
+        arrivals_players[i] = DFrame["Arrivals"][i] # ind 2
+        Nationality_leuge[i] = DFrame["Nationality"][i] # ind 3
+        expenditures[i] = DFrame["Expenditures"][i] # ind 4
 
     for i in range(0,count):
-        temp = Season[i]
+        temp = Year_of_Season[i]
         a = GETCoefficients(coef,temp)
         koef[i] = a
         ###############################################################################
 
+    for i in range(0,len(int_koef)):
+        temp = float(koef[i])
+        int_koef[i] = temp
+        ###############################################################################
+
     for i in range(0,count):
-        interception[i] = round((Expend[i]*koef[i]),2)
+        a = float(expenditures[i])*int_koef[i]
+        expend_inflation[i] = round(a,2)
         ###############################################################################
 
     # conversion to numpy
-    np_Expend = np.asarray(Expend, dtype='float64')
-    np_Arrival = np.asarray(Arrival, dtype='int64')
-    np_Season = np.asarray(Season, dtype='int64')
-    npNationality = np.asarray(Nationality, dtype='str')
-    npLeauge = np.asarray(leauge, dtype='str')
-    np_CUT = np.asarray(CUT, dtype='float64')
-    np_Interception = np.asarray(interception, dtype='float64')
+    np_Expend = np.asarray(expenditures, dtype='float64') # ind 0
+    np_arrivals_players = np.asarray(arrivals_players, dtype='int64') # ind 1
+    np_Year_of_Season = np.asarray(Year_of_Season, dtype='int64') # ind 2
+    npNationality_leuge = np.asarray(Nationality_leuge, dtype='str') # ind 3
+    np_Name_of_leauge = np.asarray(Name_of_leauge, dtype='str') # ind 4
+    np_expend_inflation = np.asarray(expend_inflation, dtype='float64') # ind 5
     ###############################################################################
 
-    np_CUT = np_Expend/np_Arrival
-    np_CUT_inflation = np_Interception/np_Arrival
 
-    niz = np.stack((npLeauge,np_Season,npNationality,np.round(np_CUT,2),np.round(np_CUT_inflation,2)), axis = -1)
-    #a = sorted(niz, key=itemgetter(2), reverse=False)
-    a = sorted(niz,key=lambda niz: float(niz[3]), reverse=True)
+
+    niz = np.stack((np_Name_of_leauge,np_Year_of_Season,npNationality_leuge,np.round((np_Expend/np_arrivals_players),2)
+    ,np.round((np_expend_inflation/np_arrivals_players),2)), axis = -1)
     ###############################################################################
     a = Input_chose_of_GetAVGExpendFORplayerArrivals(niz)
     # convert from stack with values to data for dataFrame
@@ -239,7 +241,7 @@ def GetAVGExpendFORplayerArrivals(DFrame):
     ###############################################################################
     # return DataFrame with head an names of collums
     print(df)
-    return df # function ~ 11. # function FULL -> BATCH optimized ~ 12.
+    return df  # function FULL -> BATCH optimized ~ 12.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GetAVGIncomeFORplayerDepartures
@@ -555,14 +557,15 @@ def GetAVGIncomeFORplayerDepartures(DFrame):
     koef = [0] * count
     CUT =  [0] * count
     interception = [0] * count
+    int_koef = [0] * count
     ###############################################################################
 
     # cast DataFrame rows to folat and int
-    DFrame["Income"].astype(np.float64)
+    DFrame["Income"].astype(np.int64)
     DFrame["Departures"].astype(np.int64)
     DFrame["Nationality"].astype(np.str)
     DFrame["Competition"].astype(np.str)
-    DFrame["Season"].astype(np.int64)
+    DFrame["Year"].astype(np.int64)
     ###############################################################################
 
     #save values from the dateframe to a string
@@ -571,7 +574,7 @@ def GetAVGIncomeFORplayerDepartures(DFrame):
         Income[i] = DFrame["Income"][i]
         Departures[i] = DFrame["Departures"][i]
         leauge[i] = DFrame["Competition"][i]
-        Season[i] = DFrame["Season"][i]
+        Season[i] = DFrame["Year"][i]
         Nationality[i] = DFrame["Nationality"][i]
         ###############################################################################
 
@@ -581,9 +584,16 @@ def GetAVGIncomeFORplayerDepartures(DFrame):
         koef[i] = a
         ###############################################################################
 
-    for i in range(0,count):
-        interception[i] = round((Income[i]*koef[i]),2)
+    for i in range(0,len(int_koef)):
+        temp = float(koef[i])
+        int_koef[i] = temp
         ###############################################################################
+
+    for i in range(0,count):
+        a = float(Income[i])*int_koef[i]
+        interception[i] = round(a,2)
+        ###############################################################################
+
 
     # conversion to numpy
     np_Income = np.asarray(Income, dtype='float64')
@@ -611,7 +621,7 @@ def GetAVGIncomeFORplayerDepartures(DFrame):
     ###############################################################################
     # return DataFrame with head an names of collums
     print(df)
-    return df# function ~ 12. # function FULL -> BATCH optimized ~ 14.
+    return df# function FULL -> BATCH optimized ~ 14.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GetAVGIncomeFORplayerDepartures
@@ -927,14 +937,15 @@ def GetAVGBalanceFORplayerDepartures(DFrame):
         koef = [0] * count
         CUT =  [0] * count
         interception = [0] * count
+        int_koef = [0] * count
         ###############################################################################
 
         # cast DataFrame rows to folat and int
-        DFrame["Balance"].astype(np.float64)
+        DFrame["Balance"].astype(np.int64)
         DFrame["Departures"].astype(np.int64)
         DFrame["Competition"].astype(np.str)
         DFrame["Nationality"].astype(np.str)
-        DFrame["Season"].astype(np.int64)
+        DFrame["Year"].astype(np.int64)
         ###############################################################################
 
         #save values from the dateframe to a string
@@ -943,9 +954,19 @@ def GetAVGBalanceFORplayerDepartures(DFrame):
             Balance[i] = DFrame["Balance"][i]
             Departures[i] = DFrame["Departures"][i]
             leauge[i] = DFrame["Competition"][i]
-            Season[i] = DFrame["Season"][i]
+            Season[i] = DFrame["Year"][i]
             Nationality[i] = DFrame["Nationality"][i]
             ###############################################################################
+
+        # for i in range(0,count):
+        #     temp = Season[i]
+        #     a = GETCoefficients(coef,temp)
+        #     koef[i] = a
+        #     ###############################################################################
+        #
+        # for i in range(0,count):
+        #     interception[i] = round((Balance[i]*koef[i]),2)
+        #     ###############################################################################
 
         for i in range(0,count):
             temp = Season[i]
@@ -953,8 +974,14 @@ def GetAVGBalanceFORplayerDepartures(DFrame):
             koef[i] = a
             ###############################################################################
 
+        for i in range(0,len(int_koef)):
+            temp = float(koef[i])
+            int_koef[i] = temp
+            ###############################################################################
+
         for i in range(0,count):
-            interception[i] = round((Balance[i]*koef[i]),2)
+            a = float(Balance[i])*int_koef[i]
+            interception[i] = round(a,2)
             ###############################################################################
 
         # conversion to numpy
@@ -1306,6 +1333,7 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
     inter_Balance = [0] *count
     inter_Expenditures = [0] *count
     inter_Income = [0] *count
+    int_koef = [0] * count
     ###############################################################################
 
     # cast DataFrame rows to folat and int and str
@@ -1315,14 +1343,14 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
     DFrame["Departures"].astype(np.int64)
     DFrame["Arrivals"].astype(np.int64)
     DFrame["Competition"].astype(np.str)
-    DFrame["Season"].astype(np.int64)
+    DFrame["Year"].astype(np.int64)
     ###############################################################################
 
     i = 0
     for i in range(0,count):
         Arrivals[i] = DFrame["Arrivals"][i]
         leauge[i] = DFrame["Competition"][i]
-        Season[i] =  DFrame["Season"][i]
+        Season[i] =  DFrame["Year"][i]
         Expenditures[i] =  DFrame["Expenditures"][i]
         Income[i] =  DFrame["Income"][i]
         Balance[i] =  DFrame["Balance"][i]
@@ -1330,16 +1358,24 @@ def GetDataForLeauge_AVG_Seasons(DFrame):
         ###############################################################################
 
     for i in range(0,count):
-            temp = Season[i]
-            a = GETCoefficients(coef,temp)
-            koef[i] = a
-            ###############################################################################
+        temp = Season[i]
+        a = GETCoefficients(coef,temp)
+        koef[i] = a
+        ###############################################################################
+
+    for i in range(0,len(int_koef)):
+        temp = float(koef[i])
+        int_koef[i] = temp
+        ###############################################################################
 
     for i in range(0,count):
-            inter_Balance[i] = round((Balance[i]*koef[i]),2)
-            inter_Expenditures[i] = round((Expenditures[i]*koef[i]),2)
-            inter_Income[i] = round((Income[i]*koef[i]),2)
-            ###############################################################################
+        a = float(Balance[i])*int_koef[i]
+        b = float(Expenditures[i])*int_koef[i]
+        c = float(Income[i])*int_koef[i]
+        inter_Balance[i] = round(a,2)
+        inter_Expenditures[i] = round(b,2)
+        inter_Income[i] = round(c,2)
+        ###############################################################################
 
     npLeauge = np.asarray(leauge, dtype = 'str')
     np_Arrival = np.asarray(Arrivals, dtype ='int64')
@@ -1802,6 +1838,7 @@ def GetBYyear(DFrame):
     inter_Balance = [0] *count
     inter_Expenditures = [0] *count
     inter_Income = [0] * count
+    int_koef = [0] * count
     ###############################################################################
 
     # cast DataFrame rows to folat and int and str
@@ -1811,7 +1848,7 @@ def GetBYyear(DFrame):
     DFrame["Departures"].astype(np.int64)
     DFrame["Arrivals"].astype(np.int64)
     DFrame["Competition"].astype(np.str)
-    DFrame["Season"].astype(np.int64)
+    DFrame["Year"].astype(np.int64)
     ###############################################################################
 
     #save values from the dateframe to a string
@@ -1819,7 +1856,7 @@ def GetBYyear(DFrame):
     for i in range(0,count):
         Arrivals[i] = DFrame["Arrivals"][i]
         leauge[i] = DFrame["Competition"][i]
-        Season[i] =  DFrame["Season"][i]
+        Season[i] =  DFrame["Year"][i]
         Expenditures[i] =  DFrame["Expenditures"][i]
         Income[i] =  DFrame["Income"][i]
         Balance[i] =  DFrame["Balance"][i]
@@ -1828,17 +1865,24 @@ def GetBYyear(DFrame):
 
     # calculation of coeficent of inflacion
     for i in range(0,count):
-            temp = Season[i]
-            a = GETCoefficients(coef,temp)
-            koef[i] = a
-            ###############################################################################
+        temp = Season[i]
+        a = GETCoefficients(coef,temp)
+        koef[i] = a
+        ###############################################################################
 
+    for i in range(0,len(int_koef)):
+        temp = float(koef[i])
+        int_koef[i] = temp
+        ###############################################################################
     # calculation  Inflation for Potential, Earned and Profit
     for i in range(0,count):
-            inter_Balance[i] = round((Balance[i]*koef[i]),2)
-            inter_Expenditures[i] = round((Expenditures[i]*koef[i]),2)
-            inter_Income[i] = round((Income[i]*koef[i]),2)
-            ###############################################################################
+        a = float(Balance[i])*int_koef[i]
+        b = float(Expenditures[i])*int_koef[i]
+        c = float(Income[i])*int_koef[i]
+        inter_Balance[i] = round(a,2)
+        inter_Expenditures[i] = round(b,2)
+        inter_Income[i] = round(c,2)
+        ###############################################################################
 
 
     npLeauge = np.asarray(leauge, dtype = 'str')
@@ -1903,8 +1947,8 @@ def GetBYyear(DFrame):
             niz[t][7] = round(sum_Expenditures/float(suma_Arrival),2)
             niz[t][8] = round(sum_Income/float(sum_Departures),2)
             niz[t][9] = round(sum_Balance/float(sum_Departures),2)
-            niz[t][10] = round(sum_Expenditures/float(count),2)
-            niz[t][11] = round(sum_Income/float(count),2)
+            niz[t][10] = round(sum_Expenditures/(count),2)
+            niz[t][11] = round(sum_Income/(count),2)
             niz[t][12] = round(sum_Balance/float(count),2)
             niz[t][13] = a[i][6]
             ###############################################################################
@@ -2337,7 +2381,7 @@ def GETDataClubs_with_seasons(DFrame):
 
     # return DataFrame with head an names of collums
     print(df)
-    return df # # function FULL -> BATCH optimized ~ 22.
+    return df # function FULL -> BATCH optimized ~ 22.
 #######################################################################################################################################
 
 # BATCH for  specific filtring data from estraction data from function GETDataClubs_with_seasons
