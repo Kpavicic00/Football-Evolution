@@ -338,102 +338,101 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
         print("\t 1 -> LEAUGE statistic ! ")
         print("\t 2 -> Year_of_Season statistic ! ")
         print("\t 3 -> Nationality statistic ! ")
-        value = input("\n\tValue between 1 and 3    : ")
-        print("\n")
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n")
-           print("\n\tValid options, please !!")
-           continue
-        if value == 1:
-            flag = 1
-            ###############################################################################
-            cont_LEAUGE = 0
-            print("###############################################################################")
-            print("\t Meni  LEAUGE statistic  !!!")
-            for i in range(0,len(listLEAUGE)):
-                print(i+1,". : ",listLEAUGE[i])
-                cont_LEAUGE += 1
-            print("###############################################################################")
-            while True:
-                print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_LEAUGE:
-                    print("You Chose : ",listLEAUGE[value])
-                    flagTemp =  str(listLEAUGE[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        elif value == 2:
-            flag = 2
-            ###############################################################################
-            cont_Year_of_Season = 0
-            print("###############################################################################")
-            print("\t Meni  State statistic!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listYear_of_Season)):
-                print(i+1,". : ",listYear_of_Season[i])
-                cont_Year_of_Season += 1
-            print("###############################################################################")
+        value = raw_input("\n\tValue between 1 and 3    : ")
+        if value.isdigit() == True:
+            value = int(value)
+            if value == 1:
+                flag = 1
+                ###############################################################################
+                cont_LEAUGE = 0
+                print("###############################################################################")
+                print("\t Meni  LEAUGE statistic  !!!")
+                for i in range(0,len(listLEAUGE)):
+                    print(i+1,". : ",listLEAUGE[i])
+                    cont_LEAUGE += 1
+                print("###############################################################################")
+                while True:
+                    print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_LEAUGE:
+                            print("You Chose : ",listLEAUGE[value])
+                            flagTemp =  str(listLEAUGE[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
+                         continue
+                break
+                ###############################################################################
+            elif value == 2:
+                flag = 2
+                ###############################################################################
+                cont_Year_of_Season = 0
+                print("###############################################################################")
+                print("\t Meni  Year_of_Season statistic!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listYear_of_Season)):
+                    print(i+1,". : ",listYear_of_Season[i])
+                    cont_Year_of_Season += 1
+                print("###############################################################################")
 
-            while True:
-                print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_Year_of_Season:
-                    print("You Chose : ",listYear_of_Season[value])
-                    flagTemp =  int(listYear_of_Season[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        elif value == 3:
-            flag = 3
-            ###############################################################################
-            cont_Nationality = 0
-            print("###############################################################################")
-            print("\t Meni  Competition statistic!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listNationality)):
-                print(i+1,". : ",listNationality[i])
-                cont_Nationality += 1
-            print("###############################################################################")
+                while True:
+                    print("\n\t Enter Year_of_Season   between 1 and ",cont_Year_of_Season," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_Year_of_Season:
+                            print("You Chose : ",listYear_of_Season[value])
+                            flagTemp =  int(listYear_of_Season[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
+                         continue
 
-            while True:
-                print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_Nationality:
-                    print("You Chose : ",listNationality[value])
-                    flagTemp =  str(listNationality[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
+                break
+                ###############################################################################
+            elif value == 3:
+                flag = 3
+                ###############################################################################
+                cont_Nationality = 0
+                print("###############################################################################")
+                print("\t Meni  Competition statistic!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listNationality)):
+                    print(i+1,". : ",listNationality[i])
+                    cont_Nationality += 1
+                print("###############################################################################")
 
-        else:
-            print("\n\tValue between 1 or  4  !!!")
+                while True:
+                    print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_Nationality:
+                            print("You Chose : ",listNationality[value])
+                            flagTemp =  str(listNationality[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\tValue between 1 or  2  !!!")
+                         continue
+                break
+                ###############################################################################
+
+            else:
+                print("\n\tValue between 1 and  4  !!!")
+        elif value.isdigit() != True:
+             print("\n\tValue between 1 and  4  !!!")
+             continue
     #######################################################################################################################################
 
 
@@ -724,102 +723,100 @@ def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):
         print("\t 1 -> LEAUGE statistic ! ")
         print("\t 2 -> Year_of_Season statistic ! ")
         print("\t 3 -> Nationality statistic ! ")
-        value = input("\n\tValue between 1 and 3    : ")
+        value = raw_input("\n\tValue between 1 and 3    : ")
         print("\n")
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n")
-           print("\n\tValid options, please !!")
-           continue
-        if value == 1:
-            flag = 1
-            ###############################################################################
-            cont_LEAUGE = 0
-            print("###############################################################################")
-            print("\t Meni  LEAUGE statistic  !!!")
-            for i in range(0,len(listLEAUGE)):
-                print(i+1,". : ",listLEAUGE[i])
-                cont_LEAUGE += 1
-            print("###############################################################################")
-            while True:
-                print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_LEAUGE:
-                    print("You Chose : ",listLEAUGE[value])
-                    flagTemp =  str(listLEAUGE[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        elif value == 2:
-            flag = 2
-            ###############################################################################
-            cont_Year_of_Season = 0
-            print("###############################################################################")
-            print("\t Meni  State statistic!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listYear_of_Season)):
-                print(i+1,". : ",listYear_of_Season[i])
-                cont_Year_of_Season += 1
-            print("###############################################################################")
+        if value.isdigit() == True:
+            value = int(value)
+            if value == 1:
+                flag = 1
+                ###############################################################################
+                cont_LEAUGE = 0
+                print("###############################################################################")
+                print("\t Meni  LEAUGE statistic  !!!")
+                for i in range(0,len(listLEAUGE)):
+                    print(i+1,". : ",listLEAUGE[i])
+                    cont_LEAUGE += 1
+                print("###############################################################################")
+                while True:
+                    print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_LEAUGE:
+                            print("You Chose : ",listLEAUGE[value])
+                            flagTemp =  str(listLEAUGE[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
+                         continue
+                break
+                ###############################################################################
+            elif value == 2:
+                flag = 2
+                ###############################################################################
+                cont_Year_of_Season = 0
+                print("###############################################################################")
+                print("\t Meni  State statistic!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listYear_of_Season)):
+                    print(i+1,". : ",listYear_of_Season[i])
+                    cont_Year_of_Season += 1
+                print("###############################################################################")
 
-            while True:
-                print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_Year_of_Season:
-                    print("You Chose : ",listYear_of_Season[value])
-                    flagTemp =  int(listYear_of_Season[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        elif value == 3:
-            flag = 3
-            ###############################################################################
-            cont_Nationality = 0
-            print("###############################################################################")
-            print("\t Meni  Competition statistic!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listNationality)):
-                print(i+1,". : ",listNationality[i])
-                cont_Nationality += 1
-            print("###############################################################################")
+                while True:
+                    print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_Year_of_Season:
+                            print("You Chose : ",listYear_of_Season[value])
+                            flagTemp =  int(listYear_of_Season[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
+                         continue
+                break
+                ###############################################################################
+            elif value == 3:
+                flag = 3
+                ###############################################################################
+                cont_Nationality = 0
+                print("###############################################################################")
+                print("\t Meni  Competition statistic!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listNationality)):
+                    print(i+1,". : ",listNationality[i])
+                    cont_Nationality += 1
+                print("###############################################################################")
 
-            while True:
-                print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_Nationality:
-                    print("You Chose : ",listNationality[value])
-                    flagTemp =  str(listNationality[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-
-        else:
-            print("\n\tValue between 1 or  4  !!!")
+                while True:
+                    print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_Nationality:
+                            print("You Chose : ",listNationality[value])
+                            flagTemp =  str(listNationality[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
+                         continue
+                break
+                ###############################################################################
+            else:
+                print("\n\tValue between 1 or  4  !!!")
+        elif value.isdigit() != True:
+             print("\n\tValue between 1 and 3  !!!")
+             continue
     #######################################################################################################################################
 
 
@@ -1122,102 +1119,102 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
         print("\t 1 -> LEAUGE statistic ! ")
         print("\t 2 -> Year_of_Season statistic ! ")
         print("\t 3 -> Nationality statistic ! ")
-        value = input("\n\tValue between 1 and 3    : ")
+        value = raw_input("\n\tValue between 1 and 3    : ")
         print("\n")
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n")
-           print("\n\tValid options, please !!")
-           continue
-        if value == 1:
-            flag = 1
-            ###############################################################################
-            cont_LEAUGE = 0
-            print("###############################################################################")
-            print("\t Meni  LEAUGE statistic  !!!")
-            for i in range(0,len(listLEAUGE)):
-                print(i+1,". : ",listLEAUGE[i])
-                cont_LEAUGE += 1
-            print("###############################################################################")
-            while True:
-                print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_LEAUGE:
-                    print("You Chose : ",listLEAUGE[value])
-                    flagTemp =  str(listLEAUGE[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        elif value == 2:
-            flag = 2
-            ###############################################################################
-            cont_Year_of_Season = 0
-            print("###############################################################################")
-            print("\t Meni  State statistic!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listYear_of_Season)):
-                print(i+1,". : ",listYear_of_Season[i])
-                cont_Year_of_Season += 1
-            print("###############################################################################")
+        if value.isdigit() == True:
+            value = int(value)
+            if value == 1:
+                flag = 1
+                ###############################################################################
+                cont_LEAUGE = 0
+                print("###############################################################################")
+                print("\t Meni  LEAUGE statistic  !!!")
+                for i in range(0,len(listLEAUGE)):
+                    print(i+1,". : ",listLEAUGE[i])
+                    cont_LEAUGE += 1
+                print("###############################################################################")
+                while True:
+                    print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_LEAUGE:
+                            print("You Chose : ",listLEAUGE[value])
+                            flagTemp =  str(listLEAUGE[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
+                         continue
+                break
+                ###############################################################################
+            elif value == 2:
+                flag = 2
+                ###############################################################################
+                cont_Year_of_Season = 0
+                print("###############################################################################")
+                print("\t Meni  State statistic!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listYear_of_Season)):
+                    print(i+1,". : ",listYear_of_Season[i])
+                    cont_Year_of_Season += 1
+                print("###############################################################################")
 
-            while True:
-                print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_Year_of_Season:
-                    print("You Chose : ",listYear_of_Season[value])
-                    flagTemp =  int(listYear_of_Season[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        elif value == 3:
-            flag = 3
-            ###############################################################################
-            cont_Nationality = 0
-            print("###############################################################################")
-            print("\t Meni  Competition statistic!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listNationality)):
-                print(i+1,". : ",listNationality[i])
-                cont_Nationality += 1
-            print("###############################################################################")
+                while True:
+                    print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_Year_of_Season:
+                            print("You Chose : ",listYear_of_Season[value])
+                            flagTemp =  int(listYear_of_Season[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
+                         continue
 
-            while True:
-                print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_Nationality:
-                    print("You Chose : ",listNationality[value])
-                    flagTemp =  str(listNationality[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
+                break
+                ###############################################################################
+            elif value == 3:
+                flag = 3
+                ###############################################################################
+                cont_Nationality = 0
+                print("###############################################################################")
+                print("\t Meni  Competition statistic!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listNationality)):
+                    print(i+1,". : ",listNationality[i])
+                    cont_Nationality += 1
+                print("###############################################################################")
 
-        else:
-            print("\n\tValue between 1 or  4  !!!")
+                while True:
+                    print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_Nationality:
+                            print("You Chose : ",listNationality[value])
+                            flagTemp =  str(listNationality[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
+                         continue
+                break
+                ###############################################################################
+            else:
+                print("\n\tValue between 1 or  4  !!!")
+        elif value.isdigit() != True:
+             print("\n\tValue between 1 or    !!!")
+             continue
+
     #######################################################################################################################################
 
 
@@ -1640,76 +1637,75 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
         print("\n\t Chose a option of proces data by State or Competition  : ")
         print("\t 1 -> LEAUGE statistic ! ")
         print("\t 2 -> NUMBER of Sesons statistic ! ")
-        value = input("\n\tValue between 1 and 2    : ")
+        value = raw_input("\n\tValue between 1 and 2    : ")
         print("\n")
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n")
-           print("\n\tValid options, please !!")
-           continue
-        if value == 1:
-            flag = 1
-            ###############################################################################
-            # CLUBS
-            cont_LEAUGE = 0
-            print("###############################################################################")
-            print("\t Meni  LEAUGE statistic  !!!")
-            #cont_state = 0
-            for i in range(0,len(listLEAUGE)):
-                print(i+1,". : ",listLEAUGE[i])
-                cont_LEAUGE += 1
-            print("###############################################################################")
-            while True:
-                print("\n\t Enter Club   between 0 and ",cont_LEAUGE," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_LEAUGE:
-                    print("You Chose : ",listLEAUGE[value])
-                    flagTemp =  str(listLEAUGE[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
+        if value.isdigit() == True:
+            value = int(value)
+            if value == 1:
+                flag = 1
+                ###############################################################################
+                # CLUBS
+                cont_LEAUGE = 0
+                print("###############################################################################")
+                print("\t Meni  LEAUGE statistic  !!!")
+                #cont_state = 0
+                for i in range(0,len(listLEAUGE)):
+                    print(i+1,". : ",listLEAUGE[i])
+                    cont_LEAUGE += 1
+                print("###############################################################################")
+                while True:
+                    print("\n\t Enter Club   between 0 and ",cont_LEAUGE," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_LEAUGE:
+                            print("You Chose : ",listLEAUGE[value])
+                            flagTemp =  str(listLEAUGE[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\t Enter Club   between 0 and ",cont_LEAUGE," : ")
+                         continue
+                break
+                ###############################################################################
 
 
-        elif value == 2:
-            flag = 2
-            ###############################################################################
-            cont_NUMBERofSesons = 0
-            print("###############################################################################")
-            print("\t Meni  State statistic!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listNUMBERofSesons)):
-                print(i+1,". : ",listNUMBERofSesons[i])
-                cont_NUMBERofSesons += 1
-            print("###############################################################################")
+            elif value == 2:
+                flag = 2
+                ###############################################################################
+                cont_NUMBERofSesons = 0
+                print("###############################################################################")
+                print("\t Meni  State statistic!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listNUMBERofSesons)):
+                    print(i+1,". : ",listNUMBERofSesons[i])
+                    cont_NUMBERofSesons += 1
+                print("###############################################################################")
 
-            while True:
-                print("\n\t Enter State   between 1 and ",cont_NUMBERofSesons," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_NUMBERofSesons:
-                    print("You Chose : ",listNUMBERofSesons[value])
-                    flagTemp =  int(listNUMBERofSesons[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        else:
-            print("\n\tValue between 1 or  4  !!!")
+                while True:
+                    print("\n\t Enter State   between 1 and ",cont_NUMBERofSesons," : ")
+                    value = input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_NUMBERofSesons:
+                            print("You Chose : ",listNUMBERofSesons[value])
+                            flagTemp =  int(listNUMBERofSesons[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                          print("\n\tValue between 1 or  2  !!!")
+                          continue
+                break
+                ###############################################################################
+            else:
+                print("\n\tValue between 1 or  4  !!!")
+        elif value.isdigit() != True:
+             print("\n\tValue between 1 or  2  !!!")
+             continue
     #######################################################################################################################################
 
     print("flagTemp",flagTemp,"flag",flag)
@@ -2153,45 +2149,44 @@ def BATCH_for_GetBYyear(DFrame):
         print("\n")
         print("\n\t Chose a option of proces data by YEAR : ")
         print("\t 1 -> YEAR ! ")
-        value = input("\n\tValue ")
+        value = raw_input("\n\tValue ")
         print("\n")
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n")
-           print("\n\tValid options, please !!")
-           continue
-        if value == 1:
-            flag = 1
-            ###############################################################################
-            # drzave
-            cont_YEAR = 0
-            print("###############################################################################")
-            print("\t Meni  State!!!")
-            #cont_state = 0
-            for i in range(0,len(listYEAR)):
-                print(i+1,". : ",listYEAR[i])
-                cont_YEAR += 1
-            print("###############################################################################")
-            while True:
-                print("\n\t Enter State   between 0 and ",cont_YEAR," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_YEAR:
-                    print("You Chose : ",listYEAR[value])
-                    flagTemp =  int(listYEAR[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        else:
-            print("\n\tValue :  !!!")
+        if value.isdigit() == True:
+            value = int(value)
+            if value == 1:
+                flag = 1
+                ###############################################################################
+                # drzave
+                cont_YEAR = 0
+                print("###############################################################################")
+                print("\t Meni  State!!!")
+                #cont_state = 0
+                for i in range(0,len(listYEAR)):
+                    print(i+1,". : ",listYEAR[i])
+                    cont_YEAR += 1
+                print("###############################################################################")
+                while True:
+                    print("\n\t Enter State   between 0 and ",cont_YEAR," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_YEAR:
+                            print("You Chose : ",listYEAR[value])
+                            flagTemp =  int(listYEAR[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                          print("\n\t Enter State   between 0 and ",cont_YEAR," : ")
+                          continue
+                break
+                ###############################################################################
+            else:
+                print("\n\tValue :  !!!")
+        elif value.isdigit() != True:
+             print("\n\tValue 1 !!!")
+             continue
     #######################################################################################################################################
 
     #count number of rows in date frame
@@ -2547,133 +2542,133 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
         print("\t 2 -> State statistic ! ")
         print("\t 3 -> Competition statistic ! ")
         print("\t 4 -> Season statistic ! ")
-        value = input("\n\tValue between 1 and 4    : ")
-        print("\n")
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n")
-           print("\n\tValid options, please !!")
-           continue
-        if value == 1:
-            flag = 1
-            ###############################################################################
-            # CLUBS
-            cont_CLUB = 0
-            print("###############################################################################")
-            print("\t Meni  Club statistic  !!!")
-            #cont_state = 0
-            for i in range(0,len(listClub)):
-                print(i+1,". : ",listClub[i])
-                cont_CLUB += 1
-            print("###############################################################################")
-            while True:
-                print("\n\t Enter Club   between 0 and ",cont_CLUB," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_CLUB:
-                    print("You Chose : ",listClub[value])
-                    flagTemp =  str(listClub[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        elif value == 2:
-            flag = 2
-            ###############################################################################
-            cont_State = 0
-            print("###############################################################################")
-            print("\t Meni  State statistic!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listState)):
-                print(i+1,". : ",listState[i])
-                cont_State += 1
-            print("###############################################################################")
+        value = raw_input("\n\tValue between 1 and 4    : ")
+        if value.isdigit() == True:
+            value = int(value)
+            if value == 1:
+                flag = 1
+                ###############################################################################
+                # CLUBS
+                cont_CLUB = 0
+                print("###############################################################################")
+                print("\t Meni  Club statistic  !!!")
+                #cont_state = 0
+                for i in range(0,len(listClub)):
+                    print(i+1,". : ",listClub[i])
+                    cont_CLUB += 1
+                print("###############################################################################")
+                while True:
+                    print("\n\t Enter Club   between 0 and ",cont_CLUB," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_CLUB:
+                            print("You Chose : ",listClub[value])
+                            flagTemp =  str(listClub[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                           print("\n\t Enter Club   between 0 and ",cont_CLUB," : ")
+                           continue
 
-            while True:
-                print("\n\t Enter State   between 1 and ",cont_State," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_State:
-                    print("You Chose : ",listState[value])
-                    flagTemp =  str(listState[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        elif value == 3:
-            flag = 3
-            ###############################################################################
-            cont_COMPETITION = 0
-            print("###############################################################################")
-            print("\t Meni  Competition statistic!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listCOMPETITION)):
-                print(i+1,". : ",listCOMPETITION[i])
-                cont_COMPETITION += 1
-            print("###############################################################################")
+                break
+                ###############################################################################
+            elif value == 2:
+                flag = 2
+                ###############################################################################
+                cont_State = 0
+                print("###############################################################################")
+                print("\t Meni  State statistic!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listState)):
+                    print(i+1,". : ",listState[i])
+                    cont_State += 1
+                print("###############################################################################")
 
-            while True:
-                print("\n\t Enter Competition   between 1 and ",cont_COMPETITION," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_COMPETITION:
-                    print("You Chose : ",listCOMPETITION[value])
-                    flagTemp =  str(listCOMPETITION[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        elif value == 4:
-            flag = 4
-            ###############################################################################
-            cont_Seson = 0
-            print("###############################################################################")
-            print("\t Meni  Season statistic!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listSESAON)):
-                print(i+1,". : ",listSESAON[i])
-                cont_Seson += 1
-            print("###############################################################################")
+                while True:
+                    print("\n\t Enter State   between 1 and ",cont_State," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_State:
+                            print("You Chose : ",listState[value])
+                            flagTemp =  str(listState[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                           print("\n\t Enter State   between 1 and ",cont_State," : ")
+                           continue
+                break
+                ###############################################################################
+            elif value == 3:
+                flag = 3
+                ###############################################################################
+                cont_COMPETITION = 0
+                print("###############################################################################")
+                print("\t Meni  Competition statistic!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listCOMPETITION)):
+                    print(i+1,". : ",listCOMPETITION[i])
+                    cont_COMPETITION += 1
+                print("###############################################################################")
 
-            while True:
-                print("\n\t Enter Season   between 1 and ",cont_Seson," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_Seson:
-                    print("You Chose : ",listSESAON[value])
-                    flagTemp =  int(listSESAON[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
+                while True:
+                    print("\n\t Enter Competition   between 1 and ",cont_COMPETITION," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_COMPETITION:
+                            print("You Chose : ",listCOMPETITION[value])
+                            flagTemp =  str(listCOMPETITION[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                           print("\n\t Enter Competition   between 1 and ",cont_COMPETITION," : ")
+                           continue
+                break
+                ###############################################################################
+            elif value == 4:
+                flag = 4
+                ###############################################################################
+                cont_Seson = 0
+                print("###############################################################################")
+                print("\t Meni  Season statistic!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listSESAON)):
+                    print(i+1,". : ",listSESAON[i])
+                    cont_Seson += 1
+                print("###############################################################################")
 
-        else:
-            print("\n\tValue between 1 or  4  !!!")
+                while True:
+                    print("\n\t Enter Season   between 1 and ",cont_Seson," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_Seson:
+                            print("You Chose : ",listSESAON[value])
+                            flagTemp =  int(listSESAON[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                           print("\n\t Enter Season   between 1 and ",cont_Seson," : ")
+                           continue
+                break
+                ###############################################################################
+
+            else:
+                print("\n\tValue between 1 or  4  !!!")
+        elif value.isdigit() != True:
+             print("\n\tValue between 1 and 4  !!!")
+             continue
+
     #######################################################################################################################################
 
     #count number of rows in date frame
@@ -3201,74 +3196,73 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
         print("\n\t Chose a option of proces data by State or Competition  : ")
         print("\t 1 -> State ! ")
         print("\t 2 -> Competition ! ")
-        value = input("\n\tValue between 1 or  2  : ")
-        print("\n")
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n")
-           print("\n\tValid options, please !!")
-           continue
-        if value == 1:
-            flag = 1
-            ###############################################################################
-            # drzave
-            cont_state = 0
-            print("###############################################################################")
-            print("\t Meni  State!!!")
-            #cont_state = 0
-            for i in range(0,len(listSTATE)):
-                print(i+1,". : ",listSTATE[i])
-                cont_state += 1
-            print("###############################################################################")
-            while True:
-                print("\n\t Enter State   between 1 and ",cont_state," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_state:
-                    print("You Chose : ",listSTATE[value])
-                    flagTemp =  str(listSTATE[value])
-                    break
-                else:
-                   print("\n\tValue between bounds :")
-            break
-            ###############################################################################
-        elif value == 2:
-            flag = 2
-            ###############################################################################
-            cont_Compe = 0
-            print("###############################################################################")
-            print("\t Meni  Competition!!!")
-            #cont_Compe = 0
-            for i in range(0,len(listCompetition)):
-                print(i+1,". : ",listCompetition[i])
-                cont_Compe += 1
-            print("###############################################################################")
+        value = raw_input("\n\tValue between 1 or  2  : ")
+        if value.isdigit() == True:
+            value = int(value)
+            if value == 1:
+                flag = 1
+                ###############################################################################
+                # drzave
+                cont_state = 0
+                print("###############################################################################")
+                print("\t Meni  State!!!")
+                #cont_state = 0
+                for i in range(0,len(listSTATE)):
+                    print(i+1,". : ",listSTATE[i])
+                    cont_state += 1
+                print("###############################################################################")
+                while True:
+                    print("\n\t Enter State   between 1 and ",cont_state," : ")
+                    value = raw_input("\n\tValue : " )
+                    if value.isdigit() == True:
+                        value = int(value)
+                        value =value -1
+                        if 0 <= value < cont_state:
+                            print("You Chose : ",listSTATE[value])
+                            flagTemp =  str(listSTATE[value])
+                            break
+                        else:
+                           print("\n\tValue between bounds :")
+                    elif value.isdigit() != True:
+                         print("\n\t Enter State   between 1 and ",cont_state," : ")
+                         continue
 
-            while True:
-                print("\n\t Enter Competition   between 1 and ",cont_Compe," : ")
-                value = input("\n\tValue : " )
-                value =value -1
-                try:
-                   value = (value)
-                except ValueError:
-                    print("\n\tValid number, please !!")
-                    continue
-                if 0 <= value <= cont_Compe:
-                    print("You Chose : ",listCompetition[value])
-                    flagTemp =  str(listCompetition[value])
-                    break
-                else:
-                   print("\n\tValue between 1 and ",cont_Compe," :")
-            break
-            ###############################################################################
-        else:
-            print("\n\tValue between 1 or  2  !!!")
+                break
+                ###############################################################################
+            elif value == 2:
+                flag = 2
+                ###############################################################################
+                cont_Compe = 0
+                print("###############################################################################")
+                print("\t Meni  Competition!!!")
+                #cont_Compe = 0
+                for i in range(0,len(listCompetition)):
+                    print(i+1,". : ",listCompetition[i])
+                    cont_Compe += 1
+                print("###############################################################################")
+
+                while True:
+                    print("\n\t Enter Competition   between 1 and ",cont_Compe," : ")
+                    value = raw_input("\n\tValue : " )
+                    value =value -1
+                    if value.isdigit() == True:
+                        value = int(value)
+                        if 0 <= value < cont_Compe:
+                            print("You Chose : ",listCompetition[value])
+                            flagTemp =  str(listCompetition[value])
+                            break
+                        else:
+                           print("\n\tValue between 1 and ",cont_Compe," :")
+                    elif value.isdigit() != True:
+                         print("\n\tValue between 1 and ",cont_Compe," :")
+                         continue
+                break
+                ###############################################################################
+            else:
+                print("\n\tValue between 1 or  2  !!!")
+        elif value.isdigit() != True:
+             print("\n\tValue between 1 and 2 !!!")
+             continue
     #######################################################################################################################################
 
     #count number of rows in date frame

@@ -5,9 +5,12 @@ import csv
 import sys
 from pandas import ExcelWriter
 from pandas import ExcelFile
+from collections import Counter
+from operator import itemgetter
 from functions import *
 from sort_functions import*
-import sys
+
+
 
 
 
@@ -31,10 +34,6 @@ save_csv_f = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Pa
 save_csv_g = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_g.csv'
 save_csv_h = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Parsing_h.csv'
 
-#fp_clubs = DataFrameFuncClubs(clubs_KONACNA)
-dt_leauge = DataFrameFunc(fp_league)
-BATCH_for_GetAVGExpendFORplayerArrivals(dt_leauge)
-Delite_DataFrame_from_memory(dt_leauge)
-#BATCH_for_GetAVGExpendFORplayerArrivals(fp_leauge)
-
-#BATCH_for_GetDate_for_Clubs_throught_all_seasons(fp_clubs)
+clubs_DF = DataFrameFunc(fp_league)
+BATCH_for_GetAVGExpendFORplayerArrivals(clubs_DF)
+Delite_DataFrame_from_memory(clubs_DF)
