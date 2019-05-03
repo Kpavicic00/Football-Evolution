@@ -3395,3 +3395,8 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
 def remove_duplicates(l):
     return list(set(l)) # function optimized ~ 26.
 #######################################################################################################################################
+
+# a function in python that release  memory for dataframes
+def Delite_DataFrame_from_memory(DatFr):
+    del(DatFr) # function  ~ 27.
+#######################################################################################################################################

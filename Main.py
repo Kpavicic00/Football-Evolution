@@ -33,9 +33,8 @@ save_csv_h = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/Save_csv_Pa
 
 #fp_clubs = DataFrameFuncClubs(clubs_KONACNA)
 dt_leauge = DataFrameFunc(fp_league)
-a = BATCH_for_GetAVGExpendFORplayerArrivals(dt_leauge)
-del(dt_leauge)
-del(a)
+BATCH_for_GetAVGExpendFORplayerArrivals(dt_leauge)
+Delite_DataFrame_from_memory(dt_leauge)
 #BATCH_for_GetAVGExpendFORplayerArrivals(fp_leauge)
 
 #BATCH_for_GetDate_for_Clubs_throught_all_seasons(fp_clubs)
