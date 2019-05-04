@@ -21,7 +21,7 @@ def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat):
 def WriteTOcsvFILE_mult_DATAFRAMES(csv_file,datFRAME):
 
     with open(csv_file, 'w') as f:
-         pd.concat([datFRAME], axis=1).to_csv(f) # function ~ 2.
+         pd.concat([datFRAME], axis=1).to_csv(f,header=None) # function ~ 2.
 #######################################################################################################################################
 
 #   read csv file

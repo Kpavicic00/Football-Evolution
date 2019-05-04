@@ -1,28 +1,25 @@
-,    Expend by player|  ,    Income by player|  ,    Name of League |  ,    Nationality |  ,   Year of Season |  ,  Expend + Inflation by player|  ,  Income + Inflation by player|  
-0,241692.31,,Chinese ChineseSuperLeague,China,2011,266613.54,
-0,,778421.05,PremierLeague,England,2011,,858685.15
-1,,597284.62,SerieA,Italy,2011,,658871.49
-2,,872861.11,LaLiga,Spain,2011,,962863.06
-3,,601172.64,Ligue1,France,2011,,663160.4
-4,,693709.09,Bundesliga,Germany,2011,,765238.42
-5,,194897.96,PremierLiga,Russia,2011,,214994.16
-6,,228716.71,SüperLig,Turkey,2011,,252300.01
-7,,259332.06,LigaNOS,Portugal  ,2011,,286072.16
-8,,125388.24,BrasileiroSérieA,Brazil,2011,,138317.19
-9,,184313.47,Championship,England,2011,,203318.3
-10,,412400.0, Eredivisie,Netherlands,2011,,454923.15
-11,,118184.82,PremierLiga,Ukraine,2011,,130371.02
-12,,55668.45,Chinese ChineseSuperLeague,China,2011,,61408.5
-13,,93981.48,SerieB,Italy,2011,,103672.05
-14,,322596.15,JupilerProLeague,Belgium,2011,,355859.5
-15,,70726.26,SaudiProfessionalLeague,Saudi Arabia,2011,,78018.94
-16,,26041.67,QatarStarsLeague,Qatar,2011,,28726.86
-17,,206647.4,Ligue2,France,2011,,227955.11
-18,,55105.26,SuperLeague,Greece,2011,,60787.25
-19,,40100.0,Liga1Betano,Romania,2011,,44234.77
-20,,113715.71,PrimeraDivisión,Argentina,2011,,125441.1
-21,,89704.8,2.Bundesliga,Germany,2011,,98954.39
-22,,197393.62,SuperLeague,Switzerland,2011,,217747.15
-23,,62676.06,ScottishPremiership,Scotland,2011,,69138.67
-24,,26776.86,KLeague1,SouthKorea,2011,,29537.86
-25,,22033.1,1.HNL,Croatia,2011,,24304.96
+0,PremierLeague,2004,England,406733.78,517627.51
+1,LaLiga,2004,Spain,331387.9,421738.99
+2,SerieA,2004,Italy,570657.08,726243.6
+3,Ligue1,2004,France,600340.31,764019.8
+4,PremierLiga,2004,Russia,109094.83,138838.93
+5,Bundesliga,2004,Germany,267234.04,340093.93
+6,LigaNOS,2004,Portugal,360906.74,459305.97
+7,PremierLiga,2004,Ukraine,26404.49,33603.53
+8,SüperLig,2004,Turkey,55626.82,70793.17
+9,CampeonatoBrasileiroSérieA,2004,Brazil,139768.34,177875.41
+10,Eredivisie,2004,Netherlands,223375.39,284277.47
+11,Championship,2004,England,148448.91,188922.68
+12,ScottishPremiership,2004,Scotland,83615.02,106412.2
+13,SerieB,2004,Italy,28472.47,36235.33
+14,JupilerProLeague,2004,Belgium,82126.98,104518.45
+15,SuperLeague,2004,Switzerland,60718.56,77273.15
+16,SuperLeague,2004,Greece,33310.1,42391.92
+17,Liga1Betano,2004,Romania,50555.56,64339.25
+18,SerieC-GironeB,2004,Italy,3268.7,4159.89
+19,Eliteserien,2004,Norway,101775.7,129524.29
+20,Bundesliga,2004,Austria,25422.54,32353.85
+21,2.Bundesliga,2004,Germany,41914.89,53342.76
+22,AlkaSuperligaen,2004,Denmark,70662.25,89927.93
+23,LeagueOne,2004,England,6279.07,7991.02
+24,FortunaLiga,2004,CzechRepublic,70405.41,89601.05
