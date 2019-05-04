@@ -12,18 +12,21 @@ coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 
 # write to file
 def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat):
+
     np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=None, footer='     => End of file <=')
     print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
 #######################################################################################################################################
 
 # write to file
 def WriteTOcsvFILE_mult_DATAFRAMES(csv_file,datFRAME):
+
     with open(csv_file, 'w') as f:
          pd.concat([datFRAME], axis=1).to_csv(f) # function ~ 2.
 #######################################################################################################################################
 
 #   read csv file
 def ReadCSV_file(file):
+
     with open(file, 'r') as csvFile:
 
         reader = csv.reader(csvFile)
@@ -34,16 +37,19 @@ def ReadCSV_file(file):
 
 #function count number of rows for specific DateFrame
 def NumberOfRows(datFrame):
+
     total_rows = len(datFrame)
-    #print("Total rows : ", total_rows )
     return  total_rows # function ~ 3.
 #######################################################################################################################################
 
 # functions_fore choose of season
 def Input_order():
+
     while True:
+
         print("\n\t Enter a year of season   : ")
         value = input("\n\tValue between 1 and 7 :")
+
         try:
            value = int(value)
         except ValueError:
@@ -58,11 +64,14 @@ def Input_order():
 
 # function for input years interval 2000 to 2018
 def Input_year():
+
     while True:
+
         print("\n\t Enter a year of transaction to get \ n transaction data according to the current inflation rate : ")
         value = input("\n\tValue between 2000 and 2018 :")
         try:
            value = int(value)
+
         except ValueError:
            print("\n\tValid number, please !!")
            continue
@@ -75,6 +84,7 @@ def Input_year():
 
 # print the txt file
 def printFile(data):
+
     #read the file
     f = open(data, "r")
     print(f.read())
@@ -83,6 +93,7 @@ def printFile(data):
 
 # function  count the length of lines for the required size allocation of the string
 def file_lengthy(fname):
+
     with open(fname) as f:
         for i ,j in enumerate (f):
             pass
@@ -91,6 +102,7 @@ def file_lengthy(fname):
 
 #function get Coefients for specific year
 def GETCoefficients(files,year):
+
     lenght = file_lengthy(files) # count the length of lines for the required size allocation of the string
 
     with open(files, "r") as f: # open the file
@@ -123,6 +135,7 @@ def GETCoefficients(files,year):
 
 # picking up and dealing with the data in terms of coefficients
 def Coefficients(files):
+
     lenght = file_lengthy(files) # count the length of lines for the required size allocation of the string
 
     with open(files, "r") as f: # open the file
@@ -148,12 +161,13 @@ def Coefficients(files):
     # the intake part put a try catch between the 2000 and 2009 intervals and to index them with the 2019 index
     i = Input_year()
     np_specific_coefficient = np_koef[np_years == i]
-    #print("\n\t You have chosen a year :  ",i)
+
     return np_specific_coefficient # function ~ 9.
 #######################################################################################################################################
 
 # takes data with pandas function DataFrame
 def DataFrameFunc(filePath):
+
     colls = ["0","Nationality","Competition","Expenditures","Arrivals","Income","Departures","Balance","Year"]
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat # function ~ 10.
@@ -161,6 +175,7 @@ def DataFrameFunc(filePath):
 
 # takes data with pandas function DataFrame for Clubs datas
 def DataFrameFuncClubs(filePath):
+
     colls = ["Order","Club","State","Competition","Expenditures","Arrivals","Income","Departures","Balance","Season"]
     dat = pd.read_csv(filePath,header = None , names = colls)
     return dat # function ~ 11.
@@ -170,11 +185,10 @@ def DataFrameFuncClubs(filePath):
 #  --> for League datas
 def GetAVGExpendFORplayerArrivals(DFrame):
 
-    #count number of rows in date frame
+    # count number of rows in date frame
     count = NumberOfRows(DFrame)
-    #   '    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Expend by player|  ', '  Expend + Inflation by player|  '
-    #reserving the number of elements in a row
 
+    # reserving arraya for cast
     Name_of_leauge = [0] * count
     Year_of_Season = [0] * count
     arrivals_players = [0] * count
@@ -185,6 +199,8 @@ def GetAVGExpendFORplayerArrivals(DFrame):
     int_koef = [0] * count
     expend_inflation = [0] * count
     ###############################################################################
+
+    # cast data from Data to float, int and str
     DFrame["Competition"].astype(np.str) # ind 0
     DFrame["Year"].astype(np.int64) # ind 1
     DFrame["Arrivals"].astype(np.int64) # ind 2
@@ -201,17 +217,20 @@ def GetAVGExpendFORplayerArrivals(DFrame):
         Nationality_leuge[i] = DFrame["Nationality"][i] # ind 3
         expenditures[i] = DFrame["Expenditures"][i] # ind 4
 
+    # the inflation calculation coefficient operatorion
     for i in range(0,count):
         temp = Year_of_Season[i]
         a = GETCoefficients(coef,temp)
         koef[i] = a
         ###############################################################################
 
+    # save coefficient to specific array
     for i in range(0,len(int_koef)):
         temp = float(koef[i])
         int_koef[i] = temp
         ###############################################################################
 
+    # operation of inflation
     for i in range(0,count):
         a = float(expenditures[i])*int_koef[i]
         expend_inflation[i] = round(a,2)
@@ -231,6 +250,7 @@ def GetAVGExpendFORplayerArrivals(DFrame):
     niz = np.stack((np_Name_of_leauge,np_Year_of_Season,npNationality_leuge,np.round((np_Expend/np_arrivals_players),2)
     ,np.round((np_expend_inflation/np_arrivals_players),2)), axis = -1)
     ###############################################################################
+
     a = Input_chose_of_GetAVGExpendFORplayerArrivals(niz)
     # convert from stack with values to data for dataFrame
     data = np.array(a)
@@ -262,8 +282,7 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
     Expend_by_player = [0] * count # indx 3
     Expend_Inflation_by_player = [0] * count # indx 4
 
-    # '    Name of League |  ', '   Year of Season |  ','    Nationality |  ', '    Expend by player|  ', '  Expend + Inflation by player|  '
-    # cast DataFrame rows to folat and int
+    # cast from DataFrame to str int an float
     nDFRAME["    Name of League |  "].astype(np.str)# ind 0
     nDFRAME["   Year of Season |  "].astype(np.int64)# ind 1
     nDFRAME["    Nationality |  "].astype(np.str)# ind 2
@@ -305,7 +324,7 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
     print(df_a)
     print("################################################################################################################")
 
-    # convert data from numpay ndarray to list and remove duplicates elemtes of list for LEAUGE
+    # convert data from numpay ndarray to list and remove   duplicates elemtes of list for LEAUGE
     listLEAUGE = np_Name_of_leauge.tolist()
     listLEAUGE = remove_duplicates(listLEAUGE)
     listLEAUGE.sort()
@@ -333,6 +352,7 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
     flagTemp = '0'
 
     while True:
+
         print("\n")
         print("\n\t Chose a option of proces data by LEAUGE,Year_of_Season or Nationality  : ")
         print("\t 1 -> LEAUGE statistic ! ")
@@ -340,8 +360,10 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
         print("\t 3 -> Nationality statistic ! ")
         value = raw_input("\n\tValue between 1 and 3    : ")
         if value.isdigit() == True:
+
             value = int(value)
             if value == 1:
+
                 flag = 1
                 ###############################################################################
                 cont_LEAUGE = 0
@@ -352,17 +374,21 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
                     cont_LEAUGE += 1
                 print("###############################################################################")
                 while True:
+
                     print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_LEAUGE:
                             print("You Chose : ",listLEAUGE[value])
                             flagTemp =  str(listLEAUGE[value])
                             break
+
                         else:
                            print("\n\tValue between bounds :")
+
                     elif value.isdigit() != True:
                          print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
                          continue
@@ -381,24 +407,30 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
                 print("###############################################################################")
 
                 while True:
+
                     print("\n\t Enter Year_of_Season   between 1 and ",cont_Year_of_Season," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_Year_of_Season:
+
                             print("You Chose : ",listYear_of_Season[value])
                             flagTemp =  int(listYear_of_Season[value])
                             break
                         else:
                            print("\n\tValue between bounds :")
+
                     elif value.isdigit() != True:
+
                          print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
                          continue
 
                 break
                 ###############################################################################
             elif value == 3:
+
                 flag = 3
                 ###############################################################################
                 cont_Nationality = 0
@@ -411,18 +443,23 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
                 print("###############################################################################")
 
                 while True:
+
                     print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
                     value = raw_input("\n\tValue : " )
+
                     if value.isdigit() == True:
                         value = int(value)
                         value =value -1
+
                         if 0 <= value < cont_Nationality:
                             print("You Chose : ",listNationality[value])
                             flagTemp =  str(listNationality[value])
                             break
                         else:
+
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                          print("\n\tValue between 1 or  2  !!!")
                          continue
                 break
@@ -430,7 +467,9 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
 
             else:
                 print("\n\tValue between 1 and  4  !!!")
+
         elif value.isdigit() != True:
+
              print("\n\tValue between 1 and  4  !!!")
              continue
     #######################################################################################################################################
@@ -465,6 +504,7 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
             if str(a[i][2]) == flagTemp :
                 bro +=1
     ###############################################################################
+
     # reserving the number of elements in a row
     array1 = [0] * bro
     array2 = [0] * bro
@@ -489,6 +529,7 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
                 array5[y] = a[i][4]
                 y+=1
     ###############################################################################
+
     # number of Season
     if flag == 2:
         for i in range(0,len(a)):
@@ -500,6 +541,7 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
                 array5[y] = a[i][4]
                 y+=1
     ###############################################################################
+
     # Nationality
     if flag == 3:
         for i in range(0,len(a)):
@@ -514,6 +556,7 @@ def BATCH_for_GetAVGExpendFORplayerArrivals(DFrame):
 
     # reserving the number of elements in a row
     niz_N1 = [0]*bro
+
     #Initialize a new array
     np_niz1 = np.asarray(niz_N1, dtype = 'str')
     np_niz2 = np.asarray(niz_N1, dtype = 'int64')
@@ -718,6 +761,7 @@ def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):
     flagTemp = '0'
 
     while True:
+
         print("\n")
         print("\n\t Chose a option of proces data by LEAUGE,Year_of_Season or Nationality  : ")
         print("\t 1 -> LEAUGE statistic ! ")
@@ -726,8 +770,10 @@ def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):
         value = raw_input("\n\tValue between 1 and 3    : ")
         print("\n")
         if value.isdigit() == True:
+
             value = int(value)
             if value == 1:
+
                 flag = 1
                 ###############################################################################
                 cont_LEAUGE = 0
@@ -738,23 +784,28 @@ def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):
                     cont_LEAUGE += 1
                 print("###############################################################################")
                 while True:
+
                     print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_LEAUGE:
+
                             print("You Chose : ",listLEAUGE[value])
                             flagTemp =  str(listLEAUGE[value])
                             break
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                          print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
                          continue
                 break
                 ###############################################################################
             elif value == 2:
+
                 flag = 2
                 ###############################################################################
                 cont_Year_of_Season = 0
@@ -767,9 +818,11 @@ def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):
                 print("###############################################################################")
 
                 while True:
+
                     print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_Year_of_Season:
@@ -779,6 +832,7 @@ def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                          print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
                          continue
                 break
@@ -799,15 +853,18 @@ def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):
                     print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_Nationality:
+
                             print("You Chose : ",listNationality[value])
                             flagTemp =  str(listNationality[value])
                             break
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                          print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
                          continue
                 break
@@ -815,6 +872,7 @@ def BATCH_for_GetAVGIncomeFORplayerDepartures(DFrame):
             else:
                 print("\n\tValue between 1 or  4  !!!")
         elif value.isdigit() != True:
+
              print("\n\tValue between 1 and 3  !!!")
              continue
     #######################################################################################################################################
@@ -1114,6 +1172,7 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
     flagTemp = '0'
 
     while True:
+
         print("\n")
         print("\n\t Chose a option of proces data by LEAUGE,Year_of_Season or Nationality  : ")
         print("\t 1 -> LEAUGE statistic ! ")
@@ -1122,6 +1181,7 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
         value = raw_input("\n\tValue between 1 and 3    : ")
         print("\n")
         if value.isdigit() == True:
+
             value = int(value)
             if value == 1:
                 flag = 1
@@ -1134,9 +1194,11 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
                     cont_LEAUGE += 1
                 print("###############################################################################")
                 while True:
+
                     print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_LEAUGE:
@@ -1146,11 +1208,13 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                          print("\n\t Enter Club   between 1 and ",cont_LEAUGE," : ")
                          continue
                 break
                 ###############################################################################
             elif value == 2:
+
                 flag = 2
                 ###############################################################################
                 cont_Year_of_Season = 0
@@ -1163,9 +1227,11 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
                 print("###############################################################################")
 
                 while True:
+
                     print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_Year_of_Season:
@@ -1175,6 +1241,7 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                          print("\n\t Enter State   between 1 and ",cont_Year_of_Season," : ")
                          continue
 
@@ -1193,9 +1260,11 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
                 print("###############################################################################")
 
                 while True:
+
                     print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_Nationality:
@@ -1205,6 +1274,7 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                          print("\n\t Enter Competition   between 1 and ",cont_Nationality," : ")
                          continue
                 break
@@ -1212,6 +1282,7 @@ def BATCH_for_GetAVGBalanceFORplayerDepartures(DFrame):
             else:
                 print("\n\tValue between 1 or  4  !!!")
         elif value.isdigit() != True:
+
              print("\n\tValue between 1 or    !!!")
              continue
 
@@ -1633,6 +1704,7 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
     flagTemp = '0'
 
     while True:
+
         print("\n")
         print("\n\t Chose a option of proces data by State or Competition  : ")
         print("\t 1 -> LEAUGE statistic ! ")
@@ -1640,6 +1712,7 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
         value = raw_input("\n\tValue between 1 and 2    : ")
         print("\n")
         if value.isdigit() == True:
+
             value = int(value)
             if value == 1:
                 flag = 1
@@ -1654,9 +1727,11 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
                     cont_LEAUGE += 1
                 print("###############################################################################")
                 while True:
+
                     print("\n\t Enter Club   between 0 and ",cont_LEAUGE," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_LEAUGE:
@@ -1666,6 +1741,7 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                          print("\n\t Enter Club   between 0 and ",cont_LEAUGE," : ")
                          continue
                 break
@@ -1673,6 +1749,7 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
 
 
             elif value == 2:
+
                 flag = 2
                 ###############################################################################
                 cont_NUMBERofSesons = 0
@@ -1685,9 +1762,11 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
                 print("###############################################################################")
 
                 while True:
+
                     print("\n\t Enter State   between 1 and ",cont_NUMBERofSesons," : ")
                     value = input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_NUMBERofSesons:
@@ -1697,6 +1776,7 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                           print("\n\tValue between 1 or  2  !!!")
                           continue
                 break
@@ -1704,6 +1784,7 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
             else:
                 print("\n\tValue between 1 or  4  !!!")
         elif value.isdigit() != True:
+
              print("\n\tValue between 1 or  2  !!!")
              continue
     #######################################################################################################################################
@@ -2146,14 +2227,17 @@ def BATCH_for_GetBYyear(DFrame):
     flagTemp = '0'
 
     while True:
+
         print("\n")
         print("\n\t Chose a option of proces data by YEAR : ")
         print("\t 1 -> YEAR ! ")
         value = raw_input("\n\tValue ")
         print("\n")
         if value.isdigit() == True:
+
             value = int(value)
             if value == 1:
+
                 flag = 1
                 ###############################################################################
                 # drzave
@@ -2166,9 +2250,11 @@ def BATCH_for_GetBYyear(DFrame):
                     cont_YEAR += 1
                 print("###############################################################################")
                 while True:
+
                     print("\n\t Enter State   between 0 and ",cont_YEAR," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_YEAR:
@@ -2178,6 +2264,7 @@ def BATCH_for_GetBYyear(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                           print("\n\t Enter State   between 0 and ",cont_YEAR," : ")
                           continue
                 break
@@ -2185,6 +2272,7 @@ def BATCH_for_GetBYyear(DFrame):
             else:
                 print("\n\tValue :  !!!")
         elif value.isdigit() != True:
+
              print("\n\tValue 1 !!!")
              continue
     #######################################################################################################################################
@@ -2536,6 +2624,7 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     flagTemp = '0'
 
     while True:
+
         print("\n")
         print("\n\t Chose a option of proces data by State or Competition  : ")
         print("\t 1 -> Club statistic ! ")
@@ -2544,8 +2633,10 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
         print("\t 4 -> Season statistic ! ")
         value = raw_input("\n\tValue between 1 and 4    : ")
         if value.isdigit() == True:
+
             value = int(value)
             if value == 1:
+
                 flag = 1
                 ###############################################################################
                 # CLUBS
@@ -2558,9 +2649,11 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
                     cont_CLUB += 1
                 print("###############################################################################")
                 while True:
+
                     print("\n\t Enter Club   between 0 and ",cont_CLUB," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_CLUB:
@@ -2570,12 +2663,14 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                            print("\n\t Enter Club   between 0 and ",cont_CLUB," : ")
                            continue
 
                 break
                 ###############################################################################
             elif value == 2:
+
                 flag = 2
                 ###############################################################################
                 cont_State = 0
@@ -2588,9 +2683,11 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
                 print("###############################################################################")
 
                 while True:
+
                     print("\n\t Enter State   between 1 and ",cont_State," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_State:
@@ -2600,11 +2697,13 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                            print("\n\t Enter State   between 1 and ",cont_State," : ")
                            continue
                 break
                 ###############################################################################
             elif value == 3:
+
                 flag = 3
                 ###############################################################################
                 cont_COMPETITION = 0
@@ -2617,9 +2716,11 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
                 print("###############################################################################")
 
                 while True:
+
                     print("\n\t Enter Competition   between 1 and ",cont_COMPETITION," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_COMPETITION:
@@ -2629,11 +2730,13 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                            print("\n\t Enter Competition   between 1 and ",cont_COMPETITION," : ")
                            continue
                 break
                 ###############################################################################
             elif value == 4:
+
                 flag = 4
                 ###############################################################################
                 cont_Seson = 0
@@ -2646,9 +2749,11 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
                 print("###############################################################################")
 
                 while True:
+
                     print("\n\t Enter Season   between 1 and ",cont_Seson," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_Seson:
@@ -2658,6 +2763,7 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                            print("\n\t Enter Season   between 1 and ",cont_Seson," : ")
                            continue
                 break
@@ -2666,6 +2772,7 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
             else:
                 print("\n\tValue between 1 or  4  !!!")
         elif value.isdigit() != True:
+
              print("\n\tValue between 1 and 4  !!!")
              continue
 
@@ -3192,12 +3299,14 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
     flagTemp = '0'
 
     while True:
+
         print("\n")
         print("\n\t Chose a option of proces data by State or Competition  : ")
         print("\t 1 -> State ! ")
         print("\t 2 -> Competition ! ")
         value = raw_input("\n\tValue between 1 or  2  : ")
         if value.isdigit() == True:
+
             value = int(value)
             if value == 1:
                 flag = 1
@@ -3212,9 +3321,11 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
                     cont_state += 1
                 print("###############################################################################")
                 while True:
+
                     print("\n\t Enter State   between 1 and ",cont_state," : ")
                     value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
+
                         value = int(value)
                         value =value -1
                         if 0 <= value < cont_state:
@@ -3224,12 +3335,14 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
                         else:
                            print("\n\tValue between bounds :")
                     elif value.isdigit() != True:
+
                          print("\n\t Enter State   between 1 and ",cont_state," : ")
                          continue
 
                 break
                 ###############################################################################
             elif value == 2:
+
                 flag = 2
                 ###############################################################################
                 cont_Compe = 0
@@ -3242,10 +3355,12 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
                 print("###############################################################################")
 
                 while True:
+
                     print("\n\t Enter Competition   between 1 and ",cont_Compe," : ")
                     value = raw_input("\n\tValue : " )
                     value =value -1
                     if value.isdigit() == True:
+
                         value = int(value)
                         if 0 <= value < cont_Compe:
                             print("You Chose : ",listCompetition[value])
@@ -3254,6 +3369,7 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
                         else:
                            print("\n\tValue between 1 and ",cont_Compe," :")
                     elif value.isdigit() != True:
+
                          print("\n\tValue between 1 and ",cont_Compe," :")
                          continue
                 break
@@ -3261,6 +3377,7 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
             else:
                 print("\n\tValue between 1 or  2  !!!")
         elif value.isdigit() != True:
+
              print("\n\tValue between 1 and 2 !!!")
              continue
     #######################################################################################################################################
@@ -3387,11 +3504,13 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
 
 # a function in python that erases repeating sequence members from the array
 def remove_duplicates(l):
+
     return list(set(l)) # function optimized ~ 26.
 #######################################################################################################################################
 
 # a function in python that release  memory for dataframes
 def Delite_DataFrame_from_memory(DatFr):
+
     print("\n\t Release DataFrame memory !!!")
     del(DatFr) # function  ~ 27.
 #######################################################################################################################################
