@@ -2,7 +2,8 @@
 # csv , txt files for datas
 clubs_KONACNA = '/home/kristijan/github/FootballEvolcion/Datas/sportska_kubska_statsitika_OBRDENO.csv' # ovaj za klubsku statistiku
 fp_league = '/home/kristijan/github/FootballEvolcion/Datas/Ligaska_KONACAN_STAS.csv'# ovaj za ligasku statistiku
-
+coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
+###############################################################################
 
 # csv file for save of processed data
 
@@ -30,6 +31,7 @@ save_csv_GetDataForLeauge_AVG_Seasons_BATCH = '/home/kristijan/github/FootballEv
 # GetBYyear  and BATCH for GetBYyear
 save_csv_GetBYyear = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/save_csv_GetBYyear.csv'
 save_csv_GetBYyear_BATCH = '/home/kristijan/github/FootballEvolcion/Datas/SaveData/save_csv_GetBYyear_BATCH.csv'
+###############################################################################
 #######################################################################################################################################
 
 

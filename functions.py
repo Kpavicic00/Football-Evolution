@@ -3358,10 +3358,10 @@ def BATCH_for_GetDate_for_Clubs_throught_all_seasons(DFrame):
 
                     print("\n\t Enter Competition   between 1 and ",cont_Compe," : ")
                     value = raw_input("\n\tValue : " )
-                    value =value -1
                     if value.isdigit() == True:
 
                         value = int(value)
+                        value =value -1
                         if 0 <= value < cont_Compe:
                             print("You Chose : ",listCompetition[value])
                             flagTemp =  str(listCompetition[value])

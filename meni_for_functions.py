@@ -137,23 +137,24 @@ def Meni_of_GetAVGExpendFORplayerArrivals():
 ###################################################################################################################################################
 
 def Meni_for_MAIN_program():
-    print("\t======> Sort  for GetAVGBalanceFORpayerDepartures   <======")
-    print("\t 1 =>  Sort data BY Name of League") # 0
-    print("\t 2 =>  Sort data BY Year of Season") # 1
-    print("\t 3 =>  Sort data BY Nationality") # 2
-    print("\t 4 =>  Sort data BY Expend by player") # 3
-    print("\t 5 =>  Sort data BY Expend + Inflation by player") # 4
-    print("\t======>Sort  for LAUGES by year   <======")
-    print("\n")# function ~ 9.
-###################################################################################################################################################
-
-def Meni_for_MAIN_program():
-    print("\t======> Sort  for GetAVGBalanceFORpayerDepartures   <======")
-    print("\t 1 =>  Sort data BY Name of League") # 0
-    print("\t 2 =>  Sort data BY Year of Season") # 1
-    print("\t 3 =>  Sort data BY Nationality") # 2
-    print("\t 4 =>  Sort data BY Expend by player") # 3
-    print("\t 5 =>  Sort data BY Expend + Inflation by player") # 4
-    print("\t======>Sort  for LAUGES by year   <======")
+    print("\t====================================================================================================")
+    print("\t=======================================>    MENI  <=================================================")
+    print("\t=  1->  Processed Data by average league EXPEND for player ARRIVALS  <->  LEAGUE datas  !!         =") # 1
+    print("\t=  2->  (0) BATCH Data by average league EXPEND for player ARRIVALS  <->  LEAGUE datas  !!         =") # 2
+    print("\t=  3->  Processed Data by average league INCOME for player DEPARTURES  <->  LEAGUE datas  !!       =") # 3
+    print("\t=  4->  (0) BATCH Data by average league INCOME for player DEPARTURES  <->  LEAGUE datas  !!       =") # 4
+    print("\t=  5->  Processed Data by average league BALANCE for player DEPARTURES  <->  LEAGUE datas  !!      =") # 5
+    print("\t=  6->  (0) BATCH Data by average league BALANCE for player DEPARTURES  <->  LEAGUE datas  !!      =") # 6
+    print("\t=  7->  Processed Data by average LEAGUE by AVG SESONS statistic   <->  LEAGUE datas  !!           =") # 7
+    print("\t=  8->  (0) BATCH Data by average LEAGUE by AVG SESONS statistic   <->  LEAGUE datas  !!           =") # 8
+    print("\t=  9->  Processed Data by average -> LEAGUE by YEAR statistic   <->  LEAGUE datas  !!              =") # 9
+    print("\t=  10->  (0) BATCH Data by average -> LEAGUE by YEAR statistic   <->  LEAGUE datas  !!             =") # 10
+    print("\t=  11->  Processed Data by Data CLUBS statistic without   SESONS      <0>  CLUB datas  !!          =") # 11
+    print("\t=  12->  (0) BATCH Data by Data CLUBS statistic without   SESONS      <0>  CLUB datas  !!          =") # 12
+    print("\t=  13->  Processed Data by Data CLUBS statistic through all   SESONS      <0>  CLUB datas  !!      =") # 13
+    print("\t=  14->  (0) BATCH Data by Data CLUBS statistic through all   SESONS      <0>  CLUB datas  !!      =") # 14
+    print("\t=  15->  END OF PROGRAM ====>>>>>  press 15 for EXIT <<<<<====== !!!!!                             =") # 15
+    print("\t=======================================>    MENI  <=================================================")
+    print("\t====================================================================================================")
     print("\n")# function ~ 9.
 ###################################################################################################################################################
