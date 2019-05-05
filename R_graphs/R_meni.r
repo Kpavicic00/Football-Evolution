@@ -1,5 +1,2 @@
-matrica <- matrix(nrow = 2 , ncol = 3)
-print(matrica)
-matrica[1,1] = 23
-print(matrica)
-plot(matrica)
+data <- read.csv("/home/kristijan/github/FootballEvolcion/Datas/SaveData/save_csv_Expend_BATCH.csv")
+print(data)
