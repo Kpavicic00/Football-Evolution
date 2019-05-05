@@ -10,6 +10,18 @@ import sys
 coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 # functions
 
+# with open(filename, 'a') as f:  # Use append mode.
+#     df.to_csv(f, index=False, header=False)
+
+# write to file
+def Write_multiple_DF(csv_file,dat):
+    with open(csv_file, 'a') as f:  # Use append mode.
+        dat.to_csv(f, index=False,header=False)
+
+
+#######################################################################################################################################
+
+
 # write to file
 def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat):
 

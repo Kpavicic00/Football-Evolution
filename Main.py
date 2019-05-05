@@ -59,7 +59,7 @@ while True:
             print("\t=====================================================================")
             leuge_DF = DataFrameFunc(fp_league)
             a_leuge_DF = BATCH_for_GetAVGExpendFORplayerArrivals(leuge_DF)
-            WriteTOcsvFILE_mult_DATAFRAMES(save_csv_Expend_BATCH,a_leuge_DF)
+            Write_multiple_DF(save_csv_Expend_BATCH,a_leuge_DF)
             Delite_DataFrame_from_memory(leuge_DF)
             Delite_DataFrame_from_memory(a_leuge_DF)
 
@@ -90,7 +90,7 @@ while True:
             print("\t=====================================================================")
             leuge_DF = DataFrameFunc(fp_league)
             a_leuge_DF = BATCH_for_GetAVGIncomeFORplayerDepartures(leuge_DF)
-            WriteTOcsvFILE_mult_DATAFRAMES(save_csv_Income_BATCH,a_leuge_DF)
+            Write_multiple_DF(save_csv_Income_BATCH,a_leuge_DF)
             Delite_DataFrame_from_memory(leuge_DF)
             Delite_DataFrame_from_memory(a_leuge_DF)
 
@@ -122,7 +122,7 @@ while True:
             print("\t===========================================================================")
             leuge_DF = DataFrameFunc(fp_league)
             a_leuge_DF = BATCH_for_GetAVGBalanceFORplayerDepartures(leuge_DF)
-            WriteTOcsvFILE_mult_DATAFRAMES(save_csv_Balance_BATCH,a_leuge_DF)
+            Write_multiple_DF(save_csv_Balance_BATCH,a_leuge_DF)
             Delite_DataFrame_from_memory(leuge_DF)
             Delite_DataFrame_from_memory(a_leuge_DF)
 
@@ -154,7 +154,7 @@ while True:
             print("\t=======================================================================")
             leuge_DF = DataFrameFunc(fp_league)
             a_leuge_DF = BATCH_for_GetDataForLeauge_AVG_Seasons(leuge_DF)
-            WriteTOcsvFILE_mult_DATAFRAMES(save_csv_GetDataForLeauge_AVG_Seasons_BATCH,a_leuge_DF)
+            Write_multiple_DF(save_csv_GetDataForLeauge_AVG_Seasons_BATCH,a_leuge_DF)
             Delite_DataFrame_from_memory(leuge_DF)
             Delite_DataFrame_from_memory(a_leuge_DF)
 
@@ -186,7 +186,7 @@ while True:
             print("\t=======================================================================")
             leuge_DF = DataFrameFunc(fp_league)
             a_leuge_DF = GetBYyear(leuge_DF)
-            WriteTOcsvFILE_mult_DATAFRAMES(save_csv_GetBYyear_BATCH,a_leuge_DF)
+            Write_multiple_DF(save_csv_GetBYyear_BATCH,a_leuge_DF)
             Delite_DataFrame_from_memory(leuge_DF)
             Delite_DataFrame_from_memory(a_leuge_DF)
 
@@ -218,7 +218,7 @@ while True:
             print("\t=======================================================================")
             clubs_DF = DataFrameFuncClubs(clubs_KONACNA)
             a_clubs_DF = BATCH_for_GETDataClubs_with_seasons(clubs_DF)
-            WriteTOcsvFILE_mult_DATAFRAMES(save_csv_GETDataClubs_with_seasons_BATCH,a_clubs_DF)
+            Write_multiple_DF(save_csv_GETDataClubs_with_seasons_BATCH,a_clubs_DF)
             Delite_DataFrame_from_memory(clubs_DF)
             Delite_DataFrame_from_memory(a_clubs_DF)
 
@@ -250,7 +250,7 @@ while True:
             print("\t=================================================================================")
             clubs_DF = DataFrameFuncClubs(clubs_KONACNA)
             a_clubs_DF = BATCH_for_GetDate_for_Clubs_throught_all_seasons(clubs_DF)
-            WriteTOcsvFILE_mult_DATAFRAMES(save_csv_GetDate_for_Clubs_throught_all_seasons_BATCH,a_clubs_DF)
+            Write_multiple_DF(save_csv_GetDate_for_Clubs_throught_all_seasons_BATCH,a_clubs_DF)
             Delite_DataFrame_from_memory(clubs_DF)
             Delite_DataFrame_from_memory(a_clubs_DF)
 
