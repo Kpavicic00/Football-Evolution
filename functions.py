@@ -17,10 +17,7 @@ coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 def Write_multiple_DF(csv_file,dat):
     with open(csv_file, 'a') as f:  # Use append mode.
         dat.to_csv(f, index=False,header=False)
-
-
 #######################################################################################################################################
-
 
 # write to file
 def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat):
@@ -2583,8 +2580,8 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     ###############################################################################
 
     # set the numpy arrays values into stack
-    a = np.stack((np_Order,np_Club,np_State,np_Competition,np_Expenditures,np_Arrivals,np_Income,np_Departures,np_Balance,np_Season,
-    np_inflation_Income,np_inflation_Expenditures,np_inflation_Balance),axis= -1)
+    a = np.stack((np_Order,np_Club,np_State,np_Competition,np_Expenditures,np_Arrivals,np_Income,np_Departures,np_Balance,
+    np_Season,np_inflation_Income,np_inflation_Expenditures,np_inflation_Balance),axis= -1)
     ###############################################################################
 
     # convert from stack with values to data for dataFrame
@@ -2917,7 +2914,7 @@ def BATCH_for_GETDataClubs_with_seasons(DFrame):
     # SESAON
     if flag == 4:
         for i in range(0,len(a)):
-            if str(a[i][9]) == flagTemp :
+            if int(a[i][9]) == flagTemp :
                 array1[y] = a[i][0]
                 array2[y] = a[i][1]
                 array3[y] = a[i][2]

@@ -185,7 +185,7 @@ while True:
             print("\t= You choose function => BATCH_for_GetBYyear !                        =")
             print("\t=======================================================================")
             leuge_DF = DataFrameFunc(fp_league)
-            a_leuge_DF = GetBYyear(leuge_DF)
+            a_leuge_DF = BATCH_for_GetBYyear(leuge_DF)
             Write_multiple_DF(save_csv_GetBYyear_BATCH,a_leuge_DF)
             Delite_DataFrame_from_memory(leuge_DF)
             Delite_DataFrame_from_memory(a_leuge_DF)

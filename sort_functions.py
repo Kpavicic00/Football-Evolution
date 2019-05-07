@@ -130,7 +130,7 @@ def Input_chose_of_sort_CLUBS_GETDataClubs_with_seasons(new_niz):
                print(" -> Sorted by Balance !!! ")
                b = Chose_reverse_or()
                print("\n")
-               a =  sorted(new_niz, key=lambda new_niz: int(new_niz[8]),reverse = b) # Balance sort ,int
+               a =  sorted(new_niz, key=lambda new_niz: float(new_niz[8]),reverse = b) # Balance sort ,float
                return a
             elif value == 10:
                print("\n")
