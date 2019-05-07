@@ -22,7 +22,7 @@ def Write_multiple_DF(csv_file,dat):
 # write to file
 def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat):
 
-    np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=None, footer='     => End of file <=')
+    np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=False, footer='     => End of file <=')
     print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
 #######################################################################################################################################
 
