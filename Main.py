@@ -39,7 +39,7 @@ while True:
                 print("\t===========================================================")
                 leuge_DF = DataFrameFunc(fp_league)
                 a_leuge_DF = GetAVGExpendFORplayerArrivals(leuge_DF)
-                WriteTOcsvFILE_mult_DATAFRAMES(save_csv_Expend,a_leuge_DF)
+                Write_multiple_DF(save_csv_Expend,a_leuge_DF)
                 Delite_DataFrame_from_memory(leuge_DF)
                 Delite_DataFrame_from_memory(a_leuge_DF)
                 count_1 +=1
@@ -51,6 +51,7 @@ while True:
                 print("\t=============================================")
                 print("\n")
                 continue
+
 
 
         elif  value == 2:
@@ -70,7 +71,7 @@ while True:
                 print("\t=============================================================")
                 leuge_DF = DataFrameFunc(fp_league)
                 a_leuge_DF = GetAVGIncomeFORplayerDepartures(leuge_DF)
-                WriteTOcsvFILE_mult_DATAFRAMES(save_csv_Income,a_leuge_DF)
+                Write_multiple_DF(save_csv_Income,a_leuge_DF)
                 Delite_DataFrame_from_memory(leuge_DF)
                 Delite_DataFrame_from_memory(a_leuge_DF)
                 count_3 +=1
@@ -102,7 +103,7 @@ while True:
                 print("\t=============================================================")
                 leuge_DF = DataFrameFunc(fp_league)
                 a_leuge_DF = GetAVGBalanceFORplayerDepartures(leuge_DF)
-                WriteTOcsvFILE_mult_DATAFRAMES(save_csv_Balance,a_leuge_DF)
+                Write_multiple_DF(save_csv_Balance,a_leuge_DF)
                 Delite_DataFrame_from_memory(leuge_DF)
                 Delite_DataFrame_from_memory(a_leuge_DF)
                 count_5 +=1
@@ -134,7 +135,7 @@ while True:
                 print("\t=============================================================")
                 leuge_DF = DataFrameFunc(fp_league)
                 a_leuge_DF = GetDataForLeauge_AVG_Seasons(leuge_DF)
-                WriteTOcsvFILE_mult_DATAFRAMES(save_csv_GetDataForLeauge_AVG_Seasons,a_leuge_DF)
+                Write_multiple_DF(save_csv_GetDataForLeauge_AVG_Seasons,a_leuge_DF)
                 Delite_DataFrame_from_memory(leuge_DF)
                 Delite_DataFrame_from_memory(a_leuge_DF)
                 count_7 +=1
@@ -198,7 +199,7 @@ while True:
                 print("\t=============================================================")
                 clubs_DF = DataFrameFuncClubs(clubs_KONACNA)
                 a_clubs_DF = GETDataClubs_with_seasons(clubs_DF)
-                WriteTOcsvFILE_mult_DATAFRAMES(save_csv_GETDataClubs_with_seasons,a_clubs_DF)
+                Write_multiple_DF(save_csv_GETDataClubs_with_seasons,a_clubs_DF)
                 Delite_DataFrame_from_memory(clubs_DF)
                 Delite_DataFrame_from_memory(a_clubs_DF)
                 count_11 +=1
@@ -230,7 +231,7 @@ while True:
                 print("\t=======================================================================")
                 clubs_DF = DataFrameFuncClubs(clubs_KONACNA)
                 a_clubs_DF = GetDate_for_Clubs_throught_all_seasons(clubs_DF)
-                WriteTOcsvFILE_mult_DATAFRAMES(save_csv_GetDate_for_Clubs_throught_all_seasons,a_clubs_DF)
+                Write_multiple_DF(save_csv_GetDate_for_Clubs_throught_all_seasons,a_clubs_DF)
                 Delite_DataFrame_from_memory(clubs_DF)
                 Delite_DataFrame_from_memory(a_clubs_DF)
                 count_13 +=1
