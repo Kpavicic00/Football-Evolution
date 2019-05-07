@@ -166,7 +166,7 @@ while True:
                 print("\t=============================================================")
                 leuge_DF = DataFrameFunc(fp_league)
                 a_leuge_DF = GetBYyear(leuge_DF)
-                WriteTOcsvFILE_mult_DATAFRAMES(save_csv_GetBYyear,a_leuge_DF)
+                Write_multiple_DF(save_csv_GetBYyear,a_leuge_DF)
                 Delite_DataFrame_from_memory(leuge_DF)
                 Delite_DataFrame_from_memory(a_leuge_DF)
                 count_9 +=1
