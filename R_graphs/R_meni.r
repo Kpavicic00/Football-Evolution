@@ -1,26 +1,30 @@
+#library
+
 library(ggplot2)
+library(maps)
+library(ggridges)
+library(dplyr)
+library(ggthemes)
+library(extrafont)
 
-dataF <- read.csv("/home/kristijan/github/FootballEvolcion/Datas/SaveData/save_csv_GetBYyear.csv") #citanje iz filea
+# league five with average and relative curves, average league consumption per player
+# Expend_by_player
 
-colnames(dataF) <- c("Order","Year", "Expend", "Income","Income","number_of_Season","sum_of_Arrivlas","sum_of_Depatrues","avg_Expend_of_Arrivlas",
-"avg_Income_of_Depatrues","avg_Balance_of_Depatrues","avg_Expend_Season","avg_Income_Season","avg_Balance_Season ")
+liga_petice <- read.csv("/home/kristijan/github/FootballEvolcion/Datas/SaveData/save_csv_Expend_BATCH.csv")
+colnames(liga_petice) <- c("Name_of_Legue","Year","Nationality","Expend_by_player","Expend_INFLACION")
 
+gr <- ggplot(liga_petice,aes(x = Year, y = Expend_by_player , col = Name_of_Legue)) +
+  geom_line(alpha = 0.9) +
+  geom_smooth(lwd = 2, se = FALSE) +
+  scale_y_continuous("Average Expend  per player",labels = scales::comma) +
+  scale_colour_manual(values = c("gray15", "orange4", "cyan4","darkolivegreen","red4")) +
+  labs(title = "Average League player consumption per player",color = " Names of Leagues\n")
 
-dataF$Order <- as.factor(dataF$Order)
-dataF$Year <- as.factor(dataF$Year)
-dataF$Expend <- as.factor(dataF$Expend)
-dataF$Income <- as.factor(dataF$Income)
-dataF$number_of_Season <- as.factor(dataF$number_of_Season)
-dataF$sum_of_Arrivlas <- as.factor(dataF$sum_of_Arrivlas)
-dataF$sum_of_Depatrues <- as.factor(dataF$sum_of_Depatrues)
-dataF$avg_Expend_of_Arrivlas <- as.factor(dataF$avg_Expend_of_Arrivlas)
-dataF$avg_Income_of_Depatrues <- as.factor(dataF$avg_Income_of_Depatrues)
-dataF$avg_Expend_Season <- as.factor(dataF$avg_Expend_Season)
-dataF$avg_Income_Season <- as.factor(dataF$avg_Income_Season)
-dataF$avg_Balance_Season <- as.factor(dataF$avg_Balance_Season)
+gr + theme_tufte() +
+  theme(
+    legend.position = c(0.7, 0.9),
+    legend.title = element_text(face = "bold", size = 12),)
 
-ggplot(dataF, aes(x = dataF$Expend, fill = Expenditure ))+
-  theme_bw() +
-  geom_bar() +
-  labs(y = "counter", title = "potrosnja")
-#prop.table(table(dataF$sum_of_Arrivla))
+gr +theme( axis.title=element_text(size=17,face="bold"),
+           axis.text = element_text(face = "bold", size = 17),
+           plot.title = element_text(size = 20, face = "italic",color = "red"))
