@@ -1,7 +1,7 @@
 
 # csv , txt files for datas
-clubs_KONACNA = '/home/kristijan/github/FootballEvolcion/Datas/LOAD_Klubska.csv' # ovaj za klubsku statistiku
-fp_league = '/home/kristijan/github/FootballEvolcion/Datas/Ligaska_KONACAN_STAS.csv'# ovaj za ligasku statistiku
+clubs_KONACNA = '/home/kristijan/github/FootballEvolcion/Datas/sportska_kubska_statsitika_OBRDENO.csv' # ovaj za klubsku statistiku
+fp_league = '/home/kristijan/github/FootballEvolcion/Datas/LOAD_Klubska.csv'# ovaj za ligasku statistiku
 coef = "/home/kristijan/github/FootballEvolcion/Datas/file.txt"
 ###############################################################################
 
