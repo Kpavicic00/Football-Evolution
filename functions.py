@@ -1773,7 +1773,7 @@ def BATCH_for_GetDataForLeauge_AVG_Seasons(DFrame):
                 while True:
 
                     print("\n\t Enter State   between 1 and ",cont_NUMBERofSesons," : ")
-                    value = input("\n\tValue : " )
+                    value = raw_input("\n\tValue : " )
                     if value.isdigit() == True:
 
                         value = int(value)
