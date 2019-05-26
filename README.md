@@ -1,4 +1,4 @@
-# FootballEvolcion
+# the evolution of football
 The basic purpose of the application is to facilitate the work of all functions for more detailed processing of league and club data.
 All users access the same system with the same user interface or "console" interface and functionality.
 The user will have different data processing functionality, also different types of sorting
