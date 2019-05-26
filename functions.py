@@ -20,87 +20,87 @@ def Write_multiple_DF(csv_file,dat):
 #######################################################################################################################################
 
 # write to file
-def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat):
-
-    np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=False, footer='     => End of file <=')
-    print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
+# def WriteTOcsvFILE_one_DATAFRAMES(csv_file,dat):
+#
+#     np.savetxt(csv_file, dat, fmt='%s', delimiter=' ', newline='\n', header=False, footer='     => End of file <=')
+#     print("Write into   file !!!"+ csv_file+" end ") # function ~ 1.
 #######################################################################################################################################
 
 # write to file
-def WriteTOcsvFILE_mult_DATAFRAMES(csv_file,datFRAME):
-
-    with open(csv_file, 'w') as f:
-         pd.concat([datFRAME], axis=1).to_csv(f) # function ~ 2.
+# def WriteTOcsvFILE_mult_DATAFRAMES(csv_file,datFRAME):
+#
+#     with open(csv_file, 'w') as f:
+#          pd.concat([datFRAME], axis=1).to_csv(f) # function ~ 2.
 #######################################################################################################################################
 
 #   read csv file
-def ReadCSV_file(file):
-
-    with open(file, 'r') as csvFile:
-
-        reader = csv.reader(csvFile)
-        for row in reader:
-            print(row)
-
-    csvFile.close()
+# def ReadCSV_file(file):
+#
+#     with open(file, 'r') as csvFile:
+#
+#         reader = csv.reader(csvFile)
+#         for row in reader:
+#             print(row)
+#
+#     csvFile.close()
 
 #function count number of rows for specific DateFrame
-def NumberOfRows(datFrame):
+def NumberOfRows(datFrame): # for data frame
 
     total_rows = len(datFrame)
     return  total_rows # function ~ 3.
 #######################################################################################################################################
 
 # functions_fore choose of season
-def Input_order():
-
-    while True:
-
-        print("\n\t Enter a year of season   : ")
-        value = input("\n\tValue between 1 and 7 :")
-
-        try:
-           value = int(value)
-        except ValueError:
-           print("\n\tValid number, please !!")
-           continue
-        if 1 <= value <= 7:
-           return value
-           break
-        else:
-           print("\n\tValue between 1 and 7 !!!") # function ~ 4.
+# def Input_order():
+#
+#     while True:
+#
+#         print("\n\t Enter a year of season   : ")
+#         value = input("\n\tValue between 1 and 7 :")
+#
+#         try:
+#            value = int(value)
+#         except ValueError:
+#            print("\n\tValid number, please !!")
+#            continue
+#         if 1 <= value <= 7:
+#            return value
+#            break
+#         else:
+#            print("\n\tValue between 1 and 7 !!!") # function ~ 4.
 #######################################################################################################################################
 
 # function for input years interval 2000 to 2018
-def Input_year():
-
-    while True:
-
-        print("\n\t Enter a year of transaction to get \ n transaction data according to the current inflation rate : ")
-        value = input("\n\tValue between 2000 and 2018 :")
-        try:
-           value = int(value)
-
-        except ValueError:
-           print("\n\tValid number, please !!")
-           continue
-        if 2000 <= value <= 2018:
-           return value
-           break
-        else:
-           print("\n\tValue between 2000 and 2018 !!!") # function ~ 5.
+# def Input_year():
+#
+#     while True:
+#
+#         print("\n\t Enter a year of transaction to get \ n transaction data according to the current inflation rate : ")
+#         value = input("\n\tValue between 2000 and 2018 :")
+#         try:
+#            value = int(value)
+#
+#         except ValueError:
+#            print("\n\tValid number, please !!")
+#            continue
+#         if 2000 <= value <= 2018:
+#            return value
+#            break
+#         else:
+#            print("\n\tValue between 2000 and 2018 !!!") # function ~ 5.
 #######################################################################################################################################
 
 # print the txt file
-def printFile(data):
-
-    #read the file
-    f = open(data, "r")
-    print(f.read())
-    f.close() # function ~ 6
+# def printFile(data):
+#
+#     #read the file
+#     f = open(data, "r")
+#     print(f.read())
+#     f.close() # function ~ 6
 #######################################################################################################################################
 
-# function  count the length of lines for the required size allocation of the string
+# function  count the length of lines for the required size allocation of the string #TXT
 def file_lengthy(fname):
 
     with open(fname) as f:
@@ -143,35 +143,35 @@ def GETCoefficients(files,year):
 #######################################################################################################################################
 
 # picking up and dealing with the data in terms of coefficients
-def Coefficients(files):
-
-    lenght = file_lengthy(files) # count the length of lines for the required size allocation of the string
-
-    with open(files, "r") as f: # open the file
-        data = f.readlines()
-
-    count = 0 # counter for arrays
-
-    #reserving the number of elements in a row
-    y = [0] * lenght
-    k = [0] * lenght
-
-    for line in data:
-        words = line.split()
-
-        y[count] = words[0] # years
-        k[count] = words[1] # coefficient
-        count += 1
-
-    # conversion to numpy
-    np_years = np.asarray(y, dtype='int64')
-    np_koef = np.asarray(k, dtype='float64')
-
-    # the intake part put a try catch between the 2000 and 2009 intervals and to index them with the 2019 index
-    i = Input_year()
-    np_specific_coefficient = np_koef[np_years == i]
-
-    return np_specific_coefficient # function ~ 9.
+# def Coefficients(files):
+#
+#     lenght = file_lengthy(files) # count the length of lines for the required size allocation of the string
+#
+#     with open(files, "r") as f: # open the file
+#         data = f.readlines()
+#
+#     count = 0 # counter for arrays
+#
+#     #reserving the number of elements in a row
+#     y = [0] * lenght
+#     k = [0] * lenght
+#
+#     for line in data:
+#         words = line.split()
+#
+#         y[count] = words[0] # years
+#         k[count] = words[1] # coefficient
+#         count += 1
+#
+#     # conversion to numpy
+#     np_years = np.asarray(y, dtype='int64')
+#     np_koef = np.asarray(k, dtype='float64')
+#
+#     # the intake part put a try catch between the 2000 and 2009 intervals and to index them with the 2019 index
+#     i = Input_year()
+#     np_specific_coefficient = np_koef[np_years == i]
+#
+#     return np_specific_coefficient # function ~ 9.
 #######################################################################################################################################
 
 # takes data with pandas function DataFrame
